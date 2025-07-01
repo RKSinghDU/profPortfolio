@@ -14,11 +14,12 @@ interface YouTubeVideo {
   url: string;
 }
 
-// Contact form types
+// Contact form types - FIXED: Added index signature
 interface ContactFormData {
   from_name: string;
   from_email: string;
   message: string;
+  [key: string]: unknown; // This fixes the Record<string, unknown> error
 }
 
 // Theme types
@@ -153,7 +154,7 @@ class YouTubeAPI {
   private saveToCache(key: string, data: YouTubeVideo[]): void {
     try {
       localStorage.setItem(key, JSON.stringify({ data, timestamp: Date.now() }));
-    } catch (error) {
+    } catch {
       console.warn('Failed to cache YouTube data');
     }
   }
@@ -251,6 +252,12 @@ const ThemeToggle = ({ isDarkMode, theme, updateTheme }: {
     updateTheme(isDarkMode ? 'light' : 'dark');
   };
 
+  // FIXED: Added proper event handler
+  const handleContextMenu = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setShowMenu(!showMenu);
+  };
+
   const themeOptions = [
     { value: 'light' as Theme, label: 'Light', icon: Sun },
     { value: 'dark' as Theme, label: 'Dark', icon: Moon },
@@ -262,10 +269,7 @@ const ThemeToggle = ({ isDarkMode, theme, updateTheme }: {
       {/* Simple Toggle Button */}
       <button
         onClick={handleToggle}
-        onContextMenu={(e) => {
-          e.preventDefault();
-          setShowMenu(!showMenu);
-        }}
+        onContextMenu={handleContextMenu}
         className={`p-2 sm:p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110 ${
           isDarkMode 
             ? 'bg-yellow-500 text-gray-900 hover:bg-yellow-400' 
@@ -370,6 +374,7 @@ export default function ProfessorPortfolio() {
     setSubmitStatus('idle');
 
     try {
+      // FIXED: No need to cast anymore due to index signature
       await emailjs.send(
         import.meta.env.VITE_EMAILJS_SERVICE_ID,
         import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
@@ -470,6 +475,15 @@ export default function ProfessorPortfolio() {
     if (diffDays < 30) return `${Math.floor(diffDays / 7)} weeks ago`;
     if (diffDays < 365) return `${Math.floor(diffDays / 30)} months ago`;
     return `${Math.floor(diffDays / 365)} years ago`;
+  };
+
+  // FIXED: Added proper event handlers for image load events
+  const handleImageLoad = (thumbnail: string) => {
+    console.log('✅ Image loaded successfully:', thumbnail);
+  };
+
+  const handleImageError = (thumbnail: string) => {
+    console.log('❌ Image failed to load:', thumbnail);
   };
 
   return (
@@ -627,12 +641,8 @@ export default function ProfessorPortfolio() {
                           src={video.thumbnail}
                           alt={video.title}
                           className="w-full h-32 sm:h-40"
-                          onLoad={(e) => {
-                            console.log('✅ Image loaded successfully:', video.thumbnail);
-                          }}
-                          onError={(e) => {
-                            console.log('❌ Image failed to load:', video.thumbnail);
-                          }}
+                          onLoad={() => handleImageLoad(video.thumbnail)}
+                          onError={() => handleImageError(video.thumbnail)}
                           style={{ 
                             display: 'block',
                             width: '100%',
