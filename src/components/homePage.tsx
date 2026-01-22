@@ -350,7 +350,7 @@ export default function ProfessorPortfolio() {
   const youtubeAPI = useRef(new YouTubeAPI());
 
   // Channel configuration
-  const CHANNEL_HANDLE = '@rkvisen251'; // Your YouTube channel handle
+  const CHANNEL_HANDLE = '@rksinghdu'; // Your YouTube channel handle
   const MAX_VIDEOS = 5;
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -515,7 +515,7 @@ export default function ProfessorPortfolio() {
           <p className="text-sm sm:text-base">Specializations: Human Resource Management, Organisational Behaviour</p>
           <div className="flex justify-center sm:justify-start space-x-4 mt-2">
             <a href="https://www.linkedin.com/in/dr-r-k-singh-b4b4641b" target="_blank" rel="noopener noreferrer" className="text-blue-500"><Linkedin/></a>
-            <a href="https://www.youtube.com/@rkvisen251" target="_blank" rel="noopener noreferrer" className="text-red-500"><Youtube size={28}/></a>
+            <a href="https://www.youtube.com/@rksinghdu" target="_blank" rel="noopener noreferrer" className="text-red-500"><Youtube size={28}/></a>
             <a href="https://smrth.in/pN" target="_blank" rel="noopener noreferrer" className="text-[#9a4cb2]"><University/></a>
           </div>
         </div>
