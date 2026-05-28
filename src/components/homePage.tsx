@@ -4,6 +4,7 @@ import {
   Linkedin, Youtube, GraduationCap, ChevronLeft, ChevronRight, Play, Eye,
   Calendar, RefreshCw, AlertCircle, Lock, ArrowUpRight, BookOpen, Mail,
   MapPin, Send, Menu, X, Layers, ClipboardCheck, FileText, CalendarDays, Sparkles,
+  Sun, Moon,
 } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 
@@ -215,6 +216,17 @@ const MAX_VIDEOS = 5;
 export default function ProfessorPortfolio() {
   const [active, setActive] = useState('home');
   const [menuOpen, setMenuOpen] = useState(false);
+  const [dark, setDark] = useState<boolean>(() => {
+    if (typeof window === 'undefined') return false;
+    const saved = localStorage.getItem('rk-theme');
+    if (saved === 'dark') return true;
+    if (saved === 'light') return false;
+    return window.matchMedia('(prefers-color-scheme: dark)').matches;
+  });
+
+  useEffect(() => {
+    localStorage.setItem('rk-theme', dark ? 'dark' : 'light');
+  }, [dark]);
 
   // Contact form
   const [formData, setFormData] = useState<ContactFormData>({ from_name: '', from_email: '', message: '' });
@@ -348,21 +360,21 @@ export default function ProfessorPortfolio() {
 
   /* ---- shared class fragments ---- */
   const serif = "font-['Marcellus']";
-  const eyebrow = `${serif} text-[0.72rem] tracking-[0.22em] uppercase text-[#C1502E]`;
+  const eyebrow = `${serif} text-[0.72rem] tracking-[0.22em] uppercase text-[var(--accent)]`;
   const sectionPad = 'scroll-mt-24 py-20';
 
   return (
-    <div className="min-h-screen bg-[#FBF5E9] text-[#2A2740] selection:bg-[#C1502E] selection:text-[#FBF5E9]"
+    <div className={`${dark ? 'theme-dark' : 'theme-light'} min-h-screen bg-[var(--bg)] text-[var(--ink)] selection:bg-[var(--accent)] selection:text-[var(--bg)]`}
          style={{ fontFamily: '"Mukta", system-ui, sans-serif' }}>
 
       {/* ---------------- NAV ---------------- */}
-      <header className="sticky top-0 z-50 backdrop-blur-md bg-[#FBF5E9]/85 border-b border-[#C1502E]/20">
+      <header className="sticky top-0 z-50 backdrop-blur-md bg-[var(--nav-bg)] border-b border-[var(--line)]">
         <div className="max-w-6xl mx-auto px-5 sm:px-8 h-16 flex items-center gap-4">
           <button onClick={() => goTo('home')} className="flex items-center gap-3 shrink-0">
-            <span className={`${serif} w-10 h-10 grid place-items-center rounded-full border border-[#C1502E] text-[#C1502E] text-sm`}>RKS</span>
+            <span className={`${serif} w-10 h-10 grid place-items-center rounded-full border border-[var(--accent)] text-[var(--accent)] text-sm`}>RKS</span>
             <span className="text-left leading-none">
-              <span className={`${serif} block text-[#1F2247] text-[1.05rem]`}>R. K. Singh</span>
-              <span className="block text-[0.6rem] tracking-[0.16em] uppercase text-[#6E6A82]">University of Delhi</span>
+              <span className={`${serif} block text-[var(--heading)] text-[1.05rem]`}>R. K. Singh</span>
+              <span className="block text-[0.6rem] tracking-[0.16em] uppercase text-[var(--muted)]">University of Delhi</span>
             </span>
           </button>
 
@@ -371,27 +383,37 @@ export default function ProfessorPortfolio() {
             {NAV.map((n) => (
               <button key={n.id} onClick={() => goTo(n.id)}
                 className={`px-3 py-2 text-[0.82rem] tracking-wide transition-colors border-b-2 ${
-                  active === n.id ? 'text-[#C1502E] border-[#C1502E]' : 'text-[#5A566E] border-transparent hover:text-[#1F2247]'
+                  active === n.id ? 'text-[var(--accent)] border-[var(--accent)]' : 'text-[var(--muted2)] border-transparent hover:text-[var(--heading)]'
                 }`}>
                 {n.label}
               </button>
             ))}
           </nav>
 
+          {/* desktop theme toggle */}
+          <button onClick={() => setDark((v) => !v)} aria-label="Toggle theme"
+            className="hidden md:grid place-items-center w-9 h-9 ml-1 rounded-full border border-[var(--line3)] text-[var(--accent)] hover:bg-[var(--accent-10)] transition-colors">
+            {dark ? <Sun size={17} /> : <Moon size={17} />}
+          </button>
+
           {/* mobile toggle */}
-          <button className="ml-auto md:hidden text-[#1F2247] p-2" onClick={() => setMenuOpen((v) => !v)} aria-label="Menu">
+          <button onClick={() => setDark((v) => !v)} aria-label="Toggle theme"
+            className="ml-auto md:hidden grid place-items-center w-9 h-9 rounded-full text-[var(--accent)]">
+            {dark ? <Sun size={20} /> : <Moon size={20} />}
+          </button>
+          <button className="md:hidden text-[var(--heading)] p-2" onClick={() => setMenuOpen((v) => !v)} aria-label="Menu">
             {menuOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
         </div>
 
         {/* mobile menu */}
         {menuOpen && (
-          <div className="md:hidden border-t border-[#C1502E]/15 bg-[#FBF5E9]">
+          <div className="md:hidden border-t border-[var(--line2)] bg-[var(--bg)]">
             <div className="max-w-6xl mx-auto px-5 py-2 flex flex-col">
               {NAV.map((n) => (
                 <button key={n.id} onClick={() => goTo(n.id)}
-                  className={`text-left py-2.5 text-[0.95rem] border-b border-[#1F2247]/10 ${
-                    active === n.id ? 'text-[#C1502E]' : 'text-[#3A3654]'
+                  className={`text-left py-2.5 text-[0.95rem] border-b border-[var(--line-ink)] ${
+                    active === n.id ? 'text-[var(--accent)]' : 'text-[var(--ink)]'
                   }`}>
                   {n.label}
                 </button>
@@ -408,32 +430,32 @@ export default function ProfessorPortfolio() {
           <div className="pointer-events-none absolute -top-24 -right-24 w-[28rem] h-[28rem] rounded-full"
                style={{ background: 'radial-gradient(circle, rgba(193,80,46,0.12), transparent 65%)' }} />
           <div className="pointer-events-none absolute bottom-0 -left-20 w-80 h-80 rounded-full"
-               style={{ background: 'radial-gradient(circle, rgba(31,34,71,0.08), transparent 65%)' }} />
+               style={{ background: 'radial-gradient(circle, var(--accent-10), transparent 65%)' }} />
 
           <div className="relative max-w-6xl mx-auto px-5 sm:px-8 pt-16 pb-14 grid md:grid-cols-[1.3fr_0.9fr] gap-10 md:gap-12 items-center">
             <div className="animate-[rise_0.7s_ease-out]">
               <span className={eyebrow}>Professor of Commerce &middot; University of Delhi</span>
-              <h1 className={`${serif} text-[#1F2247] mt-4 leading-[1.05] text-[clamp(2.6rem,6.5vw,4.6rem)]`}>
+              <h1 className={`${serif} text-[var(--heading)] mt-4 leading-[1.05] text-[clamp(2.6rem,6.5vw,4.6rem)]`}>
                 Reetesh Kumar<br />Singh
               </h1>
-              <p className="mt-4 text-[#5A566E] text-[clamp(1rem,2vw,1.2rem)] italic">
-                Human Resource Management <span className="text-[#C1502E]">&#9670;</span> Organisational Behaviour <span className="text-[#C1502E]">&#9670;</span> Research Methodology
+              <p className="mt-4 text-[var(--muted2)] text-[clamp(1rem,2vw,1.2rem)] italic">
+                Human Resource Management <span className="text-[var(--accent)]">&#9670;</span> Organisational Behaviour <span className="text-[var(--accent)]">&#9670;</span> Research Methodology
               </p>
-              <p className="mt-5 max-w-[52ch] text-[1.08rem] text-[#46425C] leading-relaxed">
+              <p className="mt-5 max-w-[52ch] text-[1.08rem] text-[var(--body)] leading-relaxed">
                 A teacher and researcher of organizations at the University of Delhi — and a builder of
                 simulations and AI-assisted tools that bring rigour and accessibility to the way we teach and assess.
               </p>
               <div className="mt-7 flex flex-wrap gap-3">
                 <button onClick={() => goTo('research')}
-                  className="px-5 py-2.5 rounded-sm bg-[#C1502E] text-[#FBF5E9] text-[0.88rem] tracking-wide hover:bg-[#A3401F] transition-colors">
+                  className="px-5 py-2.5 rounded-sm bg-[var(--accent)] text-[var(--bg)] text-[0.88rem] tracking-wide hover:bg-[var(--accent-deep)] transition-colors">
                   Explore my research
                 </button>
                 <button onClick={() => goTo('consulting')}
-                  className="px-5 py-2.5 rounded-sm border border-[#C1502E] text-[#C1502E] text-[0.88rem] tracking-wide hover:bg-[#C1502E] hover:text-[#FBF5E9] transition-colors">
+                  className="px-5 py-2.5 rounded-sm border border-[var(--accent)] text-[var(--accent)] text-[0.88rem] tracking-wide hover:bg-[var(--accent)] hover:text-[var(--bg)] transition-colors">
                   Consulting &amp; advisory
                 </button>
                 <button onClick={() => goTo('portal')}
-                  className="px-5 py-2.5 rounded-sm border border-[#1F2247]/30 text-[#1F2247] text-[0.88rem] tracking-wide hover:border-[#1F2247] transition-colors">
+                  className="px-5 py-2.5 rounded-sm border border-[var(--ink-30)] text-[var(--heading)] text-[0.88rem] tracking-wide hover:border-[var(--heading)] transition-colors">
                   Student Portal
                 </button>
               </div>
@@ -441,8 +463,8 @@ export default function ProfessorPortfolio() {
 
             {/* portrait */}
             <div className="relative mx-auto md:mx-0 w-60 sm:w-72 animate-[rise_0.9s_ease-out]">
-              <div className="absolute inset-0 translate-x-3 translate-y-3 rounded-md border border-[#C1502E]/45" />
-              <div className="relative rounded-md overflow-hidden border border-[#C1502E] bg-[#1F2247]">
+              <div className="absolute inset-0 translate-x-3 translate-y-3 rounded-md border border-[var(--accent-45)]" />
+              <div className="relative rounded-md overflow-hidden border border-[var(--accent)] bg-[var(--portrait-bg)]">
                 <img src="/photo.png" alt="Prof. Reetesh Kumar Singh" className="w-full aspect-square object-cover" />
               </div>
             </div>
@@ -451,69 +473,69 @@ export default function ProfessorPortfolio() {
 
         {/* ---------------- FIGURES ---------------- */}
         <div className="max-w-6xl mx-auto px-5 sm:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 border border-[#C1502E]/20 rounded-md overflow-hidden bg-[#FFFBF2]">
+          <div className="grid grid-cols-2 md:grid-cols-4 border border-[var(--line)] rounded-md overflow-hidden bg-[var(--surface)]">
             {FIGURES.map((f, i) => (
               <div key={f.t}
-                className={`p-6 text-center border-[#C1502E]/15 ${i < 3 ? 'md:border-r' : ''} ${i % 2 === 0 ? 'border-r' : ''} ${i < 2 ? 'border-b md:border-b-0' : ''}`}>
-                <div className={`${serif} text-[#C1502E] text-3xl`}><span className="text-[#1F2247]/30">{f.n}</span></div>
-                <div className="mt-2 text-[0.72rem] tracking-[0.12em] uppercase text-[#6E6A82]">{f.t}</div>
+                className={`p-6 text-center border-[var(--line2)] ${i < 3 ? 'md:border-r' : ''} ${i % 2 === 0 ? 'border-r' : ''} ${i < 2 ? 'border-b md:border-b-0' : ''}`}>
+                <div className={`${serif} text-[var(--accent)] text-3xl`}><span className="text-[var(--ink-30)]">{f.n}</span></div>
+                <div className="mt-2 text-[0.72rem] tracking-[0.12em] uppercase text-[var(--muted)]">{f.t}</div>
               </div>
             ))}
           </div>
-          <p className="text-center text-[0.78rem] text-[#C1502E] italic mt-2">[ figures are placeholders — edit in the FIGURES array ]</p>
+          <p className="text-center text-[0.78rem] text-[var(--accent)] italic mt-2">[ figures are placeholders — edit in the FIGURES array ]</p>
         </div>
 
         {/* ---------------- ABOUT ---------------- */}
-        <section id="about" className={`max-w-6xl mx-auto px-5 sm:px-8 ${sectionPad} border-b border-[#1F2247]/10`}>
+        <section id="about" className={`max-w-6xl mx-auto px-5 sm:px-8 ${sectionPad} border-b border-[var(--line-ink)]`}>
           <div className="flex items-baseline gap-4 flex-wrap mb-8">
             <span className={eyebrow}>About</span>
-            <h2 className={`${serif} text-[#1F2247] text-[clamp(1.8rem,4.4vw,2.6rem)]`}>A scholar of organizations.</h2>
+            <h2 className={`${serif} text-[var(--heading)] text-[clamp(1.8rem,4.4vw,2.6rem)]`}>A scholar of organizations.</h2>
           </div>
           <div className="grid md:grid-cols-2 gap-10">
-            <p className="text-[1.05rem] leading-relaxed text-[#46425C]">
-              <span className={`${serif} float-left text-[3.4rem] leading-[0.7] pr-2 pt-1 text-[#C1502E]`}>I</span>
+            <p className="text-[1.05rem] leading-relaxed text-[var(--body)]">
+              <span className={`${serif} float-left text-[3.4rem] leading-[0.7] pr-2 pt-1 text-[var(--accent)]`}>I</span>
               am a Professor in the Department of Commerce at the Faculty of Commerce and Business, Delhi School of
               Economics, University of Delhi. My work sits at the meeting point of human resource management,
               organisational behaviour, and research methodology — taught across postgraduate and doctoral programmes.
             </p>
-            <p className="text-[1.05rem] leading-relaxed text-[#46425C]">
+            <p className="text-[1.05rem] leading-relaxed text-[var(--body)]">
               Beyond the classroom I examine doctoral theses, evaluate academic and policy research, and contribute to
               scholarly publishing. A steady thread runs through all of it: the belief that well-designed tools should
               free teachers to teach, and give students clearer, fairer, more engaging learning — without surrendering
               the human judgment at the heart of education.
             </p>
           </div>
-          <div className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-[0.95rem] text-[#5A566E]">
-            <span><span className="text-[#C1502E]">&#9670;</span> Human Resource Management</span>
-            <span><span className="text-[#C1502E]">&#9670;</span> Organisational Behaviour</span>
-            <span><span className="text-[#C1502E]">&#9670;</span> Research Methodology</span>
-            <span><span className="text-[#C1502E]">&#9670;</span> AI in Education</span>
+          <div className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-[0.95rem] text-[var(--muted2)]">
+            <span><span className="text-[var(--accent)]">&#9670;</span> Human Resource Management</span>
+            <span><span className="text-[var(--accent)]">&#9670;</span> Organisational Behaviour</span>
+            <span><span className="text-[var(--accent)]">&#9670;</span> Research Methodology</span>
+            <span><span className="text-[var(--accent)]">&#9670;</span> AI in Education</span>
           </div>
         </section>
 
         {/* ---------------- RESEARCH ---------------- */}
-        <section id="research" className={`max-w-6xl mx-auto px-5 sm:px-8 ${sectionPad} border-b border-[#1F2247]/10`}>
+        <section id="research" className={`max-w-6xl mx-auto px-5 sm:px-8 ${sectionPad} border-b border-[var(--line-ink)]`}>
           <span className={eyebrow}>Publications &amp; Research</span>
-          <h2 className={`${serif} text-[#1F2247] text-[clamp(1.8rem,4.4vw,2.6rem)] mt-3 mb-3`}>Publications &amp; Research</h2>
-          <p className="max-w-[64ch] text-[#5A566E]">Peer-reviewed articles, books and chapters, and a substantial body of evaluative and editorial work. A complete list appears in my CV.</p>
+          <h2 className={`${serif} text-[var(--heading)] text-[clamp(1.8rem,4.4vw,2.6rem)] mt-3 mb-3`}>Publications &amp; Research</h2>
+          <p className="max-w-[64ch] text-[var(--muted2)]">Peer-reviewed articles, books and chapters, and a substantial body of evaluative and editorial work. A complete list appears in my CV.</p>
 
           <div className="mt-8 grid md:grid-cols-3 gap-6">
             <div>
-              <div className="text-[0.72rem] tracking-[0.18em] uppercase text-[#C1502E] mb-3">Journal Articles</div>
-              <ul className="space-y-3 text-[0.95rem] text-[#46425C]">
-                <li className="text-[#C1502E] italic">[ Author(s). (Year). &ldquo;Title.&rdquo; Journal, Vol(Issue), pages. ]</li>
-                <li className="text-[#C1502E] italic">[ Author(s). (Year). &ldquo;Title.&rdquo; Journal, Vol(Issue), pages. ]</li>
+              <div className="text-[0.72rem] tracking-[0.18em] uppercase text-[var(--accent)] mb-3">Journal Articles</div>
+              <ul className="space-y-3 text-[0.95rem] text-[var(--body)]">
+                <li className="text-[var(--accent)] italic">[ Author(s). (Year). &ldquo;Title.&rdquo; Journal, Vol(Issue), pages. ]</li>
+                <li className="text-[var(--accent)] italic">[ Author(s). (Year). &ldquo;Title.&rdquo; Journal, Vol(Issue), pages. ]</li>
               </ul>
             </div>
             <div>
-              <div className="text-[0.72rem] tracking-[0.18em] uppercase text-[#C1502E] mb-3">Books &amp; Chapters</div>
-              <ul className="space-y-3 text-[0.95rem] text-[#46425C]">
-                <li className="text-[#C1502E] italic">[ Author(s). (Year). Title. Publisher. ]</li>
+              <div className="text-[0.72rem] tracking-[0.18em] uppercase text-[var(--accent)] mb-3">Books &amp; Chapters</div>
+              <ul className="space-y-3 text-[0.95rem] text-[var(--body)]">
+                <li className="text-[var(--accent)] italic">[ Author(s). (Year). Title. Publisher. ]</li>
               </ul>
             </div>
             <div>
-              <div className="text-[0.72rem] tracking-[0.18em] uppercase text-[#C1502E] mb-3">Editorial &amp; Evaluative</div>
-              <ul className="space-y-3 text-[0.95rem] text-[#46425C]">
+              <div className="text-[0.72rem] tracking-[0.18em] uppercase text-[var(--accent)] mb-3">Editorial &amp; Evaluative</div>
+              <ul className="space-y-3 text-[0.95rem] text-[var(--body)]">
                 <li>Manuscript review for scholarly journals.</li>
                 <li>Examiner of doctoral theses across Indian universities.</li>
                 <li>Evaluator of academic &amp; policy research.</li>
@@ -523,19 +545,19 @@ export default function ProfessorPortfolio() {
         </section>
 
         {/* ---------------- INNOVATIONS ---------------- */}
-        <section id="innovations" className={`max-w-6xl mx-auto px-5 sm:px-8 ${sectionPad} border-b border-[#1F2247]/10`}>
+        <section id="innovations" className={`max-w-6xl mx-auto px-5 sm:px-8 ${sectionPad} border-b border-[var(--line-ink)]`}>
           <span className={eyebrow}>Selected Work</span>
-          <h2 className={`${serif} text-[#1F2247] text-[clamp(1.8rem,4.4vw,2.6rem)] mt-3 mb-3`}>Innovations in teaching.</h2>
-          <p className="max-w-[64ch] text-[#5A566E]">Tools I have designed for teaching and assessment. Access to the working tools is reserved for my students through the Student Portal.</p>
+          <h2 className={`${serif} text-[var(--heading)] text-[clamp(1.8rem,4.4vw,2.6rem)] mt-3 mb-3`}>Innovations in teaching.</h2>
+          <p className="max-w-[64ch] text-[var(--muted2)]">Tools I have designed for teaching and assessment. Access to the working tools is reserved for my students through the Student Portal.</p>
           <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {INNOVATIONS.map((c) => {
               const Icon = c.icon;
               return (
-                <div key={c.title} className="group bg-[#FFFBF2] border border-[#C1502E]/20 rounded-md p-6 transition-all hover:-translate-y-1 hover:shadow-[0_18px_36px_-22px_rgba(193,80,46,0.5)]">
-                  <Icon className="text-[#C1502E] mb-4" size={26} strokeWidth={1.5} />
-                  <div className="text-[0.66rem] tracking-[0.14em] uppercase text-[#C1502E] mb-1">{c.tag}</div>
-                  <h3 className={`${serif} text-[#1F2247] text-[1.2rem] mb-2`}>{c.title}</h3>
-                  <p className="text-[0.93rem] text-[#5A566E] leading-relaxed">{c.body}</p>
+                <div key={c.title} className="group bg-[var(--surface)] border border-[var(--line)] rounded-md p-6 transition-all hover:-translate-y-1 hover:shadow-[0_18px_36px_-22px_rgba(193,80,46,0.5)]">
+                  <Icon className="text-[var(--accent)] mb-4" size={26} strokeWidth={1.5} />
+                  <div className="text-[0.66rem] tracking-[0.14em] uppercase text-[var(--accent)] mb-1">{c.tag}</div>
+                  <h3 className={`${serif} text-[var(--heading)] text-[1.2rem] mb-2`}>{c.title}</h3>
+                  <p className="text-[0.93rem] text-[var(--muted2)] leading-relaxed">{c.body}</p>
                 </div>
               );
             })}
@@ -543,59 +565,59 @@ export default function ProfessorPortfolio() {
         </section>
 
         {/* ---------------- CONSULTING ---------------- */}
-        <section id="consulting" className={`max-w-6xl mx-auto px-5 sm:px-8 ${sectionPad} border-b border-[#1F2247]/10`}>
+        <section id="consulting" className={`max-w-6xl mx-auto px-5 sm:px-8 ${sectionPad} border-b border-[var(--line-ink)]`}>
           <span className={eyebrow}>Consulting &amp; Advisory</span>
-          <h2 className={`${serif} text-[#1F2247] text-[clamp(1.8rem,4.4vw,2.6rem)] mt-3 mb-3`}>Bring this work to your institution.</h2>
-          <p className="max-w-[64ch] text-[#5A566E]">I work with educational institutions, corporates, and teams — bridging established management scholarship with hands-on implementation and the responsible use of AI.</p>
+          <h2 className={`${serif} text-[var(--heading)] text-[clamp(1.8rem,4.4vw,2.6rem)] mt-3 mb-3`}>Bring this work to your institution.</h2>
+          <p className="max-w-[64ch] text-[var(--muted2)]">I work with educational institutions, corporates, and teams — bridging established management scholarship with hands-on implementation and the responsible use of AI.</p>
           <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {CONSULTING.map((c) => (
-              <div key={c.title} className="bg-[#FFFBF2] border border-[#C1502E]/20 rounded-md p-6 border-l-2 border-l-[#C1502E] transition-all hover:-translate-y-1 hover:shadow-[0_18px_36px_-22px_rgba(193,80,46,0.5)]">
-                <h3 className={`${serif} text-[#1F2247] text-[1.15rem] mb-2`}>{c.title}</h3>
-                <p className="text-[0.93rem] text-[#5A566E] leading-relaxed">{c.body}</p>
+              <div key={c.title} className="bg-[var(--surface)] border border-[var(--line)] rounded-md p-6 border-l-2 border-l-[var(--accent)] transition-all hover:-translate-y-1 hover:shadow-[0_18px_36px_-22px_rgba(193,80,46,0.5)]">
+                <h3 className={`${serif} text-[var(--heading)] text-[1.15rem] mb-2`}>{c.title}</h3>
+                <p className="text-[0.93rem] text-[var(--muted2)] leading-relaxed">{c.body}</p>
               </div>
             ))}
           </div>
           <div className="mt-8">
             <button onClick={() => goTo('contact')}
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-sm bg-[#1F2247] text-[#FBF5E9] text-[0.88rem] hover:bg-[#2A2E5C] transition-colors">
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-sm bg-[var(--heading)] text-[var(--bg)] text-[0.88rem] hover:bg-[var(--heading-hover)] transition-colors">
               Discuss an engagement <ArrowUpRight size={16} />
             </button>
           </div>
         </section>
 
         {/* ---------------- TEACHING ---------------- */}
-        <section id="teaching" className={`max-w-6xl mx-auto px-5 sm:px-8 ${sectionPad} border-b border-[#1F2247]/10`}>
+        <section id="teaching" className={`max-w-6xl mx-auto px-5 sm:px-8 ${sectionPad} border-b border-[var(--line-ink)]`}>
           <span className={eyebrow}>Teaching</span>
-          <h2 className={`${serif} text-[#1F2247] text-[clamp(1.8rem,4.4vw,2.6rem)] mt-3 mb-3`}>Courses</h2>
-          <p className="max-w-[64ch] text-[#5A566E]">Across postgraduate and doctoral programmes in the Department of Commerce. Course materials for enrolled students live in the Student Portal.</p>
+          <h2 className={`${serif} text-[var(--heading)] text-[clamp(1.8rem,4.4vw,2.6rem)] mt-3 mb-3`}>Courses</h2>
+          <p className="max-w-[64ch] text-[var(--muted2)]">Across postgraduate and doctoral programmes in the Department of Commerce. Course materials for enrolled students live in the Student Portal.</p>
           <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {COURSES.map((c) => (
-              <div key={c.code} className="bg-[#FFFBF2] border border-[#C1502E]/20 rounded-md p-6">
-                <div className="text-[0.66rem] tracking-[0.14em] uppercase text-[#C1502E] mb-1">{c.code}</div>
-                <h3 className={`${serif} text-[#1F2247] text-[1.15rem] mb-2`}>{c.title}</h3>
-                <p className="text-[0.93rem] text-[#5A566E] leading-relaxed">{c.body}</p>
+              <div key={c.code} className="bg-[var(--surface)] border border-[var(--line)] rounded-md p-6">
+                <div className="text-[0.66rem] tracking-[0.14em] uppercase text-[var(--accent)] mb-1">{c.code}</div>
+                <h3 className={`${serif} text-[var(--heading)] text-[1.15rem] mb-2`}>{c.title}</h3>
+                <p className="text-[0.93rem] text-[var(--muted2)] leading-relaxed">{c.body}</p>
               </div>
             ))}
           </div>
         </section>
 
         {/* ---------------- STUDENT PORTAL ---------------- */}
-        <section id="portal" className={`max-w-6xl mx-auto px-5 sm:px-8 ${sectionPad} border-b border-[#1F2247]/10`}>
+        <section id="portal" className={`max-w-6xl mx-auto px-5 sm:px-8 ${sectionPad} border-b border-[var(--line-ink)]`}>
           <span className={eyebrow}>Student Portal</span>
-          <h2 className={`${serif} text-[#1F2247] text-[clamp(1.8rem,4.4vw,2.6rem)] mt-3 mb-4`}>For my students.</h2>
-          <div className="max-w-[62ch] bg-[#F1E8D6] border-l-4 border-[#C1502E] rounded-r-md px-5 py-4 text-[0.95rem] text-[#46425C]">
-            <strong className="text-[#1F2247]">Sign in with your University of Delhi account.</strong> Access is restricted to the current class roster — please use your institutional email, not a personal one. Each tool opens in a new tab.
+          <h2 className={`${serif} text-[var(--heading)] text-[clamp(1.8rem,4.4vw,2.6rem)] mt-3 mb-4`}>For my students.</h2>
+          <div className="max-w-[62ch] bg-[var(--panel)] border-l-4 border-[var(--accent)] rounded-r-md px-5 py-4 text-[0.95rem] text-[var(--body)]">
+            <strong className="text-[var(--heading)]">Sign in with your University of Delhi account.</strong> Access is restricted to the current class roster — please use your institutional email, not a personal one. Each tool opens in a new tab.
           </div>
           <div className="mt-7 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {PORTAL_TOOLS.map((t) => (
               <a key={t.title} href={t.url} target="_blank" rel="noopener noreferrer"
-                className="group flex flex-col bg-[#FFFBF2] border border-[#C1502E]/20 rounded-md p-5 transition-all hover:border-[#C1502E] hover:shadow-[0_14px_30px_-20px_rgba(193,80,46,0.55)]">
-                <span className="inline-flex items-center gap-1.5 text-[0.64rem] tracking-[0.1em] uppercase text-[#C1502E] mb-3">
+                className="group flex flex-col bg-[var(--surface)] border border-[var(--line)] rounded-md p-5 transition-all hover:border-[var(--accent)] hover:shadow-[0_14px_30px_-20px_rgba(193,80,46,0.55)]">
+                <span className="inline-flex items-center gap-1.5 text-[0.64rem] tracking-[0.1em] uppercase text-[var(--accent)] mb-3">
                   <Lock size={12} /> Sign-in required
                 </span>
-                <h3 className={`${serif} text-[#1F2247] text-[1.1rem]`}>{t.title}</h3>
-                <p className="text-[0.88rem] text-[#5A566E] mt-1 mb-4">{t.body}</p>
-                <span className="mt-auto inline-flex items-center gap-1 text-[0.82rem] text-[#C1502E] font-medium">
+                <h3 className={`${serif} text-[var(--heading)] text-[1.1rem]`}>{t.title}</h3>
+                <p className="text-[0.88rem] text-[var(--muted2)] mt-1 mb-4">{t.body}</p>
+                <span className="mt-auto inline-flex items-center gap-1 text-[0.82rem] text-[var(--accent)] font-medium">
                   Open <ArrowUpRight size={14} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </span>
               </a>
@@ -604,36 +626,36 @@ export default function ProfessorPortfolio() {
         </section>
 
         {/* ---------------- YOUTUBE ---------------- */}
-        <section id="videos" className={`max-w-6xl mx-auto px-5 sm:px-8 ${sectionPad} border-b border-[#1F2247]/10`}>
+        <section id="videos" className={`max-w-6xl mx-auto px-5 sm:px-8 ${sectionPad} border-b border-[var(--line-ink)]`}>
           <div className="flex items-end justify-between gap-4 mb-7">
             <div>
               <span className={eyebrow}>Lectures</span>
-              <h2 className={`${serif} text-[#1F2247] text-[clamp(1.8rem,4.4vw,2.6rem)] mt-3`}>Latest from YouTube</h2>
-              <p className="text-[0.9rem] text-[#6E6A82] mt-1">{videos.length > 0 ? `${videos.length} videos` : 'Loading videos…'}</p>
+              <h2 className={`${serif} text-[var(--heading)] text-[clamp(1.8rem,4.4vw,2.6rem)] mt-3`}>Latest from YouTube</h2>
+              <p className="text-[0.9rem] text-[var(--muted)] mt-1">{videos.length > 0 ? `${videos.length} videos` : 'Loading videos…'}</p>
             </div>
             <button onClick={fetchVideos} disabled={videosLoading}
-              className={`p-2.5 rounded-md border border-[#C1502E]/25 text-[#C1502E] hover:bg-[#C1502E]/10 transition-colors ${videosLoading ? 'opacity-50 cursor-not-allowed' : ''}`}
+              className={`p-2.5 rounded-md border border-[var(--line3)] text-[var(--accent)] hover:bg-[var(--accent-10)] transition-colors ${videosLoading ? 'opacity-50 cursor-not-allowed' : ''}`}
               title="Refresh videos">
               <RefreshCw className={videosLoading ? 'animate-spin' : ''} size={16} />
             </button>
           </div>
 
           {videosError && (
-            <div className="text-center py-10 bg-[#FFFBF2] border border-[#C1502E]/20 rounded-md">
-              <AlertCircle className="mx-auto text-[#C1502E] mb-3" size={34} />
-              <p className="text-[#5A566E] mb-4 px-4">{videosError}</p>
-              <button onClick={fetchVideos} className="px-4 py-2 rounded-sm bg-[#C1502E] text-[#FBF5E9] text-sm">Try Again</button>
+            <div className="text-center py-10 bg-[var(--surface)] border border-[var(--line)] rounded-md">
+              <AlertCircle className="mx-auto text-[var(--accent)] mb-3" size={34} />
+              <p className="text-[var(--muted2)] mb-4 px-4">{videosError}</p>
+              <button onClick={fetchVideos} className="px-4 py-2 rounded-sm bg-[var(--accent)] text-[var(--bg)] text-sm">Try Again</button>
             </div>
           )}
 
           {videosLoading && !videosError && (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {[0, 1, 2].map((i) => (
-                <div key={i} className="rounded-md overflow-hidden bg-[#FFFBF2] border border-[#C1502E]/15 animate-pulse">
-                  <div className="w-full h-40 bg-[#EADfca]" />
+                <div key={i} className="rounded-md overflow-hidden bg-[var(--surface)] border border-[var(--line2)] animate-pulse">
+                  <div className="w-full h-40 bg-[var(--skeleton)]" />
                   <div className="p-3">
-                    <div className="h-4 rounded bg-[#EADfca] mb-2" />
-                    <div className="h-3 rounded w-2/3 bg-[#EADfca]" />
+                    <div className="h-4 rounded bg-[var(--skeleton)] mb-2" />
+                    <div className="h-3 rounded w-2/3 bg-[var(--skeleton)]" />
                   </div>
                 </div>
               ))}
@@ -645,11 +667,11 @@ export default function ProfessorPortfolio() {
               {videos.length > slidesToShow && (
                 <>
                   <button onClick={prevSlide}
-                    className="absolute left-0 -ml-3 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full bg-[#FFFBF2] border border-[#C1502E]/25 text-[#1F2247] shadow hover:scale-110 transition-transform">
+                    className="absolute left-0 -ml-3 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full bg-[var(--surface)] border border-[var(--line3)] text-[var(--heading)] shadow hover:scale-110 transition-transform">
                     <ChevronLeft size={18} />
                   </button>
                   <button onClick={nextSlide}
-                    className="absolute right-0 -mr-3 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full bg-[#FFFBF2] border border-[#C1502E]/25 text-[#1F2247] shadow hover:scale-110 transition-transform">
+                    className="absolute right-0 -mr-3 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full bg-[var(--surface)] border border-[var(--line3)] text-[var(--heading)] shadow hover:scale-110 transition-transform">
                     <ChevronRight size={18} />
                   </button>
                 </>
@@ -660,19 +682,19 @@ export default function ProfessorPortfolio() {
                   {videos.map((video) => (
                     <div key={video.id} className="flex-shrink-0 px-2" style={{ width: `${100 / slidesToShow}%` }}>
                       <div onClick={() => window.open(video.url, '_blank')}
-                        className="cursor-pointer rounded-md overflow-hidden bg-[#FFFBF2] border border-[#C1502E]/20 transition-all hover:-translate-y-1 hover:shadow-[0_16px_32px_-22px_rgba(193,80,46,0.5)]">
+                        className="cursor-pointer rounded-md overflow-hidden bg-[var(--surface)] border border-[var(--line)] transition-all hover:-translate-y-1 hover:shadow-[0_16px_32px_-22px_rgba(193,80,46,0.5)]">
                         <div className="relative">
                           <img src={video.thumbnail} alt={video.title} className="w-full h-40 object-cover block" />
-                          <div className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 bg-[#1F2247]/30 transition-opacity">
-                            <Play className="text-[#FBF5E9]" size={34} />
+                          <div className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 bg-[var(--ink-30)] transition-opacity">
+                            <Play className="text-[var(--bg)]" size={34} />
                           </div>
                           {video.duration && (
-                            <span className="absolute bottom-2 right-2 bg-[#1F2247]/105 text-[#FBF5E9] text-xs px-2 py-0.5 rounded">{video.duration}</span>
+                            <span className="absolute bottom-2 right-2 bg-[var(--line-ink)]5 text-[var(--bg)] text-xs px-2 py-0.5 rounded">{video.duration}</span>
                           )}
                         </div>
                         <div className="p-3">
-                          <h3 className="font-medium text-sm text-[#1F2247] line-clamp-2 mb-2">{video.title}</h3>
-                          <div className="flex items-center justify-between text-xs text-[#6E6A82]">
+                          <h3 className="font-medium text-sm text-[var(--heading)] line-clamp-2 mb-2">{video.title}</h3>
+                          <div className="flex items-center justify-between text-xs text-[var(--muted)]">
                             <span className="flex items-center gap-1"><Eye size={13} /> {formatViewCount(video.viewCount)} views</span>
                             <span className="flex items-center gap-1"><Calendar size={13} /> {formatDate(video.publishedAt)}</span>
                           </div>
@@ -687,17 +709,17 @@ export default function ProfessorPortfolio() {
         </section>
 
         {/* ---------------- REFERENCE MATERIALS / OER ---------------- */}
-        <section className="max-w-6xl mx-auto px-5 sm:px-8 scroll-mt-24 py-20 border-b border-[#1F2247]/10">
+        <section className="max-w-6xl mx-auto px-5 sm:px-8 scroll-mt-24 py-20 border-b border-[var(--line-ink)]">
           <span className={eyebrow}>Open Educational Resources</span>
-          <h2 className={`${serif} text-[#1F2247] text-[clamp(1.8rem,4.4vw,2.6rem)] mt-3 mb-6`}>Reference Materials &amp; OER</h2>
-          <div className="bg-[#FFFBF2] border border-[#C1502E]/20 rounded-md p-6 flex flex-col sm:flex-row sm:items-center gap-5">
-            <BookOpen className="text-[#C1502E] shrink-0" size={34} strokeWidth={1.5} />
+          <h2 className={`${serif} text-[var(--heading)] text-[clamp(1.8rem,4.4vw,2.6rem)] mt-3 mb-6`}>Reference Materials &amp; OER</h2>
+          <div className="bg-[var(--surface)] border border-[var(--line)] rounded-md p-6 flex flex-col sm:flex-row sm:items-center gap-5">
+            <BookOpen className="text-[var(--accent)] shrink-0" size={34} strokeWidth={1.5} />
             <div className="flex-1">
-              <h3 className={`${serif} text-[#1F2247] text-[1.2rem]`}>Human Resource Management Materials</h3>
-              <p className="text-[0.93rem] text-[#5A566E] mt-1">Open educational resources, readings, and research materials, freely available to learners.</p>
+              <h3 className={`${serif} text-[var(--heading)] text-[1.2rem]`}>Human Resource Management Materials</h3>
+              <p className="text-[0.93rem] text-[var(--muted2)] mt-1">Open educational resources, readings, and research materials, freely available to learners.</p>
             </div>
             <a href="https://smrth.in/pN" target="_blank" rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-sm bg-[#C1502E] text-[#FBF5E9] text-[0.88rem] hover:bg-[#A3401F] transition-colors shrink-0">
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-sm bg-[var(--accent)] text-[var(--bg)] text-[0.88rem] hover:bg-[var(--accent-deep)] transition-colors shrink-0">
               Open Resource <ArrowUpRight size={16} />
             </a>
           </div>
@@ -706,27 +728,27 @@ export default function ProfessorPortfolio() {
         {/* ---------------- CONTACT ---------------- */}
         <section id="contact" className="max-w-6xl mx-auto px-5 sm:px-8 scroll-mt-24 py-20">
           <span className={eyebrow}>Contact</span>
-          <h2 className={`${serif} text-[#1F2247] text-[clamp(1.8rem,4.4vw,2.6rem)] mt-3 mb-3`}>Get in touch.</h2>
-          <p className="max-w-[60ch] text-[#5A566E] mb-8">I welcome correspondence from students, researchers, academic collaborators, and organizations interested in consulting or advisory work.</p>
+          <h2 className={`${serif} text-[var(--heading)] text-[clamp(1.8rem,4.4vw,2.6rem)] mt-3 mb-3`}>Get in touch.</h2>
+          <p className="max-w-[60ch] text-[var(--muted2)] mb-8">I welcome correspondence from students, researchers, academic collaborators, and organizations interested in consulting or advisory work.</p>
 
           <div className="grid md:grid-cols-2 gap-10">
             {/* form */}
             <div>
               {submitStatus === 'success' && (
-                <div className="mb-4 px-4 py-3 rounded-md bg-[#E6EFDF] text-[#3D6B2E] text-sm">Message sent successfully — I&rsquo;ll get back to you soon.</div>
+                <div className="mb-4 px-4 py-3 rounded-md bg-[var(--ok-bg)] text-[var(--ok-fg)] text-sm">Message sent successfully — I&rsquo;ll get back to you soon.</div>
               )}
               {submitStatus === 'error' && (
-                <div className="mb-4 px-4 py-3 rounded-md bg-[#F3DAD2] text-[#A3401F] text-sm">Could not send — please try again, or email me directly.</div>
+                <div className="mb-4 px-4 py-3 rounded-md bg-[var(--err-bg)] text-[var(--accent-deep)] text-sm">Could not send — please try again, or email me directly.</div>
               )}
               <form onSubmit={handleSubmit} className="space-y-4">
                 <input type="text" name="from_name" placeholder="Your Name" value={formData.from_name} onChange={handleInputChange} required
-                  className="w-full rounded-md border border-[#C1502E]/30 bg-[#FFFBF2] px-4 py-3 text-[#1F2247] placeholder-[#9A93A8] focus:outline-none focus:border-[#C1502E]" />
+                  className="w-full rounded-md border border-[var(--line-input)] bg-[var(--surface)] px-4 py-3 text-[var(--heading)] placeholder-[var(--placeholder)] focus:outline-none focus:border-[var(--accent)]" />
                 <input type="email" name="from_email" placeholder="Your Email" value={formData.from_email} onChange={handleInputChange} required
-                  className="w-full rounded-md border border-[#C1502E]/30 bg-[#FFFBF2] px-4 py-3 text-[#1F2247] placeholder-[#9A93A8] focus:outline-none focus:border-[#C1502E]" />
+                  className="w-full rounded-md border border-[var(--line-input)] bg-[var(--surface)] px-4 py-3 text-[var(--heading)] placeholder-[var(--placeholder)] focus:outline-none focus:border-[var(--accent)]" />
                 <textarea name="message" placeholder="Your Message" rows={4} value={formData.message} onChange={handleInputChange} required
-                  className="w-full rounded-md border border-[#C1502E]/30 bg-[#FFFBF2] px-4 py-3 text-[#1F2247] placeholder-[#9A93A8] focus:outline-none focus:border-[#C1502E] resize-none" />
+                  className="w-full rounded-md border border-[var(--line-input)] bg-[var(--surface)] px-4 py-3 text-[var(--heading)] placeholder-[var(--placeholder)] focus:outline-none focus:border-[var(--accent)] resize-none" />
                 <button type="submit" disabled={isSubmitting}
-                  className={`inline-flex items-center gap-2 px-6 py-3 rounded-sm text-[#FBF5E9] text-[0.9rem] font-medium transition-colors ${isSubmitting ? 'bg-[#C9A99B] cursor-not-allowed' : 'bg-[#C1502E] hover:bg-[#A3401F]'}`}>
+                  className={`inline-flex items-center gap-2 px-6 py-3 rounded-sm text-[var(--bg)] text-[0.9rem] font-medium transition-colors ${isSubmitting ? 'bg-[var(--disabled)] cursor-not-allowed' : 'bg-[var(--accent)] hover:bg-[var(--accent-deep)]'}`}>
                   {isSubmitting ? 'Sending…' : <>Send Message <Send size={15} /></>}
                 </button>
               </form>
@@ -735,26 +757,26 @@ export default function ProfessorPortfolio() {
             {/* details */}
             <div className="space-y-5">
               <div className="flex items-start gap-3">
-                <Mail className="text-[#C1502E] mt-1" size={18} />
+                <Mail className="text-[var(--accent)] mt-1" size={18} />
                 <div>
-                  <div className="text-[0.7rem] tracking-[0.14em] uppercase text-[#C1502E]">Email</div>
-                  <a href="mailto:rksingh@commerce.du.ac.in" className="text-[#1F2247] hover:text-[#C1502E] transition-colors">rksingh@commerce.du.ac.in</a>
+                  <div className="text-[0.7rem] tracking-[0.14em] uppercase text-[var(--accent)]">Email</div>
+                  <a href="mailto:rksingh@commerce.du.ac.in" className="text-[var(--heading)] hover:text-[var(--accent)] transition-colors">rksingh@commerce.du.ac.in</a>
                 </div>
               </div>
               <div className="flex items-start gap-3">
-                <MapPin className="text-[#C1502E] mt-1" size={18} />
+                <MapPin className="text-[var(--accent)] mt-1" size={18} />
                 <div>
-                  <div className="text-[0.7rem] tracking-[0.14em] uppercase text-[#C1502E]">Office</div>
-                  <p className="text-[#46425C]">Department of Commerce, Delhi School of Economics, University of Delhi, Delhi – 110007</p>
+                  <div className="text-[0.7rem] tracking-[0.14em] uppercase text-[var(--accent)]">Office</div>
+                  <p className="text-[var(--body)]">Department of Commerce, Delhi School of Economics, University of Delhi, Delhi – 110007</p>
                 </div>
               </div>
               <div className="flex items-center gap-4 pt-2">
                 <a href="https://www.linkedin.com/in/dr-r-k-singh-b4b4641b" target="_blank" rel="noopener noreferrer"
-                   className="text-[#1F2247] hover:text-[#C1502E] transition-colors" aria-label="LinkedIn"><Linkedin size={22} /></a>
+                   className="text-[var(--heading)] hover:text-[var(--accent)] transition-colors" aria-label="LinkedIn"><Linkedin size={22} /></a>
                 <a href="https://www.youtube.com/@rksinghdu" target="_blank" rel="noopener noreferrer"
-                   className="text-[#1F2247] hover:text-[#C1502E] transition-colors" aria-label="YouTube"><Youtube size={24} /></a>
+                   className="text-[var(--heading)] hover:text-[var(--accent)] transition-colors" aria-label="YouTube"><Youtube size={24} /></a>
                 <a href="https://smrth.in/pN" target="_blank" rel="noopener noreferrer"
-                   className="text-[#1F2247] hover:text-[#C1502E] transition-colors" aria-label="More"><GraduationCap size={24} /></a>
+                   className="text-[var(--heading)] hover:text-[var(--accent)] transition-colors" aria-label="More"><GraduationCap size={24} /></a>
               </div>
             </div>
           </div>
@@ -762,15 +784,88 @@ export default function ProfessorPortfolio() {
       </main>
 
       {/* ---------------- FOOTER ---------------- */}
-      <footer className="bg-[#1F2247] text-[#D9D5E4]">
+      <footer className="bg-[var(--footer-bg)] text-[var(--footer-text)]">
         <div className="max-w-6xl mx-auto px-5 sm:px-8 py-8 flex flex-wrap gap-3 justify-between items-center text-[0.82rem]">
-          <span><span className={`${serif} text-[#E9C46A]`}>Reetesh Kumar Singh</span> &middot; Department of Commerce, University of Delhi</span>
+          <span><span className={`${serif} text-[var(--footer-name)]`}>Reetesh Kumar Singh</span> &middot; Department of Commerce, University of Delhi</span>
           <span>&copy; {new Date().getFullYear()}</span>
         </div>
       </footer>
 
-      {/* keyframes */}
-      <style>{`@keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}`}</style>
+      {/* palettes + keyframes */}
+      <style>{`
+        @keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+        .theme-light, .theme-dark{
+          transition: background-color .35s ease, color .35s ease;
+        }
+        .theme-light *{ transition: background-color .35s ease, border-color .35s ease, color .35s ease; }
+        .theme-dark *{ transition: background-color .35s ease, border-color .35s ease, color .35s ease; }
+
+        /* ---------- WARM HERITAGE · LIGHT ---------- */
+        .theme-light{
+          --bg:#FBF5E9;
+          --surface:#FFFBF2;
+          --panel:#F1E8D6;
+          --heading:#1F2247;
+          --heading-hover:#2A2E5C;
+          --ink:#2A2740;
+          --body:#46425C;
+          --muted2:#5A566E;
+          --muted:#6E6A82;
+          --placeholder:#9A93A8;
+          --accent:#C1502E;
+          --accent-deep:#A3401F;
+          --gold:#B8862F;
+          --skeleton:#EADfca;
+          --disabled:#C9A99B;
+          --ok-bg:#E6EFDF;  --ok-fg:#3D6B2E;
+          --err-bg:#F3DAD2; --err-fg:#A3401F;
+          --footer-bg:#1F2247; --footer-text:#D9D5E4; --footer-name:#E9C46A;
+          --nav-bg:rgba(251,245,233,0.85);
+          --line:rgba(193,80,46,0.20);
+          --line2:rgba(193,80,46,0.15);
+          --line3:rgba(193,80,46,0.25);
+          --line-input:rgba(193,80,46,0.30);
+          --accent-45:rgba(193,80,46,0.45);
+          --accent-10:rgba(193,80,46,0.10);
+          --line-ink:rgba(31,34,71,0.10);
+          --ink-30:rgba(31,34,71,0.30);
+          --overlay:rgba(31,34,71,0.30);
+          --portrait-bg:#1F2247;
+        }
+
+        /* ---------- WARM HERITAGE · DARK (espresso & terracotta) ---------- */
+        .theme-dark{
+          --bg:#1A130D;
+          --surface:#241A12;
+          --panel:#2C2016;
+          --heading:#F3E6CE;
+          --heading-hover:#FFF3DC;
+          --ink:#E4D6C1;
+          --body:#CBBCA4;
+          --muted2:#B3A488;
+          --muted:#9A8C74;
+          --placeholder:#8A7C66;
+          --accent:#E07647;
+          --accent-deep:#C1502E;
+          --gold:#E9C46A;
+          --skeleton:#2E2118;
+          --disabled:#5E4636;
+          --ok-bg:#22301E;  --ok-fg:#A9C99A;
+          --err-bg:#3A211A; --err-fg:#E8A48C;
+          --footer-bg:#120C08; --footer-text:#C9B89E; --footer-name:#E9C46A;
+          --nav-bg:rgba(26,19,13,0.85);
+          --line:rgba(224,118,71,0.26);
+          --line2:rgba(224,118,71,0.18);
+          --line3:rgba(224,118,71,0.32);
+          --line-input:rgba(224,118,71,0.34);
+          --accent-45:rgba(224,118,71,0.45);
+          --accent-10:rgba(224,118,71,0.12);
+          --line-ink:rgba(243,230,206,0.12);
+          --ink-30:rgba(243,230,206,0.28);
+          --overlay:rgba(10,7,4,0.55);
+          --portrait-bg:#0E0A06;
+        }
+      `}</style>
     </div>
   );
 }
