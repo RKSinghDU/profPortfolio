@@ -211,6 +211,26 @@ const CHANNEL_HANDLE = '@rksinghdu';
 const MAX_VIDEOS = 5;
 
 /* ------------------------------------------------------------------ */
+/*  LinkedIn featured posts                                            */
+/*                                                                     */
+/*  To add a post:                                                     */
+/*   1.  Open the post on LinkedIn.                                    */
+/*   2.  Click the "..." menu on the post → "Embed this post".         */
+/*   3.  In the dialog, copy the URL inside src="..." of the iframe.   */
+/*       It looks like:                                                */
+/*       https://www.linkedin.com/embed/feed/update/urn:li:share:7...  */
+/*   4.  Paste it as a new entry below. `caption` is optional.         */
+/* ------------------------------------------------------------------ */
+const LINKEDIN_POSTS: { url: string; caption?: string }[] = [
+  // Example (replace with your real embed URLs):
+  // { url: 'https://www.linkedin.com/embed/feed/update/urn:li:share:7012345678901234567',
+  {  url: 'https://www.linkedin.com/embed/feed/update/urn:li:share:7463366561613918208?collapsed=1',
+     url: 'https://www.linkedin.com/embed/feed/update/urn:li:share:7460547859545845765?collapsed=1',
+     url: 'https://www.linkedin.com/embed/feed/update/urn:li:share:7423261493195988992?collapsed=1'
+  }
+];
+
+/* ------------------------------------------------------------------ */
 /*  Component                                                          */
 /* ------------------------------------------------------------------ */
 export default function ProfessorPortfolio() {
@@ -240,6 +260,9 @@ export default function ProfessorPortfolio() {
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
   const [slidesToShow, setSlidesToShow] = useState(3);
   const youtubeAPI = useRef(new YouTubeAPI());
+
+  // LinkedIn carousel
+  const [currentPostIndex, setCurrentPostIndex] = useState(0);
 
   /* ---- navigation ---- */
   const goTo = (id: string) => {
@@ -336,6 +359,19 @@ export default function ProfessorPortfolio() {
   const prevSlide = () => {
     setCurrentVideoIndex((prev) => {
       const maxIndex = Math.max(0, videos.length - slidesToShow);
+      return prev <= 0 ? maxIndex : prev - 1;
+    });
+  };
+
+  const nextPost = () => {
+    setCurrentPostIndex((prev) => {
+      const maxIndex = Math.max(0, LINKEDIN_POSTS.length - slidesToShow);
+      return prev >= maxIndex ? 0 : prev + 1;
+    });
+  };
+  const prevPost = () => {
+    setCurrentPostIndex((prev) => {
+      const maxIndex = Math.max(0, LINKEDIN_POSTS.length - slidesToShow);
       return prev <= 0 ? maxIndex : prev - 1;
     });
   };
@@ -706,6 +742,88 @@ export default function ProfessorPortfolio() {
               </div>
             </div>
           )}
+        </section>
+
+        {/* ---------------- LINKEDIN POSTS ---------------- */}
+        <section id="linkedin" className={`max-w-6xl mx-auto px-5 sm:px-8 ${sectionPad} border-b border-[var(--line-ink)]`}>
+          <div className="flex items-end justify-between gap-4 mb-7 flex-wrap">
+            <div>
+              <span className={eyebrow}>From LinkedIn</span>
+              <h2 className={`${serif} text-[var(--heading)] text-[clamp(1.8rem,4.4vw,2.6rem)] mt-3`}>Recent posts</h2>
+              <p className="text-[0.9rem] text-[var(--muted)] mt-1">
+                {LINKEDIN_POSTS.length > 0 ? `${LINKEDIN_POSTS.length} featured ${LINKEDIN_POSTS.length === 1 ? 'post' : 'posts'}` : 'Featured updates from LinkedIn'}
+              </p>
+            </div>
+            <a href="https://www.linkedin.com/in/dr-r-k-singh-b4b4641b" target="_blank" rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-sm border border-[var(--line3)] text-[var(--accent)] text-[0.86rem] hover:bg-[var(--accent-10)] transition-colors">
+              <Linkedin size={16} /> View profile
+            </a>
+          </div>
+
+          {LINKEDIN_POSTS.length === 0 ? (
+            <div className="bg-[var(--surface)] border border-[var(--line)] rounded-md p-7 flex flex-col sm:flex-row items-center gap-5 text-center sm:text-left">
+              <Linkedin className="text-[var(--accent)] shrink-0" size={38} strokeWidth={1.5} />
+              <div className="flex-1">
+                <h3 className={`${serif} text-[var(--heading)] text-[1.2rem]`}>Featured posts coming soon.</h3>
+                <p className="text-[0.93rem] text-[var(--muted2)] mt-1">In the meantime, follow along on LinkedIn for updates on research, teaching, and AI in education.</p>
+              </div>
+              <a href="https://www.linkedin.com/in/dr-r-k-singh-b4b4641b" target="_blank" rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-sm bg-[var(--accent)] text-[var(--bg)] text-[0.88rem] hover:bg-[var(--accent-deep)] transition-colors shrink-0">
+                Follow on LinkedIn <ArrowUpRight size={16} />
+              </a>
+            </div>
+          ) : (
+            <div className="relative">
+              {LINKEDIN_POSTS.length > slidesToShow && (
+                <>
+                  <button onClick={prevPost}
+                    className="absolute left-0 -ml-3 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full bg-[var(--surface)] border border-[var(--line3)] text-[var(--heading)] shadow hover:scale-110 transition-transform">
+                    <ChevronLeft size={18} />
+                  </button>
+                  <button onClick={nextPost}
+                    className="absolute right-0 -mr-3 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full bg-[var(--surface)] border border-[var(--line3)] text-[var(--heading)] shadow hover:scale-110 transition-transform">
+                    <ChevronRight size={18} />
+                  </button>
+                </>
+              )}
+              <div className="overflow-hidden">
+                <div className="flex transition-transform duration-300 ease-in-out"
+                  style={{ transform: `translateX(-${currentPostIndex * (100 / slidesToShow)}%)` }}>
+                  {LINKEDIN_POSTS.map((post, i) => (
+                    <div key={i} className="flex-shrink-0 px-2" style={{ width: `${100 / slidesToShow}%` }}>
+                      <div className="rounded-md overflow-hidden bg-[var(--surface)] border border-[var(--line)] p-2 transition-all hover:shadow-[0_16px_32px_-22px_rgba(193,80,46,0.5)]">
+                        {post.caption && (
+                          <p className="text-[0.85rem] text-[var(--muted2)] italic px-2 pt-1.5 pb-2">{post.caption}</p>
+                        )}
+                        <iframe
+                          src={post.url}
+                          width="100%"
+                          height="540"
+                          style={{ border: 0, display: 'block', borderRadius: 4 }}
+                          loading="lazy"
+                          allow="autoplay; clipboard-write; encrypted-media; picture-in-picture"
+                          title={`LinkedIn post ${i + 1}`}
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              {LINKEDIN_POSTS.length > slidesToShow && (
+                <div className="flex justify-center mt-4 gap-2">
+                  {Array.from({ length: Math.max(1, LINKEDIN_POSTS.length - slidesToShow + 1) }).map((_, idx) => (
+                    <button key={idx} onClick={() => setCurrentPostIndex(idx)}
+                      className={`h-2 rounded-full transition-all ${currentPostIndex === idx ? 'w-5 bg-[var(--accent)]' : 'w-2 bg-[var(--line3)] hover:bg-[var(--accent)]/60'}`}
+                      aria-label={`Go to slide ${idx + 1}`} />
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
+
+          <p className="text-[0.78rem] text-[var(--accent)] italic text-center mt-4">
+            [ Add posts in the <code>LINKEDIN_POSTS</code> array — see the comment there for how to fetch the embed URL. ]
+          </p>
         </section>
 
         {/* ---------------- REFERENCE MATERIALS / OER ---------------- */}
