@@ -822,27 +822,6 @@ export default function ProfessorPortfolio() {
               )}
             </div>
           )}
-
-          <p className="text-[0.78rem] text-[var(--accent)] italic text-center mt-4">
-            [ Add posts in the <code>LINKEDIN_POSTS</code> array — see the comment there for how to fetch the embed URL. ]
-          </p>
-        </section>
-
-        {/* ---------------- REFERENCE MATERIALS / OER ---------------- */}
-        <section className="max-w-6xl mx-auto px-5 sm:px-8 scroll-mt-24 py-20 border-b border-[var(--line-ink)]">
-          <span className={eyebrow}>Open Educational Resources</span>
-          <h2 className={`${serif} text-[var(--heading)] text-[clamp(1.8rem,4.4vw,2.6rem)] mt-3 mb-6`}>Reference Materials &amp; OER</h2>
-          <div className="bg-[var(--surface)] border border-[var(--line)] rounded-md p-6 flex flex-col sm:flex-row sm:items-center gap-5">
-            <BookOpen className="text-[var(--accent)] shrink-0" size={34} strokeWidth={1.5} />
-            <div className="flex-1">
-              <h3 className={`${serif} text-[var(--heading)] text-[1.2rem]`}>Human Resource Management Materials</h3>
-              <p className="text-[0.93rem] text-[var(--muted2)] mt-1">Open educational resources, readings, and research materials, freely available to learners.</p>
-            </div>
-            <a href="https://smrth.in/pN" target="_blank" rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-sm bg-[var(--accent)] text-[var(--bg)] text-[0.88rem] hover:bg-[var(--accent-deep)] transition-colors shrink-0">
-              Open Resource <ArrowUpRight size={16} />
-            </a>
-          </div>
         </section>
 
         {/* ---------------- CONTACT ---------------- */}
