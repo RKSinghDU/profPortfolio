@@ -222,14 +222,9 @@ const MAX_VIDEOS = 5;
 /*   4.  Paste it as a new entry below. `caption` is optional.         */
 /* ------------------------------------------------------------------ */
 const LINKEDIN_POSTS: { url: string; caption?: string }[] = [
-  // Example (replace with your real embed URLs):
-  // { url: 'https://www.linkedin.com/embed/feed/update/urn:li:share:7012345678901234567',
-  {  url: 'https://www.linkedin.com/embed/feed/update/urn:li:share:7463366561613918208?collapsed=1',
-  },
-  {  url: 'https://www.linkedin.com/embed/feed/update/urn:li:share:7460547859545845765?collapsed=1',
-  },
-  {  url: 'https://www.linkedin.com/embed/feed/update/urn:li:share:7423261493195988992?collapsed=1'
-  },
+  { url: 'https://www.linkedin.com/embed/feed/update/urn:li:share:7463366561613918208?collapsed=1' },
+  { url: 'https://www.linkedin.com/embed/feed/update/urn:li:share:7460547859545845765?collapsed=1' },
+  { url: 'https://www.linkedin.com/embed/feed/update/urn:li:share:7423261493195988992?collapsed=1' },
 ];
 
 /* ------------------------------------------------------------------ */
@@ -497,6 +492,24 @@ export default function ProfessorPortfolio() {
                   Student Portal
                 </button>
               </div>
+
+              {/* social links */}
+              <div className="mt-7 flex items-center gap-4">
+                <span className="text-[0.66rem] tracking-[0.2em] uppercase text-[var(--muted)]">Connect</span>
+                <span className="w-8 h-px bg-[var(--line3)]" aria-hidden="true" />
+                <a href="https://www.linkedin.com/in/dr-r-k-singh-b4b4641b" target="_blank" rel="noopener noreferrer"
+                   className="text-[var(--heading)] hover:text-[var(--accent)] transition-colors" aria-label="LinkedIn">
+                  <Linkedin size={20} />
+                </a>
+                <a href="https://www.youtube.com/@rksinghdu" target="_blank" rel="noopener noreferrer"
+                   className="text-[var(--heading)] hover:text-[var(--accent)] transition-colors" aria-label="YouTube">
+                  <Youtube size={22} />
+                </a>
+                <a href="https://smrth.in/pN" target="_blank" rel="noopener noreferrer"
+                   className="text-[var(--heading)] hover:text-[var(--accent)] transition-colors" aria-label="Samarth / Resources">
+                  <GraduationCap size={22} />
+                </a>
+              </div>
             </div>
 
             {/* portrait */}
@@ -727,7 +740,7 @@ export default function ProfessorPortfolio() {
                             <Play className="text-[var(--bg)]" size={34} />
                           </div>
                           {video.duration && (
-                            <span className="absolute bottom-2 right-2 bg-[var(--line-ink)]5 text-[var(--bg)] text-xs px-2 py-0.5 rounded">{video.duration}</span>
+                            <span className="absolute bottom-2 right-2 bg-[var(--overlay)] text-[var(--bg)] text-xs px-2 py-0.5 rounded">{video.duration}</span>
                           )}
                         </div>
                         <div className="p-3">
@@ -822,6 +835,27 @@ export default function ProfessorPortfolio() {
               )}
             </div>
           )}
+
+          <p className="text-[0.78rem] text-[var(--accent)] italic text-center mt-4">
+            [ Add posts in the <code>LINKEDIN_POSTS</code> array — see the comment there for how to fetch the embed URL. ]
+          </p>
+        </section>
+
+        {/* ---------------- REFERENCE MATERIALS / OER ---------------- */}
+        <section className="max-w-6xl mx-auto px-5 sm:px-8 scroll-mt-24 py-20 border-b border-[var(--line-ink)]">
+          <span className={eyebrow}>Open Educational Resources</span>
+          <h2 className={`${serif} text-[var(--heading)] text-[clamp(1.8rem,4.4vw,2.6rem)] mt-3 mb-6`}>Reference Materials &amp; OER</h2>
+          <div className="bg-[var(--surface)] border border-[var(--line)] rounded-md p-6 flex flex-col sm:flex-row sm:items-center gap-5">
+            <BookOpen className="text-[var(--accent)] shrink-0" size={34} strokeWidth={1.5} />
+            <div className="flex-1">
+              <h3 className={`${serif} text-[var(--heading)] text-[1.2rem]`}>Human Resource Management Materials</h3>
+              <p className="text-[0.93rem] text-[var(--muted2)] mt-1">Open educational resources, readings, and research materials, freely available to learners.</p>
+            </div>
+            <a href="https://smrth.in/pN" target="_blank" rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-sm bg-[var(--accent)] text-[var(--bg)] text-[0.88rem] hover:bg-[var(--accent-deep)] transition-colors shrink-0">
+              Open Resource <ArrowUpRight size={16} />
+            </a>
+          </div>
         </section>
 
         {/* ---------------- CONTACT ---------------- */}
@@ -868,14 +902,6 @@ export default function ProfessorPortfolio() {
                   <div className="text-[0.7rem] tracking-[0.14em] uppercase text-[var(--accent)]">Office</div>
                   <p className="text-[var(--body)]">Department of Commerce, Delhi School of Economics, University of Delhi, Delhi – 110007</p>
                 </div>
-              </div>
-              <div className="flex items-center gap-4 pt-2">
-                <a href="https://www.linkedin.com/in/dr-r-k-singh-b4b4641b" target="_blank" rel="noopener noreferrer"
-                   className="text-[var(--heading)] hover:text-[var(--accent)] transition-colors" aria-label="LinkedIn"><Linkedin size={22} /></a>
-                <a href="https://www.youtube.com/@rksinghdu" target="_blank" rel="noopener noreferrer"
-                   className="text-[var(--heading)] hover:text-[var(--accent)] transition-colors" aria-label="YouTube"><Youtube size={24} /></a>
-                <a href="https://smrth.in/pN" target="_blank" rel="noopener noreferrer"
-                   className="text-[var(--heading)] hover:text-[var(--accent)] transition-colors" aria-label="More"><GraduationCap size={24} /></a>
               </div>
             </div>
           </div>
