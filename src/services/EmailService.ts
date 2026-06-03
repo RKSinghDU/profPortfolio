@@ -14,7 +14,11 @@ export interface ContactMessage {
 }
 
 export class EmailService {
-  constructor(private readonly config: EmailConfig) {}
+  private readonly config: EmailConfig;
+
+  constructor(config: EmailConfig) {
+    this.config = config;
+  }
 
   isConfigured(): boolean {
     return !!(this.config.serviceId && this.config.templateId && this.config.publicKey);

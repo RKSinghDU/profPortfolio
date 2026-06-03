@@ -35,8 +35,10 @@ const THIRTY_MINUTES = 1000 * 60 * 30;
 export class YouTubeAPI {
   private readonly baseURL = 'https://www.googleapis.com/youtube/v3';
   private readonly cache: LocalStorageCache<YouTubeVideo[]>;
+  private readonly apiKey: string;
 
-  constructor(private readonly apiKey: string, cacheTtlMs: number = THIRTY_MINUTES) {
+  constructor(apiKey: string, cacheTtlMs: number = THIRTY_MINUTES) {
+    this.apiKey = apiKey;
     this.cache = new LocalStorageCache<YouTubeVideo[]>(cacheTtlMs);
   }
 

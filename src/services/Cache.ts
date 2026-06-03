@@ -3,7 +3,11 @@ export interface CacheReadOptions {
 }
 
 export class LocalStorageCache<T> {
-  constructor(private readonly ttlMs: number) {}
+  private readonly ttlMs: number;
+
+  constructor(ttlMs: number) {
+    this.ttlMs = ttlMs;
+  }
 
   get(key: string, options: CacheReadOptions = {}): T | null {
     try {
