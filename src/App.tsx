@@ -1,5 +1,13 @@
-import ProfessorPortfolio from './components/ProfessorPortfolio';
+import './App.css'
+import ProfessorPortfolio from './components/homePage'
 
-export default function App() {
-  return <ProfessorPortfolio />;
+function App() {
+
+  return (
+    <>
+    <ProfessorPortfolio/>
+    </>
+  )
 }
+
+export default App
