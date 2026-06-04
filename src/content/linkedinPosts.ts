@@ -15,8 +15,5 @@ export const LINKEDIN_POSTS: LinkedInPost[] = [
   { url: 'https://www.linkedin.com/embed/feed/update/urn:li:share:7460547859545845765?collapsed=1' },
   { url: 'https://www.linkedin.com/embed/feed/update/urn:li:share:7423261493195988992' },
   { url: 'https://www.linkedin.com/embed/feed/update/urn:li:share:7419510991677378560' },
-    { url: 'https://www.linkedin.com/embed/feed/update/urn:li:share:7463366561613918208?collapsed=1' },
-  { url: 'https://www.linkedin.com/embed/feed/update/urn:li:share:7460547859545845765?collapsed=1' },
-  { url: 'https://www.linkedin.com/embed/feed/update/urn:li:share:7423261493195988992' },
-  { url: 'https://www.linkedin.com/embed/feed/update/urn:li:share:7419510991677378560' },
+  
 ];
