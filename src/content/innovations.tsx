@@ -1,5 +1,5 @@
 import type { LucideIcon } from 'lucide-react';
-import { CalendarDays, ClipboardCheck, FileText, Layers, Sparkles } from 'lucide-react';
+import { BookOpenCheck, CalendarDays, ClipboardCheck, FileText, Layers, Sparkles } from 'lucide-react';
 
 export interface Innovation {
   icon: LucideIcon;
@@ -38,5 +38,11 @@ export const INNOVATIONS: Innovation[] = [
     tag: 'AI',
     title: 'AI-Assisted Evaluation',
     body: 'Applies structured rubrics to score student answers consistently, while keeping final judgment with the teacher.',
+  },
+  {
+    icon: BookOpenCheck,
+    tag: 'AI',
+    title: 'AI-Assisted Research Supervision',
+    body: 'A structured supervision system for doctoral scholars — AI analysis across eight categories generates a Composite Progress Dashboard.',
   },
 ];

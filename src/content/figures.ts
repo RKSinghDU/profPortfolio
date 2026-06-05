@@ -4,8 +4,8 @@ export interface Figure {
 }
 
 export const FIGURES: Figure[] = [
-  { value: '25+', label: 'Years Teaching' },
+  { value: '35+', label: 'Years Teaching' },
   { value: '5k+', label: 'Students Mentored' },
-  { value: '40+', label: 'Theses Examined' },
+  { value: '20', label: 'Research Scholars Supervised' },
   { value: '6', label: 'Tools Built' },
 ];

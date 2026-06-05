@@ -8,7 +8,7 @@ export function Innovations() {
       <SectionHeader
         eyebrowText="Selected Work"
         title="Innovations in teaching."
-        description="Tools I have designed for teaching and assessment. Access to the working tools is reserved for my students through the Student Portal."
+        description="Tools I have designed, built, and deployed across my courses. Each one addresses a real problem in teaching, assessment, or administration — built on the principle that technology should serve the teacher, not replace their judgment. Access to the working tools is reserved for enrolled students through the Student Portal."
       />
       <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
         {INNOVATIONS.map(({ icon: Icon, tag, title, body }) => (

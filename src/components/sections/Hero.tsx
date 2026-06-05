@@ -27,11 +27,15 @@ export function Hero({ onNavigate }: HeroProps) {
             Reetesh Kumar<br />Singh
           </h1>
           <p className="mt-4 text-[var(--muted2)] text-[clamp(1rem,2vw,1.2rem)] italic">
-            Human Resource Management <Diamond /> Organisational Behaviour <Diamond /> Research Methodology
+            Organizational Effectiveness <Diamond /> AI in Education
           </p>
-          <p className="mt-5 max-w-[52ch] text-[1.08rem] text-[var(--body)] leading-relaxed">
-            A teacher and researcher of organizations at the University of Delhi — and a builder of
-            simulations and AI-assisted tools that bring rigour and accessibility to the way we teach and assess.
+          <p className="mt-5 max-w-[58ch] text-[1.05rem] text-[var(--body)] leading-relaxed">
+            A teacher, researcher, and institution-builder at the University of Delhi, with three and a half decades
+            of work at the intersection of human resource management, organizational behavior, and the philosophy of
+            learning. Builder of AI-assisted teaching ecosystems and experiential simulations that bring rigour,
+            fairness, and depth to the learning process — a passionate advocate for the transformative potential of
+            AI in education, with a focus on creating inclusive and engaging learning environments that empower
+            students and educators alike.
           </p>
           <div className="mt-7 flex flex-wrap gap-3">
             <button

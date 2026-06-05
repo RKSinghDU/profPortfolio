@@ -14,7 +14,6 @@ import { Innovations } from './sections/Innovations';
 import { LinkedInPosts } from './sections/LinkedInPosts';
 import { Research } from './sections/Research';
 import { StudentPortal } from './sections/StudentPortal';
-import { Teaching } from './sections/Teaching';
 import { Videos } from './sections/Videos';
 
 const SECTION_IDS = NAV.map(n => n.id);
@@ -41,8 +40,7 @@ export default function ProfessorPortfolio() {
         <About />
         <Research />
         <Innovations />
-        <Consulting onNavigate={scrollToSection} />
-        <Teaching />
+        <Consulting />
         <StudentPortal />
         <Videos slidesToShow={slidesToShow} />
         <LinkedInPosts slidesToShow={slidesToShow} />
