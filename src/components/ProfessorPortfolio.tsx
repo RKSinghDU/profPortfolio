@@ -40,7 +40,7 @@ export default function ProfessorPortfolio() {
         <About />
         <Research />
         <Innovations />
-        <Consulting />
+        <Consulting onNavigate={scrollToSection} />
         <StudentPortal />
         <Videos slidesToShow={slidesToShow} />
         <LinkedInPosts slidesToShow={slidesToShow} />

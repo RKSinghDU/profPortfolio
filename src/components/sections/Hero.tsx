@@ -29,14 +29,6 @@ export function Hero({ onNavigate }: HeroProps) {
           <p className="mt-4 text-[var(--muted2)] text-[clamp(1rem,2vw,1.2rem)] italic">
             Organizational Effectiveness <Diamond /> AI in Education
           </p>
-          <p className="mt-5 max-w-[58ch] text-[1.05rem] text-[var(--body)] leading-relaxed">
-            A teacher, researcher, and institution-builder at the University of Delhi, with three and a half decades
-            of work at the intersection of human resource management, organizational behavior, and the philosophy of
-            learning. Builder of AI-assisted teaching ecosystems and experiential simulations that bring rigour,
-            fairness, and depth to the learning process — a passionate advocate for the transformative potential of
-            AI in education, with a focus on creating inclusive and engaging learning environments that empower
-            students and educators alike.
-          </p>
           <div className="mt-7 flex flex-wrap gap-3">
             <button
               onClick={() => onNavigate('research')}
