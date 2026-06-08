@@ -24,7 +24,7 @@ export function Hero({ onNavigate }: HeroProps) {
         <div className="animate-[rise_0.7s_ease-out]">
           <span className={eyebrow}>Professor of Commerce &middot; {SITE.affiliation}</span>
           <h1 className={`${serif} text-[var(--heading)] mt-4 leading-[1.05] text-[clamp(2.6rem,6.5vw,4.6rem)]`}>
-            Reetesh Kumar<br />Singh
+            Reetesh K Singh
           </h1>
           <p className="mt-4 text-[var(--muted2)] text-[clamp(1rem,2vw,1.2rem)] italic">
             Organizational Effectiveness <Diamond /> AI in Education
