@@ -8,7 +8,7 @@ export const SITE = {
   social: {
     linkedin: 'https://www.linkedin.com/in/dr-r-k-singh-b4b4641b',
     youtube: 'https://www.youtube.com/@rksinghdu',
-    resources: 'https://smrth.in/pN',
+    resources: 'https://www.commerce.du.ac.in/faculty-and-staff/prof-rks-profile',
   },
   youtube: {
     channelHandle: '@rksinghdu',
