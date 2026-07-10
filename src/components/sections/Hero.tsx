@@ -29,6 +29,19 @@ export function Hero({ onNavigate }: HeroProps) {
           <p className="mt-4 text-[var(--muted2)] text-[clamp(1rem,2vw,1.2rem)] italic">
             Organizational Effectiveness <Diamond /> AI in Education
           </p>
+          <p className="mt-2 flex flex-wrap items-center gap-x-2 gap-y-1 text-[var(--muted2)] text-[clamp(0.95rem,1.9vw,1.12rem)] italic">
+            <span>Founder of</span>
+            <img
+              src="/hr-kundali-light.svg"
+              alt="HR Kundali™"
+              className="hk-logo hk-logo-light h-[clamp(1.5rem,3.4vw,2rem)] w-auto"
+            />
+            <img
+              src="/hr-kundali-dark.svg"
+              alt="HR Kundali™"
+              className="hk-logo hk-logo-dark h-[clamp(1.5rem,3.4vw,2rem)] w-auto"
+            />
+          </p>
           <div className="mt-7 flex flex-wrap gap-3">
             <button
               onClick={() => onNavigate('research')}

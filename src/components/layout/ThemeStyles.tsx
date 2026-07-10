@@ -2,6 +2,9 @@ export function ThemeStyles() {
   return (
     <style>{`
       @keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+      .hk-logo{ display:inline-block; vertical-align:middle; }
+      .theme-light .hk-logo-dark{ display:none; }
+      .theme-dark .hk-logo-light{ display:none; }
       .theme-light, .theme-dark{
         transition: background-color .35s ease, color .35s ease;
       }
