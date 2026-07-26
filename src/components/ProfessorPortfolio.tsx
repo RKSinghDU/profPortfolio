@@ -1,4 +1,5 @@
 import { NAV } from '../content/nav';
+import { useHashScroll } from '../hooks/useHashScroll';
 import { useResponsiveSlides } from '../hooks/useResponsiveSlides';
 import { useScrollSpy } from '../hooks/useScrollSpy';
 import { useTheme } from '../hooks/useTheme';
@@ -26,6 +27,9 @@ export default function ProfessorPortfolio() {
   const { isDark, toggle } = useTheme();
   const activeId = useScrollSpy(SECTION_IDS, { initial: 'home' });
   const slidesToShow = useResponsiveSlides();
+
+  // Honour /#portal and friends once the sections actually exist in the DOM.
+  useHashScroll();
 
   return (
     <div
