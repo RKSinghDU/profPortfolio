@@ -5,14 +5,21 @@ import { card, sectionContainerBordered, serif } from '../../styles/classNames';
 
 export function StudentPortal() {
   return (
-    <section id="portal" className={sectionContainerBordered}>
+    <section className={sectionContainerBordered}>
       <SectionHeader eyebrowText="Student Portal" title="For my students." />
       <div className="max-w-[62ch] bg-[var(--panel)] border-l-4 border-[var(--accent)] rounded-r-md px-5 py-4 text-[0.95rem] text-[var(--body)] mt-4">
         <strong className="text-[var(--heading)]">Sign in with your University of Delhi account.</strong> Access is
         restricted to the current class roster — please use your institutional email, not a personal one. Each tool
         opens in a new tab.
       </div>
-      <div className="mt-7 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      {/*
+        id="portal" sits on the card grid rather than the <section> so that
+        rksingh.tech/#portal — the link in the M.Com. welcome email — lands on
+        the tools themselves. scroll-mt-[160px] clears the 65px sticky header
+        and keeps the section heading partly visible above the cards.
+        nav.ts and useScrollSpy both resolve this id, so both still work.
+      */}
+      <div id="portal" className="mt-7 grid sm:grid-cols-2 lg:grid-cols-4 gap-5 scroll-mt-[160px]">
         {PORTAL_TOOLS.map(t => (
           <div key={t.title} className="flex flex-col gap-2.5">
             <a
