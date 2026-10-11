@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Internship certificate verification · R K Singh</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#FBF7EC;--card:#FFFDF7;--ink:#1F1A17;--muted:#5A4E46;--accent:#6B1E2A;--gold:#B08D45;--line:#E3D5B5;--ok:#1F5A3A;--okbg:#E7F2EA;--bad:#8A1F1F;--badbg:#F8E6E3;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#1A1614;--card:#241E1B;--ink:#F3ECE2;--muted:#C2B5A8;--accent:#E3A3AC;--gold:#D2B272;--line:#3D332C;--ok:#9BD4B1;--okbg:#1D2F25;--bad:#F0A8A0;--badbg:#3A2220}}
+:root[data-theme="dark"]{--bg:#1A1614;--card:#241E1B;--ink:#F3ECE2;--muted:#C2B5A8;--accent:#E3A3AC;--gold:#D2B272;--line:#3D332C;--ok:#9BD4B1;--okbg:#1D2F25;--bad:#F0A8A0;--badbg:#3A2220}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Source Sans 3','Segoe UI',system-ui,sans-serif;font-size:17px;line-height:1.55}
+main{max-width:760px;margin:0 auto;padding:48px 20px 64px}
+h1{font-family:'Cormorant Garamond',Garamond,'Times New Roman',serif;font-weight:700;font-size:2.6rem;line-height:1.05;margin:0 0 6px;color:var(--accent);text-wrap:balance}
+.issuer{color:var(--muted);margin:0 0 4px}
+.issuer strong{color:var(--ink)}
+hr{border:0;border-top:1px solid var(--gold);margin:28px 0}
+label{display:block;font-weight:600;margin-bottom:8px}
+.row{display:flex;flex-wrap:wrap;gap:10px}
+input{flex:1 1 260px;min-height:48px;font:inherit;padding:10px 14px;border:1px solid var(--gold);border-radius:6px;background:var(--card);color:var(--ink)}
+button{min-height:48px;font:inherit;font-weight:600;padding:10px 22px;border:0;border-radius:6px;background:var(--accent);color:var(--bg);cursor:pointer}
+input:focus-visible,button:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.hint{color:var(--muted);font-size:0.9rem;margin-top:6px}
+#result{margin-top:20px}
+.res{border-radius:8px;padding:18px 20px;border:1px solid}
+.res.ok{background:var(--okbg);border-color:var(--ok)}
+.res.bad{background:var(--badbg);border-color:var(--bad);color:var(--bad)}
+.res .status{font-weight:600;color:var(--ok);margin:0 0 6px}
+.res dl{display:grid;grid-template-columns:max-content 1fr;gap:4px 16px;margin:0}
+.res dt{color:var(--muted)}
+.res dd{margin:0}
+h2{font-family:'Cormorant Garamond',Garamond,serif;font-size:1.6rem;margin:0 0 12px}
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--card)}
+table{border-collapse:collapse;width:100%;min-width:560px;font-size:0.95rem}
+th,td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:600;color:var(--muted)}
+tr:last-child td{border-bottom:0}
+.note{color:var(--muted);font-size:0.9rem;margin-top:28px}
+</style>
+</head>
+<body>
+<main>
+<h1>Internship certificate verification</h1>
+<p class="issuer">Certificates issued by <strong>R K Singh</strong>, Senior Professor, Department of Commerce, Delhi School of Economics, University of Delhi</p>
+<p class="issuer">Creator of HR Kundali<sup>TM</sup></p>
+<hr>
+<label for="cert">Certificate number</label>
+<div class="row">
+<input id="cert" placeholder="RKS/INT/2026/001" autocomplete="off">
+<button id="go" type="button">Verify certificate</button>
+</div>
+<p class="hint">Enter the number printed beside the QR code on the certificate.</p>
+<div id="result" aria-live="polite"></div>
+<hr>
+<h2>Certificates issued</h2>
+<div class="tbl"><table>
+<thead><tr><th>Certificate no.</th><th>Intern</th><th>Internship</th><th>Period</th></tr></thead>
+<tbody id="rows"></tbody>
+</table></div>
+<p class="note">These internships were offered by R K Singh in his individual academic capacity. For any query, write to rksingh@commerce.du.ac.in.</p>
+</main>
+<script>
+const CERTS=[
+{no:"RKS/INT/2026/001",name:"Pushp Raj",prog:"Curriculum design internship, DSEH001: Digital Transformation in HR Systems",period:"1 June 2026 – 15 July 2026"},
+{no:"RKS/INT/2026/002",name:"Namrata Priyadarsini Naik",prog:"Curriculum design internship, DSEH004: Performance Management and Employee Engagement",period:"1 June 2026 – 15 July 2026"},
+{no:"RKS/INT/2026/003",name:"Akul Thapak",prog:"Research internship, Organisational Behaviour and Human Resource Management",period:"15 June 2026 – 31 July 2026"}
+];
+const norm=s=>s.toUpperCase().replace(/[^A-Z0-9]/g,"");
+const rows=document.getElementById("rows");
+CERTS.forEach(c=>{const tr=document.createElement("tr");[c.no,c.name,c.prog,c.period].forEach(v=>{const td=document.createElement("td");td.textContent=v;tr.appendChild(td)});rows.appendChild(tr)});
+const out=document.getElementById("result"),inp=document.getElementById("cert");
+function verify(){
+  const q=norm(inp.value);out.textContent="";
+  if(!q){return}
+  const c=CERTS.find(x=>norm(x.no)===q);
+  const box=document.createElement("div");
+  if(c){
+    box.className="res ok";
+    const p=document.createElement("p");p.className="status";p.textContent="Valid certificate — issued by R K Singh";box.appendChild(p);
+    const dl=document.createElement("dl");
+    [["Certificate no.",c.no],["Intern",c.name],["Internship",c.prog],["Period",c.period]].forEach(([k,v])=>{const dt=document.createElement("dt");dt.textContent=k;const dd=document.createElement("dd");dd.textContent=v;dl.append(dt,dd)});
+    box.appendChild(dl);
+  }else{
+    box.className="res bad";
+    box.textContent="No certificate with this number was issued. Check the number and try again, or write to rksingh@commerce.du.ac.in.";
+  }
+  out.appendChild(box);
+}
+document.getElementById("go").addEventListener("click",verify);
+inp.addEventListener("keydown",e=>{if(e.key==="Enter")verify()});
+</script>
+</body>
+</html>
