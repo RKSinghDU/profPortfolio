@@ -40,6 +40,17 @@ th,td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--line);vert
 th{font-weight:600;color:var(--muted)}
 tr:last-child td{border-bottom:0}
 .note{color:var(--muted);font-size:0.9rem;margin-top:28px}
+.res figure{margin:16px 0 0}
+.res .pv{position:relative;width:100%;aspect-ratio:994/703;border:1px solid var(--line);border-radius:4px;background:#fff center/contain no-repeat;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none}
+.res .pv::after{content:"";position:absolute;inset:0}
+@media print{.res figure{display:none}}
+.res figcaption{color:var(--muted);font-size:0.9rem;margin-top:6px}
+.dl{display:inline-flex;align-items:center;min-height:48px;margin-top:14px;padding:10px 22px;border-radius:6px;background:var(--accent);color:var(--bg);font-weight:600;text-decoration:none}
+.dl:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.howto{margin-top:16px;padding-top:14px;border-top:1px solid var(--line);color:var(--ink);font-size:0.95rem}
+.howto p{margin:0 0 6px}
+.howto ol{margin:0;padding-left:1.3em}
+.howto li{margin-bottom:4px}
 </style>
 </head>
 <body>
@@ -84,6 +95,19 @@ function verify(){
     const dl=document.createElement("dl");
     [["Certificate no.",c.no],["Intern",c.name],["Internship",c.prog],["Period",c.period]].forEach(([k,v])=>{const dt=document.createElement("dt");dt.textContent=k;const dd=document.createElement("dd");dd.textContent=v;dl.append(dt,dd)});
     box.appendChild(dl);
+    const file=c.no.replace(/\//g,"-");
+    const fig=document.createElement("figure");
+    const pv=document.createElement("div");pv.className="pv";pv.setAttribute("role","img");
+    pv.setAttribute("aria-label","Certificate "+c.no+" issued to "+c.name);
+    const probe=new Image();probe.onload=()=>{pv.style.backgroundImage="url(certs/"+file+".jpg)"};probe.onerror=()=>fig.remove();probe.src="certs/"+file+".jpg";
+    ["contextmenu","dragstart","selectstart"].forEach(ev=>pv.addEventListener(ev,e=>e.preventDefault()));
+    const cap=document.createElement("figcaption");cap.textContent="On-screen preview only. The digitally signed certificate is the PDF.";
+    fig.append(pv,cap);box.appendChild(fig);
+    const a=document.createElement("a");a.className="dl";a.href="certs/"+file+".pdf";a.download=file+".pdf";a.textContent="Download digitally signed PDF";
+    box.appendChild(a);
+    const how=document.createElement("div");how.className="howto";
+    how.innerHTML="<p><strong>Check the digital signature</strong></p><ol><li>Open the downloaded PDF in Adobe Acrobat Reader (free). Browser PDF viewers show the certificate but do not check signatures.</li><li>The bar at the top should say the document is signed and the signature is valid.</li><li>Open the Signature Panel. The signer should be R K Singh, with the certificate issued by eMudhra, and the document should show no changes since signing.</li></ol>";
+    box.appendChild(how);
   }else{
     box.className="res bad";
     box.textContent="No certificate with this number was issued. Check the number and try again, or write to rksingh@commerce.du.ac.in.";
@@ -92,6 +116,7 @@ function verify(){
 }
 document.getElementById("go").addEventListener("click",verify);
 inp.addEventListener("keydown",e=>{if(e.key==="Enter")verify()});
+const qp=new URLSearchParams(location.search).get("c");if(qp){inp.value=qp;verify()}
 </script>
 </body>
 </html>
