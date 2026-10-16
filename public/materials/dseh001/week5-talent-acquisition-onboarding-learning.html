@@ -1,91 +1,235 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Course Materials | Student Portal | R K Singh</title>
-<meta name="description" content="Free lecture slides and course materials from R K Singh, Senior Professor, Department of Commerce, Delhi School of Economics, University of Delhi.">
+<title>DSEH001 Week 5: Talent Acquisition, Onboarding and Learning Systems | R K Singh</title>
+<meta name="description" content="Lecture slides for DSEH001 Digital Transformation in HR Systems, Week 5, by R K Singh, Delhi School of Economics.">
 <link rel="icon" href="/photo.ico">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;600;700&family=Source+Serif+4:wght@500..700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..700&family=Source+Serif+4:wght@400..700&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#FBF7F0;--panel:#F3EADB;--card:#FFFDF9;--ink:#1F2430;--muted:#5E6673;--line:#E4D8C4;--accent:#C1502E;--accent-ink:#FFFFFF;--teal:#1F7A75;--navy:#14213D;--amber:#E09F3E;color-scheme:light}
-@media (prefers-color-scheme:dark){:root{--bg:#111722;--panel:#1A2232;--card:#172031;--ink:#EDE6DA;--muted:#A8B1C0;--line:#2A3548;--accent:#E07A55;--accent-ink:#111722;--teal:#5FC0B8;--navy:#EDE6DA;--amber:#F0B65E;color-scheme:dark}}
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-padding-top:env(safe-area-inset-top,0px)}
-:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-body{background:var(--bg);color:var(--ink);font-family:"Mukta",system-ui,sans-serif;font-size:18px;line-height:1.55}
-a{color:inherit}
-.wrap{max-width:1080px;margin:0 auto;padding:28px 22px 64px}
-.top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
-.home{text-decoration:none;font-weight:600;color:var(--muted)}
-.home:hover{color:var(--accent)}
-.badge{font-size:.8rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--teal);border:1.5px solid var(--teal);border-radius:999px;padding:4px 12px}
-.hero{margin:40px 0 28px;padding:34px 30px;border-radius:18px;background:linear-gradient(135deg,#14213D 0%,#1F3A5F 55%,#1F7A75 100%);color:#F4EFE6;position:relative;overflow:hidden}
-.hero:after{content:"";position:absolute;right:-60px;top:-60px;width:220px;height:220px;border-radius:50%;background:#E09F3E;opacity:.22}
-.eyebrow{font-size:.85rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#F6C77E}
-h1{font-family:"Source Serif 4",Georgia,serif;font-size:clamp(2rem,5vw,3rem);line-height:1.1;margin:8px 0 10px}
-.hero p{max-width:60ch;color:#DCE3EC}
-.free{display:inline-flex;align-items:center;gap:8px;margin-top:16px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);border-radius:10px;padding:8px 14px;font-weight:600}
-h2{font-family:"Source Serif 4",Georgia,serif;font-size:1.6rem;margin:36px 0 6px;color:var(--navy)}
-.course-sub{color:var(--muted);margin-bottom:16px}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px}
-.card{background:var(--card);border:1.5px solid var(--line);border-top:6px solid var(--amber);border-radius:14px;padding:20px;display:flex;flex-direction:column;gap:8px}
-.card.soon{border-top-color:var(--line);opacity:.7}
-.wk{font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
-.card h3{font-family:"Source Serif 4",Georgia,serif;font-size:1.25rem;line-height:1.25}
-.card p{color:var(--muted);font-size:.98rem}
-.btns{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto;padding-top:10px}
-.btn{display:inline-block;text-decoration:none;font-weight:700;font-size:.95rem;border-radius:9px;padding:9px 14px;border:1.5px solid var(--teal);color:var(--teal)}
-.btn.primary{background:var(--teal);color:#fff}
-@media (prefers-color-scheme:dark){.btn.primary{color:#111722}}
-.btn:hover{filter:brightness(1.08)}
-.help{margin-top:40px;background:var(--panel);border-left:5px solid var(--accent);border-radius:0 12px 12px 0;padding:18px 20px}
-.help h3{font-size:1.1rem;margin-bottom:6px}
-.help ol{padding-left:1.2em;color:var(--ink)}
-footer{margin-top:44px;color:var(--muted);font-size:.92rem;border-top:1px solid var(--line);padding-top:18px}
+html,body{height:100%;background:#0B1324;overflow:hidden;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+#stage{position:absolute;left:50%;top:50%;width:1920px;height:1080px;transform-origin:center center}
+.slide{position:absolute;inset:0;width:1920px;height:1080px;overflow:hidden}
+.slide:not(.on){display:none!important}
+.slide table{border-spacing:0}
+.c0{font-size:32px;line-height:1.4}
+.c1{font-size:30px;line-height:1.3;padding:14px 20px;border-bottom:2px solid #E6DED0;}
+.c2{font-size:28px;font-weight:700;letter-spacing:3px;color:#96561A}
+.c3{font-family:'Source Serif 4', Georgia, serif;font-size:72px;font-weight:600;line-height:1.1;color:#14213D}
+.c4{font-size:40px;font-weight:700;color:#1F7A75;line-height:1.2}
+.c5{font-size:30px;line-height:1.3;padding:14px 20px;border-bottom:2px solid #E6DED0;font-weight:700;color:#1F7A75}
+.c6{background:#14213D;border-radius:20px;padding:32px 40px}
+.c7{font-size:34px;line-height:1.35;color:#F4EFE6}
+.c8{position:absolute;left:128px;bottom:64px;width:1664px;font-size:26px;color:#5E6673}
+.c9{font-size:32px;padding:18px 22px;border-bottom:2px solid #E6DED0}
+.c10{font-size:32px;line-height:1.35}
+.c11{font-size:30px;text-align:left;padding:14px 20px;background:#14213D;color:#F4EFE6}
+.c12{display:flex;gap:32px}
+.c13{flex:1;display:flex;flex-direction:column;gap:16px;background:#FFFDF8;padding:40px;border-radius:20px;border:2px solid #E6DED0;border-top:10px solid #1F7A75;}
+.c14{font-size:40px;font-weight:700;color:#14213D}
+.c15{font-size:32px;padding:14px 24px;border-bottom:2px solid #E6DED0}
+.c16{display:flex;align-items:center;gap:16px}
+.c17{flex:1;display:flex;flex-direction:column;gap:10px;background:#FFFDF8;border:2px solid #E6DED0;border-radius:20px;padding:32px}
+.c18{font-size:56px;color:#96561A;font-weight:700}
+.c19{font-size:30px;font-weight:700}
+.c20{font-size:36px;line-height:1.4;color:#F4EFE6}
+.c21{flex:1;display:flex;flex-direction:column;gap:16px;background:#FFFDF8;padding:40px;border-radius:20px;border:2px solid #E6DED0;border-top:10px solid #E09F3E;}
+.c22{width:1664px;border-collapse:collapse;background:#FFFDF8}
+.c23{font-size:38px;font-weight:700;color:#14213D}
+.c24{font-size:32px;text-align:left;padding:18px 22px;background:#14213D;color:#F4EFE6}
+.c25{font-size:30px;width:250px;flex-shrink:0}
+.c26{flex:1;display:flex;flex-direction:column;gap:16px;background:#FFFDF8;padding:40px;border-radius:20px;border:2px solid #E6DED0;}
+.c27{font-size:32px;padding:18px 24px;border-bottom:2px solid #E6DED0;font-weight:700;color:#1F7A75}
+.c28{font-size:32px;padding:18px 24px;border-bottom:2px solid #E6DED0}
+.c29{display:flex;gap:32px;align-items:flex-start}
+.c30{font-size:40px;font-weight:700;color:#14213D;line-height:1.2}
+.c31{font-size:32px;line-height:1.3}
+.c32{color:#96561A}
+.c33{font-size:32px;padding:18px 22px;border-bottom:2px solid #E6DED0;font-weight:700;color:#1F7A75}
+.c34{font-family:'Source Serif 4', Georgia, serif;font-size:56px;font-weight:700;color:#96561A;width:60px}
+.c35{font-size:36px;font-weight:700;color:#14213D;width:260px}
+.c36{font-size:32px;flex:1}
+.c37{font-size:30px;color:#1F7A75;font-weight:700;width:420px}
+.c38{font-size:30px;font-weight:700;letter-spacing:4px;color:#FCE3B8}
+.c39{font-family:'Source Serif 4', Georgia, serif;font-size:96px;font-weight:600;line-height:1.08;width:1500px}
+.c40{width:200px;height:8px;background:#E09F3E}
+.c41{display:flex;flex-direction:column;gap:12px}
+.c42{display:flex;align-items:center;gap:20px}
+.c43{flex:1;min-width:0;display:flex;flex-direction:column;gap:12px;background:#FFFDF8;border:2px solid #E6DED0;border-radius:20px;padding:40px}
+.c44{display:flex;gap:28px}
+.c45{flex:1;min-width:0;display:flex;flex-direction:column;gap:18px;background:#FFFDF8;border:2px solid #E6DED0;border-radius:20px;padding:36px}
+.c46{font-size:30px;width:200px;flex-shrink:0}
+.c47{font-size:32px;padding:18px 22px;border-bottom:2px solid #E6DED0;font-weight:700;color:#14213D}
+.c48{font-size:32px;padding:18px 22px;border-bottom:2px solid #E6DED0;color:#1F7A75;font-weight:700}
+.c49{font-size:32px;padding:18px 22px;border-bottom:2px solid #E6DED0;color:#B5481E}
+.c50{font-family:'Source Serif 4', Georgia, serif;font-size:84px;font-weight:700;color:#E09F3E;line-height:1;width:70px}
+.c51{font-size:40px;line-height:1.35;width:1500px}
+.c52{flex:1;display:flex;flex-direction:column;gap:16px;background:#FFFDF8;padding:40px;border-radius:20px;border:2px solid #E6DED0;border-top:10px solid #14213D;}
+.c53{font-size:28px;font-weight:700;letter-spacing:3px;color:#E09F3E}
+.c54{font-size:32px;text-align:left;padding:18px 24px;background:#14213D;color:#F4EFE6}
+.c55{flex:1;min-width:0;display:flex;flex-direction:column;gap:12px;background:#FCE9CC;border:2px solid #E6DED0;border-radius:20px;padding:40px}
+.c56{font-size:40px;font-weight:700;color:#1F7A75}
+.c57{flex:1;display:flex;flex-direction:column;gap:16px;background:#FFFDF8;padding:40px;border-radius:20px;border:2px solid #E6DED0;border-top:10px solid #B5481E;}
+.c58{display:flex;align-items:center;gap:28px;background:#E3F1EF;border:2px solid #E6DED0;border-radius:16px;padding:22px 32px}
+.c59{display:flex;align-items:center;gap:28px;background:#FFFDF8;border:2px solid #E6DED0;border-radius:16px;padding:22px 32px}
+.c60{font-family:'Source Serif 4', Georgia, serif;font-size:76px;font-weight:700;line-height:1;color:#14213D}
+#bar{position:fixed;left:0;right:0;bottom:0;display:flex;justify-content:space-between;align-items:center;gap:8px;padding:8px 16px calc(8px + env(safe-area-inset-bottom,0px));font:600 15px Inter,Arial,sans-serif;color:#C9D1DE;background:rgba(11,19,36,.88);opacity:0;transition:opacity .3s}
+body:hover #bar,#bar.show{opacity:1}
+#bar a,#bar button{background:#1F7A75;color:#fff;border:0;border-radius:8px;padding:8px 14px;font:600 15px Inter,Arial,sans-serif;margin-left:6px;cursor:pointer;text-decoration:none;display:inline-block}
+#bar .amb{background:#E09F3E;color:#14213D}
+@media print{
+@page{size:1920px 1080px;margin:0}
+html,body{height:auto;overflow:visible;background:#fff}
+#stage{position:static;transform:none!important;width:1920px;height:auto}
+.slide,.slide:not(.on){position:relative!important;display:flex!important;break-after:page;page-break-after:always}
+#bar{display:none!important}
+}
 </style></head><body>
-<div class="wrap">
-<div class="top"><a class="home" href="/#portal">&#8592; Back to rksingh.tech</a><span class="badge">Student Portal</span></div>
-<section class="hero">
-<p class="eyebrow">Course materials</p>
-<h1>Lecture slides and resources</h1>
-<p>Slides from my courses at the Department of Commerce, Delhi School of Economics. View them in your browser, or save them as a PDF to keep.</p>
-<span class="free">&#10003; Free to view and download. No sign in needed.</span>
+<div id="stage">
+<section class="slide" id="cover" data-transition="fade" style="background:#14213D;color:#F4EFE6;font-family:Inter, Arial, sans-serif;padding:128px;display:flex;flex-direction:column;justify-content:space-between">
+<div style="position:absolute;left:0;top:0;width:28px;height:1080px;background:#E09F3E"></div>
+<p style="font-size:30px;font-weight:700;letter-spacing:4px;color:#E09F3E">DSEH001 · DIGITAL TRANSFORMATION IN HR SYSTEMS · WEEK 5</p>
+<div style="display:flex;flex-direction:column;gap:36px">
+<h1 style="font-family:'Source Serif 4', Georgia, serif;font-size:104px;font-weight:600;line-height:1.05;width:1500px">Talent Acquisition, Onboarding and Learning Systems</h1>
+<p style="font-size:40px;line-height:1.35;color:#7FCFC8;width:1400px">From the first signal a candidate reads to the day an employee can work without help</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px"><p style="font-size:36px;font-weight:700">R K Singh</p><p style="font-size:30px;color:#C9D1DE">Senior Professor, Department of Commerce, Delhi School of Economics, University of Delhi</p></div>
 </section>
-
-<h2>DSEH001 · Digital Transformation in HR Systems</h2>
-<p class="course-sub">M.Com., University of Delhi · Project Disha</p>
-<div class="grid">
-<article class="card">
-<span class="wk">Week 5 · 36 slides</span>
-<h3>Talent Acquisition, Onboarding and Learning Systems</h3>
-<p>Signaling, selection validity and disparate impact; socialization and newcomer adjustment; adult learning, Kirkpatrick and transfer of training, tested against GreenLeaf data.</p>
-<div class="btns">
-<a class="btn primary" href="/materials/dseh001/week5-talent-acquisition-onboarding-learning.html" target="_blank" rel="noopener">View slides</a>
-<a class="btn" href="/materials/dseh001/week5-talent-acquisition-onboarding-learning.html?pdf=1" target="_blank" rel="noopener">Save as PDF</a>
-<a class="btn" href="/materials/dseh001/week5-talent-acquisition-onboarding-learning.html" download="DSEH001_Week5_Slides.html">Offline copy</a>
+<section class="slide" id="map" data-transition="fade" style="background:#FAF6EE;color:#1B2433;font-family:Inter, Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:44px">
+<p class="c2">SESSION MAP · TWO HOURS</p><h2 class="c3">Today in three parts, each anchored in theory</h2><div class="c12"><div class="c21"><h3 class="c4">A · Talent acquisition</h3><p class="c0"><b>0:00 to 0:35</b></p><p class="c0">Signaling, selection validity, ASA, disparate impact routes, applicant justice</p><p class="c0">Revisit: Round 4</p></div><div class="c13"><h3 class="c4">B · Digital onboarding</h3><p class="c0"><b>0:35 to 1:15</b></p><p class="c0">Socialization tactics, adjustment, uncertainty reduction, psychological contract, Four Cs</p></div><div class="c52"><h3 class="c4">C · Learning systems</h3><p class="c0"><b>1:15 to 2:00</b></p><p class="c0">Andragogy, SDT, desirable difficulties, Kirkpatrick and its critics, transfer</p><p class="c0">Revisit: Round 3</p></div></div><div class="c6"><p class="c7">The thread: each system makes a promise about people. Theory turns the promise into a prediction we can test.</p></div>
+</section>
+<section class="slide" id="opener" data-transition="fade" style="background:#14213D;color:#F4EFE6;font-family:Inter, Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;justify-content:center;gap:48px">
+<p class="c53">SOCRATIC OPENER · GL-1001</p>
+<p style="font-family:'Source Serif 4', Georgia, serif;font-size:56px;line-height:1.3;width:1600px">Lakshmi Naidu, Store Associate, Warangal (Tier 3). Smartphone only, prefers Telugu, 42 months at GreenLeaf. Her one learning record: POSH Compliance, self paced, In-progress, assessment 32 percent.</p>
+<p style="font-size:52px;font-weight:700;line-height:1.3;color:#E09F3E;width:1600px">Was she ever recruited, onboarded and trained, or only processed?</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:26px;color:#AEB8C8">Source: GreenLeaf workbook, Employee_Master and LMS_Learning, row GL-1001</p>
+</section>
+<section class="slide" id="divA" data-transition="push" style="background:#1F7A75;color:#F4EFE6;font-family:Inter, Arial, sans-serif;padding:128px;display:flex;flex-direction:column;justify-content:center;gap:40px">
+<p class="c38">PART A · 0:00 TO 0:35</p>
+<h2 class="c39">Talent acquisition: signals, fit and fairness</h2>
+<div class="c40"></div>
+<div class="c41"><p class="c20">What does an applicant tracking system read, and what does it miss?</p><p class="c20">Why do screening models drift toward the past?</p><p class="c20">How do candidates judge a digital process?</p></div>
+</section>
+<section class="slide" id="signal" data-transition="fade" style="background:#FAF6EE;color:#1B2433;font-family:Inter, Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:44px">
+<p class="c2">PART A · THEORY 1</p><h2 class="c3">Hiring is a two way signaling problem</h2><div class="c12"><div class="c13"><h3 class="c4">The employer reads the candidate</h3><p class="c0">Spence (1973): when quality is hidden, employers rely on costly signals such as degrees and experience.</p><p class="c0">An ATS turns signals into keywords and cut offs, so it reads only what was written in its vocabulary.</p></div><div class="c21"><h3 class="c4">The candidate reads the employer</h3><p class="c0">Rynes, Bretz and Gerhart (1991): applicants treat delays, tone and process quality as signals of how the firm treats people.</p><p class="c0">A silent auto rejection is also a signal.</p></div></div><div class="c6"><p class="c7">Design question: what does our ATS signal to a Tier 3 walk in applicant, and what can it not read about her?</p></div>
+</section>
+<section class="slide" id="validity" data-transition="fade" style="background:#FAF6EE;color:#1B2433;font-family:Inter, Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<p class="c2">PART A · THEORY 1b</p><h2 class="c3">A screen is only as useful as its validity</h2><div class="c12"><div class="c13"><h3 class="c4">Taylor and Russell (1939)</h3><p class="c0">A selection tool adds value through three things together:</p><p class="c0"><b>validity</b> (does the score predict performance?), the <b>selection ratio</b> and the <b>base rate</b> of good performers.</p></div><div class="c21"><h3 class="c4">Meta analytic evidence</h3><p class="c0">Schmidt and Hunter (1998); revised by Sackett et al. (2022).</p><p class="c0">Structured interviews rank among the most valid methods; unstructured ones rank lower.</p><p class="c0">Keyword screens are rarely validated at all.</p></div></div><div class="c6"><p class="c7">Rigor test for any ATS: what is its validity against later job performance, and who measured it?</p></div>
+</section>
+<section class="slide" id="fit" data-transition="fade" style="background:#FAF6EE;color:#1B2433;font-family:Inter, Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<p class="c2">PART A · THEORY 2</p><h2 class="c3">The ASA cycle explains why screening models copy the past</h2><div class="c42"><div class="c17"><h3 class="c14">Attraction</h3><p class="c10">Similar people apply</p></div><p class="c18">→</p><div class="c17"><h3 class="c14">Selection</h3><p class="c10">Firm picks people like current staff</p></div><p class="c18">→</p><div class="c17"><h3 class="c14">Attrition</h3><p class="c10">Those who do not fit leave</p></div><p class="c18">→</p><div style="flex:1;display:flex;flex-direction:column;gap:10px;background:#FCE9CC;border:2px solid #E6DED0;border-radius:20px;padding:32px"><h3 class="c14">Sameness</h3><p class="c10">The workforce narrows</p></div></div><div class="c12"><div class="c26"><h3 class="c4">Schneider (1987)</h3><p class="c0">“The people make the place”: attraction, selection and attrition together make an organization more alike over time.</p></div><div class="c26"><h3 class="c4">Kristof (1996)</h3><p class="c0">Person organization fit (values) differs from person job fit (skills). A model trained on past hires learns both, mixed.</p></div></div>
+</section>
+<section class="slide" id="barocas" data-transition="fade" style="background:#FAF6EE;color:#1B2433;font-family:Inter, Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<p class="c2">PART A · THEORY 2b</p><h2 class="c3">Five routes by which a hiring model produces disparate impact</h2><table class="c22"><tr><th class="c11">Route (Barocas and Selbst, 2016)</th><th class="c11">How it enters a GreenLeaf screen</th></tr><tr><td class="c5">1. Target variable</td><td class="c1">“Good hire” defined as long tenure, which favors groups that faced fewer breaks</td></tr><tr><td class="c5">2. Labeled examples</td><td class="c1">Past offers, already skewed, used as the training answer key</td></tr><tr><td class="c5">3. Feature selection</td><td class="c1">Fields chosen that exist for some applicants and not others</td></tr><tr><td class="c5">4. Proxies</td><td class="c1">Career gap or college stands in for gender or class</td></tr><tr><td class="c5">5. Masking</td><td class="c1">A biased choice hidden inside a neutral looking model</td></tr></table><p class="c8">Barocas, S. and Selbst, A. D. (2016). Big data's disparate impact. California Law Review, 104(3), 671 to 732.</p>
+</section>
+<section class="slide" id="justice" data-transition="fade" style="background:#FAF6EE;color:#1B2433;font-family:Inter, Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:44px">
+<p class="c2">PART A · THEORY 3</p><h2 class="c3">Candidates judge the process, not only the result</h2><table class="c22"><tr><th class="c54">Gilliland’s procedural rule (1993)</th><th class="c54">What a typical ATS does</th></tr><tr><td class="c27">Job relatedness</td><td class="c28">Does a keyword match track the job?</td></tr><tr><td class="c27">Opportunity to perform</td><td class="c28">Rejected before any human contact</td></tr><tr><td class="c27">Consistency</td><td class="c28">Same rule for all: a real strength</td></tr><tr><td class="c27">Feedback</td><td class="c28">Silent rejection, no reason given</td></tr><tr><td class="c27">Two way communication</td><td class="c28">A chatbot, or nothing</td></tr></table><p class="c8">Gilliland, S. W. (1993). The perceived fairness of selection systems. Academy of Management Review, 18(4).</p>
+</section>
+<section class="slide" id="r4" data-transition="fade" style="background:#FAF6EE;color:#1B2433;font-family:Inter, Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:44px">
+<p class="c2">REVISIT · ROUND 4</p><h2 class="c3">The algorithmic screen fails the four fifths test</h2><div class="c12"><div class="c55"><p style="font-family:'Source Serif 4', Georgia, serif;font-size:120px;font-weight:700;line-height:1;color:#B5481E">0.60</p><p class="c0"><b>Algorithm used (77 requisitions)</b><br>Female selection 8.32% ÷ male 13.88%</p></div><div class="c43"><p style="font-family:'Source Serif 4', Georgia, serif;font-size:120px;font-weight:700;line-height:1;color:#1F7A75">0.98</p><p class="c0"><b>No algorithm (63 requisitions)</b><br>Female selection 13.04% ÷ male 13.32%</p></div></div><div class="c6"><p class="c7">Threshold 0.80. Adverse impact is judged on outcomes; intent does not matter. Which theory from the last two slides explains how the gap arose?</p></div><p class="c8">Source: Recruitment_ATS. Selection rate = Offers ÷ Applications for each gender, totals pooled by Algorithm_Used.</p>
+</section>
+<section class="slide" id="divB" data-transition="push" style="background:#1F7A75;color:#F4EFE6;font-family:Inter, Arial, sans-serif;padding:128px;display:flex;flex-direction:column;justify-content:center;gap:40px">
+<p class="c38">PART B · 0:35 TO 1:15</p>
+<h2 class="c39">Onboarding is socialization, not paperwork</h2>
+<div class="c40"></div>
+<div class="c41"><p class="c20">Which design choices does every onboarding make?</p><p class="c20">What should onboarding actually produce in a newcomer?</p><p class="c20">Where does India Stack help, and where does it stop?</p></div>
+</section>
+<section class="slide" id="socialization" data-transition="fade" style="background:#FAF6EE;color:#1B2433;font-family:Inter, Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<p class="c2">PART B · THEORY 4</p><h2 class="c3">Six choices every onboarding design makes</h2><div class="c29"><table style="flex:1;border-collapse:collapse;background:#FFFDF8"><tr><th style="font-size:32px;text-align:left;padding:14px 24px;background:#1F7A75;color:#F4EFE6">Institutionalized</th><th style="font-size:32px;text-align:left;padding:14px 24px;background:#14213D;color:#F4EFE6">Individualized</th></tr><tr><td class="c15">Collective</td><td class="c15">Individual</td></tr><tr><td class="c15">Formal</td><td class="c15">Informal</td></tr><tr><td class="c15">Sequential</td><td class="c15">Random</td></tr><tr><td class="c15">Fixed</td><td class="c15">Variable</td></tr><tr><td class="c15">Serial</td><td class="c15">Disjunctive</td></tr><tr><td class="c15">Investiture</td><td class="c15">Divestiture</td></tr></table><div style="flex:0 0 620px;display:flex;flex-direction:column;gap:16px;background:#FFFDF8;padding:40px;border-radius:20px;border:2px solid #E6DED0;"><h3 class="c4">What Jones (1986) found</h3><p class="c0">Institutionalized tactics: less role ambiguity, more commitment, a custodial role.</p><p class="c0">Individualized tactics: more role innovation.</p></div></div><p class="c8">Van Maanen and Schein (1979), Toward a theory of organizational socialization; Jones (1986), Academy of Management Journal.</p>
+</section>
+<section class="slide" id="adjust" data-transition="fade" style="background:#FAF6EE;color:#1B2433;font-family:Inter, Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:44px">
+<p class="c2">PART B · THEORY 5</p><h2 class="c3">What onboarding must produce: three adjustment states</h2><div class="c42"><div class="c17"><h3 class="c14">Inputs</h3><p class="c10">Socialization tactics; the newcomer’s own information seeking</p></div><p class="c18">→</p><div style="flex:1.3;display:flex;flex-direction:column;gap:14px;background:#E3F1EF;border:2px solid #1F7A75;border-radius:20px;padding:32px"><h3 class="c56">Adjustment</h3><p style="font-size:34px;line-height:1.35"><b>Role clarity</b><br><b>Self efficacy</b><br><b>Social acceptance</b></p></div><p class="c18">→</p><div class="c17"><h3 class="c14">Outcomes</h3><p class="c10">Performance, satisfaction, commitment, intention to stay</p></div></div><div class="c6"><p class="c7">Measure the middle box. Completion of onboarding tasks is an input, not an outcome.</p></div><p class="c8">Bauer, Bodner, Erdogan, Truxillo and Tucker (2007), meta analysis, Journal of Applied Psychology, 92(3).</p>
+</section>
+<section class="slide" id="uncertainty" data-transition="fade" style="background:#FAF6EE;color:#1B2433;font-family:Inter, Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<p class="c2">PART B · THEORY 5b</p><h2 class="c3">Newcomers reduce uncertainty by seeking information</h2><div class="c12"><div class="c13"><h3 class="c4">Uncertainty reduction</h3><p class="c0">Berger and Calabrese (1975): people in new relationships act to make others predictable.</p><p class="c0">Newcomers do the same with the organization.</p></div><div class="c21"><h3 class="c4">Seeking tactics</h3><p class="c0">Miller and Jablin (1991): overt questions, indirect questions, third parties, testing limits, observing, surveillance.</p><p class="c0">A chatbot serves only the first.</p></div><div class="c52"><h3 class="c4">What they seek</h3><p class="c0">Morrison (1993): technical, referent (role), normative, performance feedback, social.</p><p class="c0">Normative and social answers come from people.</p></div></div><div class="c6"><p class="c7">Prediction: a digital first onboarding answers technical questions well and leaves normative and social uncertainty unresolved.</p></div>
+</section>
+<section class="slide" id="psychcontract" data-transition="fade" style="background:#FAF6EE;color:#1B2433;font-family:Inter, Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<p class="c2">PART B · THEORY 5c</p><h2 class="c3">Onboarding writes the psychological contract</h2><div class="c12"><div class="c13"><h3 class="c4">Rousseau (1989; 1995)</h3><p class="c0">Beliefs about mutual promises, held by the employee.</p><p class="c0"><b>Transactional</b>: pay for work, short term.</p><p class="c0"><b>Relational</b>: loyalty, growth, long term.</p></div><div class="c57"><h3 class="c4">Early breach</h3><p class="c0">Robinson and Rousseau (1994): a majority of new graduates reported a broken promise within two years.</p><p class="c0">Breach predicted lower trust and higher exit.</p></div><div class="c21"><h3 class="c4">Realistic previews</h3><p class="c0">Wanous: met expectations. Premack and Wanous (1985) meta analysis: previews lower inflated expectations; effect on retention is small but reliable.</p></div></div><div class="c6"><p class="c7">Design rule: every promise a recruiting app or welcome video makes is a term of the contract the first month must honor.</p></div>
+</section>
+<section class="slide" id="fourcs" data-transition="fade" style="background:#FAF6EE;color:#1B2433;font-family:Inter, Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<p class="c2">PART B · THEORY 6</p><h2 class="c3">Bauer’s Four Cs: most firms stop at the first</h2><div class="c44"><div style="flex:1;display:flex;flex-direction:column;gap:16px;background:#FCE9CC;padding:40px;border-radius:20px;border:2px solid #E6DED0;border-top:10px solid #E09F3E;"><h3 class="c30">Compliance</h3><p class="c0">Rules, forms, policy sign offs</p></div><div class="c13"><h3 class="c30">Clarification</h3><p class="c0">Role and expectations</p></div><div class="c13"><h3 class="c30">Culture</h3><p class="c0">Norms, written and unwritten</p></div><div class="c13"><h3 class="c30">Connection</h3><p class="c0">Relationships and networks</p></div></div><div class="c44"><div class="c26"><h3 style="font-size:40px;font-weight:700;color:#B5481E;line-height:1.2">Passive onboarding</h3><p class="c0">Compliance and some Clarification</p></div><div class="c26"><h3 class="c4">Proactive onboarding</h3><p class="c0">All four, planned on purpose</p></div></div><p class="c8">Bauer, T. N. (2010). Onboarding new employees: Maximizing success. SHRM Foundation.</p>
+</section>
+<section class="slide" id="compare" data-transition="fade" style="background:#FAF6EE;color:#1B2433;font-family:Inter, Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<p class="c2">PART B · SYNTHESIS</p><h2 class="c3">Three onboarding frameworks, three units of analysis</h2><table class="c22"><tr><th class="c11">Framework</th><th class="c11">What it describes</th><th class="c11">What it misses</th></tr><tr><td class="c5">Van Maanen and Schein (1979)</td><td class="c1">How the organization structures entry (tactics)</td><td class="c1">The newcomer's own seeking</td></tr><tr><td class="c5">Bauer (2010), Four Cs</td><td class="c1">What content onboarding covers</td><td class="c1">How content is delivered</td></tr><tr><td class="c5">Klein and Polin (2012): inform, welcome, guide</td><td class="c1">Concrete practices firms use</td><td class="c1">Outcomes in the newcomer</td></tr><tr><td class="c5">Bauer et al. (2007)</td><td class="c1">Adjustment states and outcomes</td><td class="c1">Specific practices to use</td></tr></table><div class="c6"><p class="c7">Rigor rule: use a process framework to design, and an outcome model to evaluate. Mixing them up is the commonest error.</p></div>
+</section>
+<section class="slide" id="indiastack" data-transition="fade" style="background:#FAF6EE;color:#1B2433;font-family:Inter, Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<p class="c2">PART B · APPLICATION</p><h2 class="c3">India Stack: the onboarding rail for a frontline hire</h2><div class="c16"><div class="c17"><h3 class="c14">Aadhaar eKYC</h3><p class="c10">Identity verified in minutes</p></div><p class="c18">→</p><div class="c17"><h3 class="c14">DigiLocker</h3><p class="c10">Verified documents, no photocopies</p></div><p class="c18">→</p><div class="c17"><h3 class="c14">eSign</h3><p class="c10">Offer and policies signed on a phone</p></div><p class="c18">→</p><div class="c17"><h3 class="c14">Bank check</h3><p class="c10">Account confirmed for first salary</p></div></div><div style="background:#E3F1EF;border-radius:20px;padding:32px 40px"><p style="font-size:34px;line-height:1.35;color:#1B2433">Every step pulls personal data. Name its purpose and collect only what is needed (DPDP Act 2023).</p></div><div class="c6"><p class="c7">The rail completes Compliance. It does nothing for Culture or Connection.</p></div>
+</section>
+<section class="slide" id="cogload" data-transition="fade" style="background:#FAF6EE;color:#1B2433;font-family:Inter, Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<p class="c2">PART B · THEORY 7</p><h2 class="c3">Cognitive load: build the first month as a staircase</h2><div style="display:flex;gap:24px;align-items:flex-end"><div style="flex:1;height:200px;display:flex;flex-direction:column;justify-content:flex-end;gap:10px;background:#E3F1EF;border:2px solid #E6DED0;border-radius:20px;padding:28px"><h3 class="c23">Day 1</h3><p class="c31">One task: meet your buddy, find your shift</p></div><div style="flex:1;height:320px;display:flex;flex-direction:column;justify-content:flex-end;gap:10px;background:#E3F1EF;border:2px solid #E6DED0;border-radius:20px;padding:28px"><h3 class="c23">Week 1</h3><p class="c31">Three 5 minute videos, Telugu, voice first</p></div><div style="flex:1;height:440px;display:flex;flex-direction:column;justify-content:flex-end;gap:10px;background:#E3F1EF;border:2px solid #E6DED0;border-radius:20px;padding:28px"><h3 class="c23">Weeks 2 to 3</h3><p class="c31">Practice on the floor with the buddy</p></div><div style="flex:1;height:560px;display:flex;flex-direction:column;justify-content:flex-end;gap:10px;background:#FCE9CC;border:2px solid #E6DED0;border-radius:20px;padding:28px"><h3 class="c23">Week 4</h3><p class="c31">Check: role clarity, confidence, belonging</p></div></div><p class="c8">Sweller (1988), Cognitive load during problem solving, Cognitive Science. Example journey for GL-1001, for discussion.</p>
+</section>
+<section class="slide" id="accent" data-transition="fade" style="background:#E09F3E;color:#14213D;font-family:Inter, Arial, sans-serif;padding:128px;display:flex;flex-direction:column;justify-content:center;gap:40px">
+<p style="font-size:30px;font-weight:700;letter-spacing:4px">THE HINGE OF THE SESSION</p>
+<p style="font-family:'Source Serif 4', Georgia, serif;font-size:84px;font-weight:600;line-height:1.15;width:1600px">A document checklist completes onboarding for the HRIS. Only connection completes it for the person.</p>
+</section>
+<section class="slide" id="divC" data-transition="push" style="background:#1F7A75;color:#F4EFE6;font-family:Inter, Arial, sans-serif;padding:128px;display:flex;flex-direction:column;justify-content:center;gap:40px">
+<p class="c38">PART C · 1:15 TO 2:00</p>
+<h2 class="c39">Learning systems should change behavior, not count completions</h2>
+<div class="c40"></div>
+<div class="c41"><p class="c20">How do adults learn, and what follows for design?</p><p class="c20">Why micro and spaced learning?</p><p class="c20">What did GreenLeaf’s data say about training?</p></div>
+</section>
+<section class="slide" id="adults" data-transition="fade" style="background:#FAF6EE;color:#1B2433;font-family:Inter, Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<p class="c2">PART C · THEORY 8</p><h2 class="c3">How adults learn: two theories set the design brief</h2><div class="c12"><div class="c13"><h3 class="c4">Knowles: andragogy (1980)</h3><p class="c0">Adults need to know why.</p><p class="c0">They direct their own learning.</p><p class="c0">Experience is the main resource.</p><p class="c0">They learn around real problems.</p></div><div style="flex:1;display:flex;flex-direction:column;gap:16px;background:#FFFDF8;padding:40px;border-radius:20px;border:2px solid #E6DED0;border-top:10px solid #E09F3E"><h3 class="c56">Kolb: experiential cycle (1984)</h3><p class="c0"><b class="c32">1</b>  Concrete experience</p><p class="c0"><b class="c32">2</b>  Reflective observation</p><p class="c0"><b class="c32">3</b>  Abstract conceptualization</p><p class="c0"><b class="c32">4</b>  Active experimentation</p></div></div><div class="c6"><p class="c7">Caution: matching teaching to “learning styles” has no good evidence (Pashler et al., 2008).</p></div>
+</section>
+<section class="slide" id="sdt" data-transition="fade" style="background:#FAF6EE;color:#1B2433;font-family:Inter, Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<p class="c2">PART C · THEORY 8b</p><h2 class="c3">Self determination theory: why points and badges backfire</h2><div class="c12"><div class="c13"><h3 class="c4">Three basic needs</h3><p class="c0">Deci and Ryan (1985); Ryan and Deci (2000).</p><p class="c0"><b>Autonomy</b>, <b>competence</b> and <b>relatedness</b> sustain intrinsic motivation.</p></div><div class="c57"><h3 class="c4">Overjustification</h3><p class="c0">Deci, Koestner and Ryan (1999), meta analysis: expected tangible rewards undermined intrinsic motivation for interesting tasks.</p><p class="c0">Informational feedback did not.</p></div><div class="c21"><h3 class="c4">Design consequences</h3><p class="c0">Choice of path (autonomy).</p><p class="c0">Visible skill growth (competence).</p><p class="c0">Learning with peers (relatedness).</p></div></div><div class="c6"><p class="c7">This is the theory behind the Round 3 caution: extrinsic rewards create activity without capability.</p></div>
+</section>
+<section class="slide" id="memory" data-transition="fade" style="background:#FAF6EE;color:#1B2433;font-family:Inter, Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<p class="c2">PART C · THEORY 9</p><h2 class="c3">Why micro and spaced: the forgetting curve</h2><div style="display:flex;gap:40px;align-items:flex-start"><svg aria-label="Illustrative forgetting curve with review points" width="760" height="480" viewBox="0 0 760 480" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="0" width="760" height="480" rx="20" fill="#FFFDF8" stroke="#E6DED0" stroke-width="2"/><line x1="70" y1="410" x2="720" y2="410" stroke="#5E6673" stroke-width="3"/><line x1="70" y1="50" x2="70" y2="410" stroke="#5E6673" stroke-width="3"/><path d="M70 70 C120 250 170 320 260 340 C330 352 400 360 700 370" fill="none" stroke="#B5481E" stroke-width="6" stroke-dasharray="14 10"/><path d="M70 70 C110 180 150 200 190 210 L190 80 C240 160 290 175 340 180 L340 85 C410 140 470 150 540 152 L540 90 C600 120 650 126 700 128" fill="none" stroke="#1F7A75" stroke-width="7"/><text x="80" y="460" font-size="28" fill="#5E6673" font-family="Inter, Arial">time</text><text x="560" y="345" font-size="28" fill="#B5481E" font-family="Inter, Arial">no review</text><text x="520" y="190" font-size="28" fill="#1F7A75" font-family="Inter, Arial">spaced review</text></svg><div class="c26"><h3 class="c4">Three findings</h3><p class="c0"><b>Ebbinghaus (1885):</b> memory fades fast without review.</p><p class="c0"><b>Spacing effect:</b> spread practice beats one long session (Cepeda et al., 2006).</p><p class="c0"><b>Mayer:</b> short segments, clear signals, no clutter.</p></div></div><p class="c8">The curve is illustrative, not data. Mayer, R. E. (2009). Multimedia Learning, 2nd ed. Cambridge University Press.</p>
+</section>
+<section class="slide" id="difficulty" data-transition="fade" style="background:#FAF6EE;color:#1B2433;font-family:Inter, Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<p class="c2">PART C · THEORY 9b</p><h2 class="c3">Desirable difficulties: what makes learning stick</h2><table class="c22"><tr><th class="c11">Principle</th><th class="c11">Finding</th><th class="c11">Mobile design at GreenLeaf</th></tr><tr><td class="c5">Spacing</td><td class="c1">Spread practice beats massed (Cepeda et al., 2006)</td><td class="c1">Short refreshers on days 2, 7 and 21</td></tr><tr><td class="c5">Retrieval practice</td><td class="c1">Testing beats rereading (Roediger and Karpicke, 2006)</td><td class="c1">Quiz before the content, not after</td></tr><tr><td class="c5">Interleaving</td><td class="c1">Mixed problems beat blocked ones (Rohrer and Taylor, 2007)</td><td class="c1">Mix leave, payslip and shift tasks</td></tr><tr><td class="c5">Segmenting</td><td class="c1">Learner paced short parts help novices (Mayer, 2009)</td><td class="c1">One task per two minute clip</td></tr></table><p class="c8">Bjork, R. A. (1994). Memory and metamemory considerations in the training of human beings.</p>
+</section>
+<section class="slide" id="lmslxp" data-transition="fade" style="background:#FAF6EE;color:#1B2433;font-family:Inter, Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<p class="c2">PART C · PLATFORMS</p><h2 class="c3">LMS, LXP, skills platform: three different logics</h2><table class="c22"><tr><th class="c24"></th><th class="c24">LMS</th><th class="c24">LXP</th><th class="c24">Skills platform</th></tr><tr><td class="c33">Organizing unit</td><td class="c9">Course</td><td class="c9">Content experience</td><td class="c9">Skill</td></tr><tr><td class="c33">Who chooses</td><td class="c9">HR assigns</td><td class="c9">Learner browses</td><td class="c9">Role gap drives</td></tr><tr><td class="c33">Main metric</td><td class="c9">Completion</td><td class="c9">Engagement</td><td class="c9">Proficiency gain</td></tr><tr><td class="c33">Best GreenLeaf use</td><td class="c9">Compliance</td><td class="c9">Corporate staff</td><td class="c9">Frontline reskilling</td></tr></table><div class="c6"><p class="c7">Case: Infosys Lex. As you read it, ask which organizing unit Lex chose, and what that choice made measurable.</p></div>
+</section>
+<section class="slide" id="kirk" data-transition="fade" style="background:#FAF6EE;color:#1B2433;font-family:Inter, Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<p class="c2">PART C · THEORY 10</p><h2 class="c3">Kirkpatrick’s four levels, mapped to GreenLeaf’s tabs</h2><div style="display:flex;flex-direction:column;gap:16px"><div class="c58"><p class="c34">4</p><p class="c35">Results</p><p class="c36">Helpdesk load, attrition, store KPIs</p><p class="c37">PeopleAnalytics_Fact</p></div><div class="c58"><p class="c34">3</p><p class="c35">Behavior</p><p class="c36">ESS logins and self service use</p><p class="c37">Adoption_Telemetry</p></div><div class="c59"><p class="c34">2</p><p class="c35">Learning</p><p class="c36">Assessment score, completion</p><p class="c37">LMS_Learning</p></div><div class="c59"><p class="c34">1</p><p class="c35">Reaction</p><p class="c36">Did learners value it?</p><p class="c37">Not collected</p></div></div><p class="c8">Kirkpatrick (1959); Kirkpatrick and Kirkpatrick (2016), Kirkpatrick’s Four Levels of Training Evaluation, ATD Press.</p>
+</section>
+<section class="slide" id="kirkcritique" data-transition="fade" style="background:#FAF6EE;color:#1B2433;font-family:Inter, Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<p class="c2">PART C · CRITIQUE</p><h2 class="c3">The four levels are not a causal chain</h2><div class="c12"><div class="c13"><h3 class="c4">Alliger et al. (1997)</h3><p class="c0">Meta analysis: reactions correlated only weakly with learning and with on the job behavior.</p><p class="c0">Judgments of usefulness did better than enjoyment.</p></div><div class="c21"><h3 class="c4">Holton (1996)</h3><p class="c0">The model is a taxonomy, not a theory: it names outcomes without explaining why one leads to another.</p><p class="c0">Context and motivation are left out.</p></div></div><div class="c6"><p class="c7">So a high Level 2 score licenses no claim about Level 3. You must measure behavior directly, which GreenLeaf’s data allows.</p></div>
+</section>
+<section class="slide" id="transfer" data-transition="fade" style="background:#FAF6EE;color:#1B2433;font-family:Inter, Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<p class="c2">PART C · THEORY 10b</p><h2 class="c3">Transfer of training: the missing causal model</h2><div class="c42"><div style="flex:1.1;display:flex;flex-direction:column;gap:14px;background:#FFFDF8;border:2px solid #E6DED0;border-radius:20px;padding:30px"><h3 class="c23">Inputs</h3><p class="c10">Trainee: ability, motivation<br>Design: practice, relevance<br><b style="color:#B5481E">Work environment: support, chance to use</b></p></div><p class="c18">→</p><div class="c17"><h3 class="c14">Learning</h3><p class="c10">Learned and retained</p></div><p class="c18">→</p><div style="flex:1;display:flex;flex-direction:column;gap:10px;background:#E3F1EF;border:2px solid #E6DED0;border-radius:20px;padding:32px"><h3 class="c14">Transfer</h3><p class="c10">Used on the job and kept up</p></div></div><div class="c6"><p class="c7">Blume et al. (2010) meta analysis: work environment support and motivation relate to transfer. A module cannot supply the store manager who lets you use what you learned.</p></div><p class="c8">Baldwin, T. T. and Ford, J. K. (1988). Transfer of training: A review and directions for future research. Personnel Psychology, 41(1).</p>
+</section>
+<section class="slide" id="evidcompletion" data-transition="fade" style="background:#FAF6EE;color:#1B2433;font-family:Inter, Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:44px">
+<p class="c2">EVIDENCE · LEVEL 3</p><h2 class="c3">Finishing the onboarding module did not change behavior</h2><div class="c12"><div class="c43"><p class="c60">16.6 vs 16.4</p><p class="c0">ESS logins per month: completed the module (241) vs did not (239)</p></div><div class="c43"><p class="c60">34.0% vs 33.9%</p><p class="c0">Share at the Advocacy stage: completed vs did not</p></div><div class="c55"><p style="font-family:'Source Serif 4', Georgia, serif;font-size:76px;font-weight:700;line-height:1;color:#B5481E">39.0% vs 34.7%</p><p class="c0">Share still at Awareness: completers sit there more often</p></div></div><div class="c6"><p class="c7">Level 2 says yes. Level 3 says nothing moved. Which one should the Board hear?</p></div><p class="c8">Source: Adoption_Telemetry (480 sampled active employees). Training_Completed against ESS_Logins_per_Month and Adoption_Stage.</p>
+</section>
+<section class="slide" id="rival" data-transition="fade" style="background:#FAF6EE;color:#1B2433;font-family:Inter, Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<p class="c2">EVIDENCE · RIGOR CHECK</p><h2 class="c3">Four rival explanations to rule out before concluding</h2><table class="c22"><tr><th class="c11">Rival explanation</th><th class="c11">Why it matters here</th></tr><tr><td class="c5">Sample restriction</td><td class="c1">Telemetry covers 480 sampled active users, not all 1,000</td></tr><tr><td class="c5">Weak measure</td><td class="c1">Training_Completed is one module, recorded only as Yes or No</td></tr><tr><td class="c5">Reverse selection</td><td class="c1">Confident users may skip training and use ESS anyway</td></tr><tr><td class="c5">Cross section</td><td class="c1">One month of logins; no before and after comparison</td></tr></table><div class="c6"><p class="c7">A stronger design: stagger the rollout across stores and compare change in use, before and after (difference in differences).</p></div>
+</section>
+<section class="slide" id="evidtier" data-transition="fade" style="background:#FAF6EE;color:#1B2433;font-family:Inter, Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:36px">
+<p class="c2">EVIDENCE · ACCESS</p><h2 class="c3">Completion follows access, not delivery mode</h2><div class="c44"><div class="c45"><h3 class="c23">Digital skills courses, by tier</h3><div class="c16"><p class="c25">Metro</p><div style="width:457px;height:44px;background:#1F7A75;border-radius:8px"></div><p class="c19">75.6%</p></div><div class="c16"><p class="c25">Tier 1</p><div style="width:375px;height:44px;background:#1F7A75;border-radius:8px"></div><p class="c19">62.0%</p></div><div class="c16"><p class="c25">Tier 2</p><div style="width:313px;height:44px;background:#1F7A75;border-radius:8px"></div><p class="c19">51.8%</p></div><div class="c16"><p class="c25">Tier 3</p><div style="width:238px;height:44px;background:#1F7A75;border-radius:8px"></div><p class="c19">39.4%</p></div></div><div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:28px"><div class="c45"><h3 class="c23">All courses, by mode</h3><div class="c16"><p class="c46">Self paced</p><div style="width:242px;height:44px;background:#8C9AB0;border-radius:8px"></div><p class="c19">73.6%</p></div><div class="c16"><p class="c46">Blended</p><div style="width:238px;height:44px;background:#8C9AB0;border-radius:8px"></div><p class="c19">72.2%</p></div><div class="c16"><p class="c46">ILT</p><div style="width:230px;height:44px;background:#8C9AB0;border-radius:8px"></div><p class="c19">69.9%</p></div></div><div class="c45"><h3 class="c23">All courses, by device</h3><div class="c16"><p class="c25">Laptop</p><div style="width:297px;height:44px;background:#E09F3E;border-radius:8px"></div><p class="c19">90.1%</p></div><div class="c16"><p class="c25">Smartphone only</p><div style="width:201px;height:44px;background:#E09F3E;border-radius:8px"></div><p class="c19">61.2%</p></div><div class="c16"><p class="c25">Feature phone</p><div style="width:169px;height:44px;background:#E09F3E;border-radius:8px"></div><p class="c19">51.3%</p></div></div></div></div><p class="c8">Source: LMS_Learning joined to Employee_Master; share Completed. Tier gap 36.2 points; mode spread 3.7 points.</p>
+</section>
+<section class="slide" id="r3" data-transition="fade" style="background:#FAF6EE;color:#1B2433;font-family:Inter, Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<p class="c2">REVISIT · ROUND 3</p><h2 class="c3">Did your rollout fix match the barrier?</h2><table class="c22"><tr><th class="c24">Barrier</th><th class="c24">What it looks like</th><th class="c24">Matching lens</th><th class="c24">Tempting wrong fix</th></tr><tr><td class="c47">Access</td><td class="c9">No device or data on shift</td><td class="c48">Digital inclusion: access layer</td><td class="c49">More training modules</td></tr><tr><td class="c47">Ability</td><td class="c9">Knows how, cannot yet do it</td><td class="c48">ADKAR Ability: coached practice</td><td class="c49">More e-learning</td></tr><tr><td class="c47">Desire</td><td class="c9">Sees no reason to use it</td><td class="c48">ADKAR Desire; champions (Rogers)</td><td class="c49">Points and badges</td></tr></table><div class="c6"><p class="c7">Open your pod’s Round 3 submission. Which row did your chosen option actually address? Defend it in two sentences.</p></div>
+</section>
+<section class="slide" id="ledger" data-transition="fade" style="background:#FAF6EE;color:#1B2433;font-family:Inter, Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<p class="c2">SYNTHESIS · THEORY LEDGER</p><h2 class="c3">Each theory makes a prediction the workbook can test</h2><table class="c22"><tr><th class="c11">Theory</th><th class="c11">Prediction</th><th class="c11">Test and result</th></tr><tr><td class="c5">ASA; Barocas and Selbst</td><td class="c1">Gap appears where the model screens</td><td class="c1">Recruitment_ATS: 0.60 vs 0.98. Supported</td></tr><tr><td class="c5">Baldwin and Ford</td><td class="c1">Completion without work support leaves use flat</td><td class="c1">Adoption_Telemetry: 16.6 vs 16.4. Consistent</td></tr><tr><td class="c5">Digital inclusion: access</td><td class="c1">Completion falls as access falls</td><td class="c1">LMS by device: 90.1% vs 51.3%. Supported</td></tr><tr><td class="c5">Bauer et al. (2007)</td><td class="c1">Adjustment predicts staying</td><td class="c1">No adjustment measure. Untestable: a data gap</td></tr></table><p class="c8">All figures recomputed from GreenLeaf_Disha_DSEH001_Dataset_v2.xlsx.</p>
+</section>
+<section class="slide" id="takeaways" data-transition="fade" style="background:#14213D;color:#F4EFE6;font-family:Inter, Arial, sans-serif;padding:128px;display:flex;flex-direction:column;gap:56px">
+<p class="c53">THREE TAKEAWAYS</p>
+<div style="display:flex;flex-direction:column;gap:48px"><div class="c29"><p class="c50">1</p><p class="c51">An ATS is a selection method: ask for its validity. The four fifths test detects the gap; ASA and Barocas and Selbst explain it.</p></div><div class="c29"><p class="c50">2</p><p class="c51">Onboarding succeeds when adjustment rises: role clarity, self efficacy, acceptance. Design with a process framework, evaluate with an outcome model.</p></div><div class="c29"><p class="c50">3</p><p class="c51">Completion is not transfer. Baldwin and Ford predict flat use without work support, and GreenLeaf’s data agrees, pending rival explanations.</p></div></div>
+</section>
+<section class="slide" id="readings" data-transition="fade" style="background:#FAF6EE;color:#1B2433;font-family:Inter, Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:44px">
+<p class="c2">READINGS AND AFTER CLASS</p><h2 class="c3">Before next week</h2><div class="c12"><div class="c13"><h3 class="c4">Read</h3><p class="c0">Scully-Russ (2019): re-read for the learning and HRD lens</p><p class="c0">Case: Infosys Lex, digital reskilling at scale</p><p class="c0">NASSCOM FutureSkills: selected sections</p></div><div class="c21"><h3 class="c4">Do</h3><p class="c0"><b>AI consolidation:</b> design a four week onboarding journey for GL-1001 with no laptop and no English, then critique it with the Four Cs.</p><p class="c0"><b>Forum:</b> one Indian firm’s digital onboarding story. Who might it still exclude?</p></div></div><p class="c8">Theory sources named on the slides are for reference; the readings above are the required ones.</p>
+</section>
 </div>
-</article>
-<article class="card soon">
-<span class="wk">More weeks</span>
-<h3>Further lectures</h3>
-<p>New decks are added here after each class.</p>
-</article>
-</div>
-
-<h2>DSEH004 · Performance Management</h2>
-<p class="course-sub">M.Com., University of Delhi · Project Pratibha</p>
-<div class="grid"><article class="card soon"><span class="wk">Coming soon</span><h3>Lecture slides</h3><p>Materials for this course will appear here.</p></article></div>
-
-<div class="help">
-<h3>How to save the slides as a PDF</h3>
-<ol>
-<li>Click <b>Save as PDF</b> on the lecture card. The slides open and your browser's Print window appears.</li>
-<li>Next to <b>Destination</b> or <b>Printer</b>, choose <b>Save as PDF</b>.</li>
-<li>Press <b>Save</b>. All slides are saved, one slide per page.</li>
-</ol>
-<p style="margin-top:8px;color:var(--muted)">On a phone, open the slides and use your browser's Share button, then Print, to save a PDF.</p>
-</div>
-
-<footer>R K Singh · Senior Professor, Department of Commerce, Delhi School of Economics, University of Delhi</footer>
-</div>
-</body></html>
+<div id="bar"><span><a href="/materials/" title="All course materials">&#8592; Materials</a><span id="count" style="margin-left:12px"></span></span><span><button id="prev" aria-label="Previous slide">&#8249;</button><button id="next" aria-label="Next slide">&#8250;</button><button id="pdf" class="amb">Download PDF</button><button id="fs">Full screen</button></span></div>
+<script>
+(function(){
+var S=[].slice.call(document.querySelectorAll('.slide')),i=0,st=document.getElementById('stage'),bar=document.getElementById('bar');
+function fit(){var k=Math.min(innerWidth/1920,innerHeight/1080);st.style.transform='translate(-50%,-50%) scale('+k+')';}
+function show(n){i=Math.max(0,Math.min(S.length-1,n));S.forEach(function(s,j){s.classList.toggle('on',j===i)});document.getElementById('count').textContent=(i+1)+' / '+S.length;try{history.replaceState(null,'','#'+(i+1))}catch(e){}}
+function go(d){show(i+d)}
+addEventListener('keydown',function(e){if(['ArrowRight','PageDown',' ','Enter'].indexOf(e.key)>-1){go(1);e.preventDefault()}else if(['ArrowLeft','PageUp','Backspace'].indexOf(e.key)>-1){go(-1);e.preventDefault()}else if(e.key==='Home')show(0);else if(e.key==='End')show(S.length-1);else if(e.key==='f'||e.key==='F')fsToggle();});
+var x0=null;addEventListener('touchstart',function(e){x0=e.touches[0].clientX},{passive:true});
+addEventListener('touchend',function(e){if(x0===null)return;var dx=e.changedTouches[0].clientX-x0;if(Math.abs(dx)>40)go(dx<0?1:-1);else{bar.classList.add('show');setTimeout(function(){bar.classList.remove('show')},3000)}x0=null},{passive:true});
+function fsToggle(){var d=document;if(!d.fullscreenElement&&!d.webkitFullscreenElement){var r=d.documentElement;(r.requestFullscreen||r.webkitRequestFullscreen||function(){}).call(r)}else{(d.exitFullscreen||d.webkitExitFullscreen||function(){}).call(d)}}
+document.getElementById('prev').onclick=function(){go(-1)};document.getElementById('next').onclick=function(){go(1)};
+document.getElementById('fs').onclick=fsToggle;document.getElementById('pdf').onclick=function(){alert('Your browser will open its Print window. Choose \u201cSave as PDF\u201d as the printer, then press Save. All 36 slides will be saved, one per page.');print()};
+addEventListener('resize',fit);fit();var h=parseInt(location.hash.slice(1),10);show(h?h-1:0);
+if(/[?&]pdf=1/.test(location.search)){addEventListener('load',function(){setTimeout(function(){print()},1200)})}
+})();
+</script></body></html>
