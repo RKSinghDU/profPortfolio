@@ -12,6 +12,8 @@ export interface PortalTool {
   more?: PortalToolLink;
   /** Renders the card as a non-clickable "Coming soon" placeholder. */
   comingSoon?: boolean;
+  /** Open to everyone: shows "Free access" instead of "Sign-in required". */
+  publicAccess?: boolean;
 }
 
 // Replace each '' with the deployed Apps Script web-app URL (access-restricted to your students).
@@ -27,6 +29,12 @@ export const PORTAL_TOOLS: PortalTool[] = [
     body: 'Launch the Disha career and decision simulation.',
     url: 'https://disha-simulation.vercel.app/',
     more: { title: 'About Project Disha', body: 'Know more about Disha', url: '/project-disha.html' },
+  },
+  {
+    title: 'Course Materials',
+    body: 'Lecture slides to view online or save as PDF. Free for everyone.',
+    url: '/materials/',
+    publicAccess: true,
   },
   {
     title: 'Attendance',

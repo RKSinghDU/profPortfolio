@@ -50,7 +50,15 @@ export function StudentPortal() {
                   className={`group flex flex-col flex-1 ${card} p-5 transition-all hover:border-[var(--accent)] hover:shadow-[0_14px_30px_-20px_rgba(193,80,46,0.55)]`}
                 >
                   <span className="inline-flex items-center gap-1.5 text-[0.64rem] tracking-[0.1em] uppercase text-[var(--accent)] mb-3">
-                    <Lock size={12} /> Sign-in required
+                    {t.publicAccess ? (
+                      <>
+                        <BookOpen size={12} /> Free access
+                      </>
+                    ) : (
+                      <>
+                        <Lock size={12} /> Sign-in required
+                      </>
+                    )}
                   </span>
                   <h3 className={`${serif} text-[var(--heading)] text-[1.1rem]`}>{t.title}</h3>
                   <p className="text-[0.88rem] text-[var(--muted2)] mt-1 mb-4">{t.body}</p>
