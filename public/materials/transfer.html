@@ -1,5 +1,0 @@
-<!doctype html><html><head><meta charset="utf-8"><meta name="robots" content="noindex"><title>Transfer</title></head><body style="font:20px sans-serif;padding:30px"><p id="s">Preparing files…</p>
-<script>(async()=>{const B='https://fyspmawqnfehgrfjszbk.supabase.co/storage/v1/object/public/dseh001-transfer/lec2/';const set=new URLSearchParams(location.search).get('set')||'pdf';
-const m=await (await fetch(B+'manifest.json?t='+Date.now())).json();const files=[];
-for(const n of m[set]){const b=await (await fetch(B+n)).blob();files.push({name:set==='index'?'index.html':n,blob:b});}
-if(window.opener){window.opener.postMessage({kind:'dseh001',files},'https://github.com');document.getElementById('s').textContent='Sent '+files.length+' files.';}})();</script></body></html>
