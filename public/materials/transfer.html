@@ -1,9 +1,0 @@
-<!doctype html><html><head><meta charset="utf-8"><meta name="robots" content="noindex"><title>Transfer</title></head><body style="font:20px sans-serif;padding:30px">
-<p id="s">Preparing course files…</p>
-<script>
-(async()=>{const base='https://fyspmawqnfehgrfjszbk.supabase.co/storage/v1/object/public/dseh001-transfer/';
-const names=['DSEH001_Week01_Course_Foundations_and_Disha_Launch.pdf','DSEH001_Week02_Drivers_and_Maturity_Models.pdf','DSEH001_Week03_Data_Literacy_BI_and_Ethics.pdf','DSEH001_Week04_HRIS_and_the_Digital_HR_Core.pdf','DSEH001_Week05_Talent_Acquisition_Onboarding_Learning.pdf'];
-const files=[];for(const n of names){const r=await fetch(base+n);files.push({name:n,blob:await r.blob()});}
-if(window.opener){window.opener.postMessage({kind:'dseh001',files},'https://github.com');document.getElementById('s').textContent='Files sent. You can close this window.';}
-else document.getElementById('s').textContent='No opener window.';})();
-</script></body></html>
