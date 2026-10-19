@@ -1,0 +1,35 @@
+name: One-off replace of DSEH001 Unit Readers (audit corrections)
+
+on:
+  push:
+    paths:
+      - '.github/workflows/update-dseh001-readers.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download and verify files
+        run: |
+          set -euo pipefail
+          D=public/materials/dseh001
+          get () { curl -sSL --retry 3 -X POST "$1" -o "$2"; echo "$3  $2" | sha256sum -c -; }
+          get "https://temp.sh/qYBnp/DSEH001_Unit1_Reader_Why_HR_Is_Going_Digital.pdf" "$D/DSEH001_Unit1_Reader_Why_HR_Is_Going_Digital.pdf" 67ffef7109ab2f9d7e36a4f8a1528111363a8da441251c53823d822eca9903db
+          get "https://temp.sh/OOIvx/DSEH001_Unit2_Reader_Building_and_Rolling_Out_Digital_HR.pdf" "$D/DSEH001_Unit2_Reader_Building_and_Rolling_Out_Digital_HR.pdf" 0b6dfe21b6f28ed03c7aedf924b06cca0f8fcb2f4e110b9d46f58874ab78a16e
+          get "https://temp.sh/pzJqg/DSEH001_Unit3_Reader_Analytics_Algorithms_and_Accountability.pdf" "$D/DSEH001_Unit3_Reader_Analytics_Algorithms_and_Accountability.pdf" 7fbdb6db581c5bba7f3347ea2df5e09befb3afeba8390ff6380b6a05ffb3e2e6
+          get "https://temp.sh/WVBpF/DSEH001_Unit4_Reader_Future_of_Work_and_HR_Strategy.pdf" "$D/DSEH001_Unit4_Reader_Future_of_Work_and_HR_Strategy.pdf" 5ae7fa881b33efec6f79de4d6c7281fe976f06cb1004a0b90a18a1b4dde1ed34
+          get "https://temp.sh/aDtUR/idx2.html" "public/materials/index.html" c16d43c023395f043a857e12ca6b5fd5c83752e9dd97ef7a8c302883fc37f14b
+      - name: Commit and remove this workflow
+        run: |
+          set -euo pipefail
+          git config user.name "RKSinghDU"
+          git config user.email "208256921+RKSinghDU@users.noreply.github.com"
+          git add public/materials/dseh001/DSEH001_Unit*_Reader_*.pdf public/materials/index.html
+          git rm -q .github/workflows/update-dseh001-readers.yml
+          git commit -m "DSEH001 Unit Readers: reference audit corrections (ISO/IEC 27701:2025, Gratton, WEF drivers, Bersin, DPDP, Rajasthan Act)"
+          git push
