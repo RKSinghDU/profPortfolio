@@ -1,0 +1,47 @@
+name: One-off sync of DSEH001 readers, decks and materials page with the Lesson Plan
+
+on:
+  push:
+    paths:
+      - '.github/workflows/sync-dseh001-lessonplan.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download and verify files
+        run: |
+          set -euo pipefail
+          D=public/materials/dseh001
+          get () { curl -sSL --retry 3 -X POST "$1" -o "$2"; echo "$3  $2" | sha256sum -c -; }
+          get "https://temp.sh/vxSbe/DSEH001_Unit1_Reader_Why_HR_Is_Going_Digital.pdf" "$D/DSEH001_Unit1_Reader_Why_HR_Is_Going_Digital.pdf" d536f77d187c7c02df94be521d9dbc221b79a2efe91c180986efdef7904ab2b0
+          get "https://temp.sh/ZRDwb/DSEH001_Unit2_Reader_Building_and_Rolling_Out_Digital_HR.pdf" "$D/DSEH001_Unit2_Reader_Building_and_Rolling_Out_Digital_HR.pdf" 5f1db3a0d8e4e2731fd992568691ff51ab53d39ac5cbbf08ec3ba5198f286590
+          get "https://temp.sh/kGROE/DSEH001_Unit3_Reader_Analytics_Algorithms_and_Accountability.pdf" "$D/DSEH001_Unit3_Reader_Analytics_Algorithms_and_Accountability.pdf" 87f09080727b6876f32a0f63daed4d5c9362d9225a24956f63a5dc5ddb891341
+          get "https://temp.sh/RgQiS/DSEH001_Unit4_Reader_Future_of_Work_and_HR_Strategy.pdf" "$D/DSEH001_Unit4_Reader_Future_of_Work_and_HR_Strategy.pdf" efe4dfd59984c7c91feaec7f4ef39def5e58fb8a2e76fa0982b87035cf869943
+          get "https://temp.sh/eLGPx/DSEH001_W01_L2_Why_HR_Is_Going_Digital.pdf" "$D/DSEH001_W01_L2_Why_HR_Is_Going_Digital.pdf" 1c2e690916b5bedb945156209c21d27e2828f31a52fec0172f708ccdf1903397
+          get "https://temp.sh/ADqJc/DSEH001_W02_L1_Drivers_of_Transformation.pdf" "$D/DSEH001_W02_L1_Drivers_of_Transformation.pdf" 88464b012142bfc94fa72727a13f66c7ec809f2a83527a78c3c1b548ee2f1d2e
+          get "https://temp.sh/sIdsm/DSEH001_W02_L3_Round1_The_Diagnosis.pdf" "$D/DSEH001_W02_L3_Round1_The_Diagnosis.pdf" 50ac04922911b0e7c39dc928c85432274940d1baf4b00af60ad76e734a34391a
+          get "https://temp.sh/rLYZg/DSEH001_W03_L1_Data_Literacy.pdf" "$D/DSEH001_W03_L1_Data_Literacy.pdf" 8434a7feff1722ea81786f409ee0392f8693d8eb010a454cf6c32dda4c4e5171
+          get "https://temp.sh/GyYGs/DSEH001_W03_L2_BI_Fundamentals.pdf" "$D/DSEH001_W03_L2_BI_Fundamentals.pdf" 4669164b7039b1fcd9e707532577e39a3597e34a45b5615a3f7ce7bc54a348bf
+          get "https://temp.sh/gLuzw/DSEH001_W04_L1_HRIS_System_of_Record.pdf" "$D/DSEH001_W04_L1_HRIS_System_of_Record.pdf" 1b92d292e00697b83a01323aa6cd0246a51d1c565b44f0966b8cd8188d22c0ca
+          get "https://temp.sh/bzOTN/DSEH001_W04_L3_Round2_The_Architecture.pdf" "$D/DSEH001_W04_L3_Round2_The_Architecture.pdf" 15e33bba5b4301e8b49f673604feb1a5cea4354ec7295859254926ec47b6dd41
+          get "https://temp.sh/nsDUb/DSEH001_W05_L1_Talent_Acquisition_and_Onboarding.pdf" "$D/DSEH001_W05_L1_Talent_Acquisition_and_Onboarding.pdf" bc40ba41c00fa4db6433231cf78cb4772255542268bff21e7f5bbb26342fb18a
+          get "https://temp.sh/cODyR/DSEH001_W05_L3_Round3_The_Rollout.pdf" "$D/DSEH001_W05_L3_Round3_The_Rollout.pdf" 237bf6d9f009fa43b47958d22031e8b6da1d9f439a24ad62effdff7930b2db04
+          get "https://temp.sh/TIGBj/DSEH001_W07_L1_The_Analytics_Ladder.pdf" "$D/DSEH001_W07_L1_The_Analytics_Ladder.pdf" 805c34cd8b3eb89b8af61e08c7e82ca523835b13d1857428067d06e82db42616
+          get "https://temp.sh/yIcHC/DSEH001_W08_L1_Dashboard_Design.pdf" "$D/DSEH001_W08_L1_Dashboard_Design.pdf" 90cee62e65c58dd5757fd154d16e8add7e7363f36e1856d8da3020470924e62b
+          get "https://temp.sh/xVBAv/DSEH001_W11_L2_HR_as_Digital_Change_Agent.pdf" "$D/DSEH001_W11_L2_HR_as_Digital_Change_Agent.pdf" 56eaee14ed14fe300fef898467733fd24608d7fe5675dde47a8cbb2b23bbd5a5
+          get "https://temp.sh/cDGSR/idx3.html" "public/materials/index.html" 2839653bc2eea85b68be934a784c7e8fef489bbbacfca8a9b0fa66df86e5708b
+      - name: Commit and remove this workflow
+        run: |
+          set -euo pipefail
+          git config user.name "RKSinghDU"
+          git config user.email "208256921+RKSinghDU@users.noreply.github.com"
+          git add public/materials/dseh001/*.pdf public/materials/index.html
+          git rm -q .github/workflows/sync-dseh001-lessonplan.yml
+          git commit -m "Sync DSEH001 with Lesson Plan: readers aligned week by week, retired citations removed from 12 decks, per-week reader links"
+          git push
