@@ -50,6 +50,25 @@ h2{font-family:"Source Serif 4",Georgia,serif;font-size:1.6rem;margin:36px 0 6px
 @media (prefers-color-scheme:dark){.card.u1 .wk{color:#5FC0B8}.card.u2 .wk{color:#A5B4FC}.card.u3 .wk{color:#FDA4AF}.card.u4 .wk{color:#FCD34D}}
 .rlink{margin:-6px 0 12px 14px;font-size:.92rem;color:var(--muted)}
 .rlink a{color:var(--teal);font-weight:600}
+.chooser{margin:6px 0 30px}
+.ch-lead{font-weight:700;letter-spacing:.12em;text-transform:uppercase;font-size:.85rem;color:var(--muted);margin-bottom:10px}
+.ch-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
+.ch{display:flex;flex-direction:column;gap:6px;text-decoration:none;background:var(--card);border:2px solid var(--line);border-radius:16px;padding:22px 24px;border-left-width:10px;transition:transform .15s}
+.ch:hover{transform:translateY(-2px)}
+.ch.c1{border-left-color:var(--teal)}.ch.c4{border-left-color:var(--accent)}
+.ch-code{font-weight:700;letter-spacing:.1em;font-size:.9rem}
+.ch.c1 .ch-code,.ch.c1 .ch-go{color:var(--teal)}.ch.c4 .ch-code,.ch.c4 .ch-go{color:var(--accent)}
+.ch-title{font-family:"Source Serif 4",Georgia,serif;font-size:1.35rem;line-height:1.2;color:var(--navy)}
+.ch-meta{color:var(--muted);font-size:.95rem}
+.ch-go{font-weight:700;margin-top:6px}
+.course-box{margin:28px 0;padding:8px 26px 26px;border:2px solid var(--line);border-radius:20px;background:var(--bg);border-top-width:10px;scroll-margin-top:16px}
+.course-box.c1{border-top-color:var(--teal)}.course-box.c4{border-top-color:var(--accent)}
+.course-box h2{margin-top:14px}
+.cb-eyebrow{margin-top:18px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:.8rem;color:var(--muted)}
+.cb-note{background:var(--panel);border-radius:12px;padding:14px 18px;margin:4px 0 18px;font-size:.98rem}
+.totop{margin-top:22px;text-align:right;font-weight:600}
+.totop a{color:var(--teal);text-decoration:none}
+@media (max-width:600px){.course-box{padding:6px 14px 18px}}
 footer{margin-top:44px;color:var(--muted);font-size:.92rem;border-top:1px solid var(--line);padding-top:18px}
 </style></head><body>
 <div class="wrap">
@@ -61,17 +80,27 @@ footer{margin-top:44px;color:var(--muted);font-size:.92rem;border-top:1px solid 
 <span class="free">&#10003; Free to view and download. No sign in needed.</span>
 </section>
 
+<section class="chooser" id="choose">
+<p class="ch-lead">Choose your course</p>
+<div class="ch-grid">
+<a class="ch c1" href="#dseh001"><span class="ch-code">DSEH001</span><span class="ch-title">Digital Transformation in HR Systems</span><span class="ch-meta">28 lectures &#183; 4 Unit Readers &#183; exam preparation edition</span><span class="ch-go">Open &#8594;</span></a>
+<a class="ch c4" href="#dseh004"><span class="ch-code">DSEH004</span><span class="ch-title">Performance Management</span><span class="ch-meta">Weekly lecture slides</span><span class="ch-go">Open &#8594;</span></a>
+</div>
+</section>
+<section class="course-box c1" id="dseh001">
+<p class="cb-eyebrow">Course 1</p>
 <h2>DSEH001 &#183; Digital Transformation in HR Systems</h2>
-<p class="course-sub">M.Com., University of Delhi &#183; Project Disha</p>
+<p class="course-sub">M.Com., University of Delhi &#183; Exam preparation edition</p>
+<p class="cb-note">These slides prepare you for the end-term examination. They teach the theories, frameworks and evidence of each lecture, with practice questions. Simulation briefings and submission sessions are not included, so some lecture numbers are skipped; the numbers follow the Lesson Plan.</p>
 <section class="readers">
-<p class="tagline">New &#183; Unit Readers</p>
+<p class="tagline">Unit Readers</p>
 <h3 class="weekhead" style="margin-top:4px">Reading companions for the set readings</h3>
-<p class="intro">One reader per unit, following the Lesson Plan week by week. Each explains every set reading in plain language, lists the ideas to hold, links them to GreenLeaf and the Disha rounds, flags common confusions, and gives questions to think with. Read the original first, then use the reader to check your understanding.</p>
+<p class="intro">One reader per unit, following the Lesson Plan week by week. Each explains every set reading in plain language, lists the ideas to hold, shows how to apply them, flags common confusions, and gives questions to think with.</p>
 <div class="grid">
 <article class="card u1">
 <span class="wk">Unit 1 &#183; Weeks 1 to 3 &#183; 14 pages</span>
 <h3>Why HR Is Going Digital</h3>
-<p>Schwab, Stone and colleagues, Westerman, the maturity ladders behind Round 1, Angrave and colleagues, Manuti and de Palma, and the DPDP Act 2023.</p>
+<p>Schwab, Stone and colleagues, Westerman, the maturity ladders, Angrave and colleagues, Manuti and de Palma, and the DPDP Act 2023.</p>
 <div class="btns">
 <a class="btn primary" href="/materials/dseh001/DSEH001_Unit1_Reader_Why_HR_Is_Going_Digital.pdf" target="_blank" rel="noopener">View PDF</a>
 <a class="btn" href="/materials/dseh001/DSEH001_Unit1_Reader_Why_HR_Is_Going_Digital.pdf" download="DSEH001_Unit1_Reader_Why_HR_Is_Going_Digital.pdf">Download PDF</a>
@@ -80,7 +109,7 @@ footer{margin-top:44px;color:var(--muted);font-size:.92rem;border-top:1px solid 
 <article class="card u2">
 <span class="wk">Unit 2 &#183; Weeks 4 to 6 &#183; 15 pages</span>
 <h3>Building and Rolling Out Digital HR</h3>
-<p>Electronic HRM research, the three layer architecture, Privacy by Design, India Stack, ADKAR, Lewin and Kotter, UTAUT and Everett Rogers for Rounds 2 and 3.</p>
+<p>Electronic HRM research, the three layer architecture, Privacy by Design, India Stack, ADKAR, Lewin and Kotter, UTAUT and Everett Rogers.</p>
 <div class="btns">
 <a class="btn primary" href="/materials/dseh001/DSEH001_Unit2_Reader_Building_and_Rolling_Out_Digital_HR.pdf" target="_blank" rel="noopener">View PDF</a>
 <a class="btn" href="/materials/dseh001/DSEH001_Unit2_Reader_Building_and_Rolling_Out_Digital_HR.pdf" download="DSEH001_Unit2_Reader_Building_and_Rolling_Out_Digital_HR.pdf">Download PDF</a>
@@ -89,7 +118,7 @@ footer{margin-top:44px;color:var(--muted);font-size:.92rem;border-top:1px solid 
 <article class="card u3">
 <span class="wk">Unit 3 &#183; Weeks 7 to 9 &#183; 16 pages</span>
 <h3>Analytics, Algorithms and Accountability</h3>
-<p>Marler and Boudreau, Davenport and colleagues, Fitz-enz and Mattox, NIST AI RMF, the four fifths rule, Knaflic, Tambe and colleagues, Kellogg and colleagues for Rounds 4 and 5.</p>
+<p>Marler and Boudreau, Davenport and colleagues, Fitz-enz and Mattox, NIST AI RMF, the four fifths rule, Knaflic, Tambe and colleagues, Kellogg and colleagues.</p>
 <div class="btns">
 <a class="btn primary" href="/materials/dseh001/DSEH001_Unit3_Reader_Analytics_Algorithms_and_Accountability.pdf" target="_blank" rel="noopener">View PDF</a>
 <a class="btn" href="/materials/dseh001/DSEH001_Unit3_Reader_Analytics_Algorithms_and_Accountability.pdf" download="DSEH001_Unit3_Reader_Analytics_Algorithms_and_Accountability.pdf">Download PDF</a>
@@ -98,7 +127,7 @@ footer{margin-top:44px;color:var(--muted);font-size:.92rem;border-top:1px solid 
 <article class="card u4">
 <span class="wk">Unit 4 &#183; Weeks 10 to 12 &#183; 12 pages</span>
 <h3>The Future of Work and HR Strategy</h3>
-<p>NITI Aayog, Gratton, Susskind, the Code on Social Security 2020, the Rajasthan Act 2023, WEF 2025 and the 6B framework for Round 6 and the Board memo.</p>
+<p>NITI Aayog, Gratton, Susskind, the Code on Social Security 2020, the Rajasthan Act 2023, WEF 2025 and the 6B framework.</p>
 <div class="btns">
 <a class="btn primary" href="/materials/dseh001/DSEH001_Unit4_Reader_Future_of_Work_and_HR_Strategy.pdf" target="_blank" rel="noopener">View PDF</a>
 <a class="btn" href="/materials/dseh001/DSEH001_Unit4_Reader_Future_of_Work_and_HR_Strategy.pdf" download="DSEH001_Unit4_Reader_Future_of_Work_and_HR_Strategy.pdf">Download PDF</a>
@@ -106,34 +135,16 @@ footer{margin-top:44px;color:var(--muted);font-size:.92rem;border-top:1px solid 
 </article>
 </div>
 </section>
-<h3 class="weekhead">Week 1 &#183; Course Foundations and the Disha Launch</h3>
+<h3 class="weekhead">Week 1 &#183; Course Foundations: Why HR Is Going Digital</h3>
 <p class="rlink">&#128214; Readings for Week 1 are explained in the <a href="/materials/dseh001/DSEH001_Unit1_Reader_Why_HR_Is_Going_Digital.pdf" target="_blank" rel="noopener">Unit 1 Reader</a>.</p>
 <div class="grid">
 <article class="card">
-<span class="wk">Lecture 1 &#183; 13 slides</span>
-<h3>Orientation, the Course Gem and Pod Formation</h3>
-<p>Learning outcomes, marks, the Course Gem, the flipped cycle, the Learning Contract, and pod roles.</p>
-<div class="btns">
-<a class="btn primary" href="/materials/dseh001/DSEH001_W01_L1_Orientation_Gem_and_Pods.pdf" target="_blank" rel="noopener">View PDF</a>
-<a class="btn" href="/materials/dseh001/DSEH001_W01_L1_Orientation_Gem_and_Pods.pdf" download="DSEH001_W01_L1_Orientation_Gem_and_Pods.pdf">Download PDF</a>
-</div>
-</article>
-<article class="card">
-<span class="wk">Lecture 2 &#183; 23 slides</span>
+<span class="wk">Lecture 2 &#183; 22 slides</span>
 <h3>Why HR Is Going Digital</h3>
-<p>Industry 4.0, AI and hybrid work; digitization versus transformation; GreenLeaf's current state.</p>
+<p>Industry 4.0, AI and hybrid work; digitization versus transformation; Zuboff, Autor and colleagues, Orlikowski, Verhoef and colleagues.</p>
 <div class="btns">
 <a class="btn primary" href="/materials/dseh001/DSEH001_W01_L2_Why_HR_Is_Going_Digital.pdf" target="_blank" rel="noopener">View PDF</a>
 <a class="btn" href="/materials/dseh001/DSEH001_W01_L2_Why_HR_Is_Going_Digital.pdf" download="DSEH001_W01_L2_Why_HR_Is_Going_Digital.pdf">Download PDF</a>
-</div>
-</article>
-<article class="card">
-<span class="wk">Lecture 3 &#183; 14 slides</span>
-<h3>The GreenLeaf Brief and Disha Registration</h3>
-<p>Five patterns in the GreenLeaf pack, six rounds, three currencies, the four anchors and dataset rules.</p>
-<div class="btns">
-<a class="btn primary" href="/materials/dseh001/DSEH001_W01_L3_GreenLeaf_Brief_and_Registration.pdf" target="_blank" rel="noopener">View PDF</a>
-<a class="btn" href="/materials/dseh001/DSEH001_W01_L3_GreenLeaf_Brief_and_Registration.pdf" download="DSEH001_W01_L3_GreenLeaf_Brief_and_Registration.pdf">Download PDF</a>
 </div>
 </article>
 </div>
@@ -141,30 +152,21 @@ footer{margin-top:44px;color:var(--muted);font-size:.92rem;border-top:1px solid 
 <p class="rlink">&#128214; Readings for Week 2 are explained in the <a href="/materials/dseh001/DSEH001_Unit1_Reader_Why_HR_Is_Going_Digital.pdf" target="_blank" rel="noopener">Unit 1 Reader</a>.</p>
 <div class="grid">
 <article class="card">
-<span class="wk">Lecture 1 &#183; 20 slides</span>
+<span class="wk">Lecture 1 &#183; 19 slides</span>
 <h3>Drivers of Digital Transformation</h3>
-<p>Technological, economic, workforce and competitive drivers; Industry 4.0 and HR's changing role.</p>
+<p>Four families of drivers; Industry 4.0 and the HR role; TOE, institutional isomorphism, resource-based view, Ulrich.</p>
 <div class="btns">
 <a class="btn primary" href="/materials/dseh001/DSEH001_W02_L1_Drivers_of_Transformation.pdf" target="_blank" rel="noopener">View PDF</a>
 <a class="btn" href="/materials/dseh001/DSEH001_W02_L1_Drivers_of_Transformation.pdf" download="DSEH001_W02_L1_Drivers_of_Transformation.pdf">Download PDF</a>
 </div>
 </article>
 <article class="card">
-<span class="wk">Lecture 2 &#183; 39 slides</span>
+<span class="wk">Lecture 2 &#183; 22 slides</span>
 <h3>Maturity Models and Strategic Alignment</h3>
-<p>Stage models and the Westerman grid, four alignment tests, and the frameworks behind Round 1 in depth.</p>
+<p>Stage models and the Westerman grid; Kotter; the three-level digital divide; DPDP and the Social Security Code.</p>
 <div class="btns">
 <a class="btn primary" href="/materials/dseh001/DSEH001_W02_L2_Maturity_Models_and_Alignment.pdf" target="_blank" rel="noopener">View PDF</a>
 <a class="btn" href="/materials/dseh001/DSEH001_W02_L2_Maturity_Models_and_Alignment.pdf" download="DSEH001_W02_L2_Maturity_Models_and_Alignment.pdf">Download PDF</a>
-</div>
-</article>
-<article class="card">
-<span class="wk">Lecture 3 &#183; 35 slides</span>
-<h3>Round 1: The Diagnosis</h3>
-<p>The Round 1 decisions, the corporate-first plan tested against the anchors, and the method of diagnosis.</p>
-<div class="btns">
-<a class="btn primary" href="/materials/dseh001/DSEH001_W02_L3_Round1_The_Diagnosis.pdf" target="_blank" rel="noopener">View PDF</a>
-<a class="btn" href="/materials/dseh001/DSEH001_W02_L3_Round1_The_Diagnosis.pdf" download="DSEH001_W02_L3_Round1_The_Diagnosis.pdf">Download PDF</a>
 </div>
 </article>
 </div>
@@ -172,18 +174,18 @@ footer{margin-top:44px;color:var(--muted);font-size:.92rem;border-top:1px solid 
 <p class="rlink">&#128214; Readings for Week 3 are explained in the <a href="/materials/dseh001/DSEH001_Unit1_Reader_Why_HR_Is_Going_Digital.pdf" target="_blank" rel="noopener">Unit 1 Reader</a>.</p>
 <div class="grid">
 <article class="card">
-<span class="wk">Lecture 1 &#183; 14 slides</span>
+<span class="wk">Lecture 1 &#183; 16 slides</span>
 <h3>Data Literacy and Statistical Thinking</h3>
-<p>Samples and rates, base rates, averages that hide spreads, correlation and cause, percentage points.</p>
+<p>Samples, rates, base rates, Simpson&#x27;s paradox and causal inference.</p>
 <div class="btns">
 <a class="btn primary" href="/materials/dseh001/DSEH001_W03_L1_Data_Literacy.pdf" target="_blank" rel="noopener">View PDF</a>
 <a class="btn" href="/materials/dseh001/DSEH001_W03_L1_Data_Literacy.pdf" download="DSEH001_W03_L1_Data_Literacy.pdf">Download PDF</a>
 </div>
 </article>
 <article class="card">
-<span class="wk">Lecture 2 &#183; 14 slides</span>
+<span class="wk">Lecture 2 &#183; 17 slides</span>
 <h3>Business Intelligence Fundamentals</h3>
-<p>The BI stack at GreenLeaf, warehouse, metric and dashboard, data quality, and time to hire.</p>
+<p>The BI stack, metrics as agreements, dashboards; Ackoff, Inmon and Kimball, Goodhart, Wang and Strong.</p>
 <div class="btns">
 <a class="btn primary" href="/materials/dseh001/DSEH001_W03_L2_BI_Fundamentals.pdf" target="_blank" rel="noopener">View PDF</a>
 <a class="btn" href="/materials/dseh001/DSEH001_W03_L2_BI_Fundamentals.pdf" download="DSEH001_W03_L2_BI_Fundamentals.pdf">Download PDF</a>
@@ -192,10 +194,10 @@ footer{margin-top:44px;color:var(--muted);font-size:.92rem;border-top:1px solid 
 <article class="card">
 <span class="wk">Lecture 3 &#183; 16 slides</span>
 <h3>The Ethics and Culture of Adoption</h3>
-<p>Consent, surveillance, the divide, the DPDP Act, imported tools, and the Round 1 debrief.</p>
+<p>Consent at work, the surveillance ladder, the DPDP Act; Nissenbaum, Foucault and Zuboff, Hofstede.</p>
 <div class="btns">
-<a class="btn primary" href="/materials/dseh001/DSEH001_W03_L3_Ethics_of_Adoption_and_R1_Debrief.pdf" target="_blank" rel="noopener">View PDF</a>
-<a class="btn" href="/materials/dseh001/DSEH001_W03_L3_Ethics_of_Adoption_and_R1_Debrief.pdf" download="DSEH001_W03_L3_Ethics_of_Adoption_and_R1_Debrief.pdf">Download PDF</a>
+<a class="btn primary" href="/materials/dseh001/DSEH001_W03_L3_Ethics_of_Adoption.pdf" target="_blank" rel="noopener">View PDF</a>
+<a class="btn" href="/materials/dseh001/DSEH001_W03_L3_Ethics_of_Adoption.pdf" download="DSEH001_W03_L3_Ethics_of_Adoption.pdf">Download PDF</a>
 </div>
 </article>
 </div>
@@ -203,30 +205,21 @@ footer{margin-top:44px;color:var(--muted);font-size:.92rem;border-top:1px solid 
 <p class="rlink">&#128214; Readings for Week 4 are explained in the <a href="/materials/dseh001/DSEH001_Unit2_Reader_Building_and_Rolling_Out_Digital_HR.pdf" target="_blank" rel="noopener">Unit 2 Reader</a>.</p>
 <div class="grid">
 <article class="card">
-<span class="wk">Lecture 1 &#183; 14 slides</span>
+<span class="wk">Lecture 1 &#183; 18 slides</span>
 <h3>HRIS: The System of Record</h3>
-<p>HRIS, HRMS and HCM; suite or best of breed; build, buy or configure; the e-HRM evidence.</p>
+<p>Suite or best of breed; build, buy or configure; integration; e-HRM evidence; DeLone and McLean.</p>
 <div class="btns">
 <a class="btn primary" href="/materials/dseh001/DSEH001_W04_L1_HRIS_System_of_Record.pdf" target="_blank" rel="noopener">View PDF</a>
 <a class="btn" href="/materials/dseh001/DSEH001_W04_L1_HRIS_System_of_Record.pdf" download="DSEH001_W04_L1_HRIS_System_of_Record.pdf">Download PDF</a>
 </div>
 </article>
 <article class="card">
-<span class="wk">Lecture 2 &#183; 13 slides</span>
+<span class="wk">Lecture 2 &#183; 14 slides</span>
 <h3>E-Recruitment and Applicant Tracking</h3>
-<p>The funnel at GreenLeaf, channels, ATS failure modes, and why totals can hide unfairness.</p>
+<p>The digitized funnel, ATS failure modes, selection validity, Griggs, the Amazon case.</p>
 <div class="btns">
 <a class="btn primary" href="/materials/dseh001/DSEH001_W04_L2_E-Recruitment_and_ATS.pdf" target="_blank" rel="noopener">View PDF</a>
 <a class="btn" href="/materials/dseh001/DSEH001_W04_L2_E-Recruitment_and_ATS.pdf" download="DSEH001_W04_L2_E-Recruitment_and_ATS.pdf">Download PDF</a>
-</div>
-</article>
-<article class="card">
-<span class="wk">Lecture 3 &#183; 13 slides</span>
-<h3>Round 2: The Architecture</h3>
-<p>GreenLeaf's 16 systems in three layers, cost per active user, sequencing, and the anchor test.</p>
-<div class="btns">
-<a class="btn primary" href="/materials/dseh001/DSEH001_W04_L3_Round2_The_Architecture.pdf" target="_blank" rel="noopener">View PDF</a>
-<a class="btn" href="/materials/dseh001/DSEH001_W04_L3_Round2_The_Architecture.pdf" download="DSEH001_W04_L3_Round2_The_Architecture.pdf">Download PDF</a>
 </div>
 </article>
 </div>
@@ -234,30 +227,21 @@ footer{margin-top:44px;color:var(--muted);font-size:.92rem;border-top:1px solid 
 <p class="rlink">&#128214; Readings for Week 5 are explained in the <a href="/materials/dseh001/DSEH001_Unit2_Reader_Building_and_Rolling_Out_Digital_HR.pdf" target="_blank" rel="noopener">Unit 2 Reader</a>.</p>
 <div class="grid">
 <article class="card">
-<span class="wk">Lecture 1 &#183; 25 slides</span>
+<span class="wk">Lecture 1 &#183; 26 slides</span>
 <h3>Talent Acquisition and Digital Onboarding</h3>
-<p>Signaling, validity, fit and disparate impact; socialization; India Stack; frontline onboarding.</p>
+<p>Signaling, the ASA cycle, routes to disparate impact; socialization, the Four Cs, India Stack onboarding.</p>
 <div class="btns">
 <a class="btn primary" href="/materials/dseh001/DSEH001_W05_L1_Talent_Acquisition_and_Onboarding.pdf" target="_blank" rel="noopener">View PDF</a>
 <a class="btn" href="/materials/dseh001/DSEH001_W05_L1_Talent_Acquisition_and_Onboarding.pdf" download="DSEH001_W05_L1_Talent_Acquisition_and_Onboarding.pdf">Download PDF</a>
 </div>
 </article>
 <article class="card">
-<span class="wk">Lecture 2 &#183; 15 slides</span>
+<span class="wk">Lecture 2 &#183; 18 slides</span>
 <h3>Learning Management Systems</h3>
-<p>How adults learn, LMS and LXP, the Infosys Lex case, a store learning path, Kirkpatrick.</p>
+<p>Adult learning, SDT, spacing and retrieval; LMS, LXP and skills platforms; Kirkpatrick and transfer.</p>
 <div class="btns">
 <a class="btn primary" href="/materials/dseh001/DSEH001_W05_L2_Learning_Management_Systems.pdf" target="_blank" rel="noopener">View PDF</a>
 <a class="btn" href="/materials/dseh001/DSEH001_W05_L2_Learning_Management_Systems.pdf" download="DSEH001_W05_L2_Learning_Management_Systems.pdf">Download PDF</a>
-</div>
-</article>
-<article class="card">
-<span class="wk">Lecture 3 &#183; 14 slides</span>
-<h3>Round 3: The Rollout</h3>
-<p>What adoption data shows, rival explanations, access as the barrier, and matching the fix to it.</p>
-<div class="btns">
-<a class="btn primary" href="/materials/dseh001/DSEH001_W05_L3_Round3_The_Rollout.pdf" target="_blank" rel="noopener">View PDF</a>
-<a class="btn" href="/materials/dseh001/DSEH001_W05_L3_Round3_The_Rollout.pdf" download="DSEH001_W05_L3_Round3_The_Rollout.pdf">Download PDF</a>
 </div>
 </article>
 </div>
@@ -265,30 +249,30 @@ footer{margin-top:44px;color:var(--muted);font-size:.92rem;border-top:1px solid 
 <p class="rlink">&#128214; Readings for Week 6 are explained in the <a href="/materials/dseh001/DSEH001_Unit2_Reader_Building_and_Rolling_Out_Digital_HR.pdf" target="_blank" rel="noopener">Unit 2 Reader</a>.</p>
 <div class="grid">
 <article class="card">
-<span class="wk">Lecture 1 &#183; 12 slides</span>
+<span class="wk">Lecture 1 &#183; 16 slides</span>
 <h3>Engagement Apps, Chatbots and Mobile HR</h3>
-<p>What these tools actually do, where they over-promise, and why GreenLeaf's frontline is hard to reach.</p>
+<p>Pulse surveys, continuous performance management, chatbots; goal setting, feedback, JD-R, Kahn.</p>
 <div class="btns">
 <a class="btn primary" href="/materials/dseh001/DSEH001_W06_L1_Engagement_Apps_Chatbots_Mobile_HR.pdf" target="_blank" rel="noopener">View PDF</a>
 <a class="btn" href="/materials/dseh001/DSEH001_W06_L1_Engagement_Apps_Chatbots_Mobile_HR.pdf" download="DSEH001_W06_L1_Engagement_Apps_Chatbots_Mobile_HR.pdf">Download PDF</a>
 </div>
 </article>
 <article class="card">
-<span class="wk">Lecture 2 &#183; 11 slides</span>
+<span class="wk">Lecture 2 &#183; 16 slides</span>
 <h3>Integration and User Adoption</h3>
-<p>Why a stack of good tools becomes a bad system, and why people still do not use what was built for them.</p>
+<p>Silos and APIs; UTAUT, TAM2 and TAM3; van Dijk, Granovetter, Kotter.</p>
 <div class="btns">
 <a class="btn primary" href="/materials/dseh001/DSEH001_W06_L2_Integration_and_User_Adoption.pdf" target="_blank" rel="noopener">View PDF</a>
 <a class="btn" href="/materials/dseh001/DSEH001_W06_L2_Integration_and_User_Adoption.pdf" download="DSEH001_W06_L2_Integration_and_User_Adoption.pdf">Download PDF</a>
 </div>
 </article>
 <article class="card">
-<span class="wk">Lecture 3 &#183; 10 slides</span>
-<h3>Course Correction and the D1 Clinic</h3>
-<p>When to scale, fix, retrain or pause, and what Deliverable 1 got right and wrong.</p>
+<span class="wk">Lecture 3 &#183; 13 slides</span>
+<h3>Course Correction After Go-Live</h3>
+<p>Scale, fix, retrain or pause; escalation of commitment, sunk costs, stage-gate, real options.</p>
 <div class="btns">
-<a class="btn primary" href="/materials/dseh001/DSEH001_W06_L3_Course_Correction_and_D1_Clinic.pdf" target="_blank" rel="noopener">View PDF</a>
-<a class="btn" href="/materials/dseh001/DSEH001_W06_L3_Course_Correction_and_D1_Clinic.pdf" download="DSEH001_W06_L3_Course_Correction_and_D1_Clinic.pdf">Download PDF</a>
+<a class="btn primary" href="/materials/dseh001/DSEH001_W06_L3_Course_Correction.pdf" target="_blank" rel="noopener">View PDF</a>
+<a class="btn" href="/materials/dseh001/DSEH001_W06_L3_Course_Correction.pdf" download="DSEH001_W06_L3_Course_Correction.pdf">Download PDF</a>
 </div>
 </article>
 </div>
@@ -296,30 +280,30 @@ footer{margin-top:44px;color:var(--muted);font-size:.92rem;border-top:1px solid 
 <p class="rlink">&#128214; Readings for Week 7 are explained in the <a href="/materials/dseh001/DSEH001_Unit3_Reader_Analytics_Algorithms_and_Accountability.pdf" target="_blank" rel="noopener">Unit 3 Reader</a>.</p>
 <div class="grid">
 <article class="card">
-<span class="wk">Lecture 1 &#183; 11 slides</span>
+<span class="wk">Lecture 1 &#183; 13 slides</span>
 <h3>The Analytics Ladder</h3>
-<p>Four kinds of question, from what happened to what we should do, and where HR really stands.</p>
+<p>Descriptive to prescriptive; leading and lagging; Davenport and colleagues, Marler and Boudreau, Shmueli.</p>
 <div class="btns">
 <a class="btn primary" href="/materials/dseh001/DSEH001_W07_L1_The_Analytics_Ladder.pdf" target="_blank" rel="noopener">View PDF</a>
 <a class="btn" href="/materials/dseh001/DSEH001_W07_L1_The_Analytics_Ladder.pdf" download="DSEH001_W07_L1_The_Analytics_Ladder.pdf">Download PDF</a>
 </div>
 </article>
 <article class="card">
-<span class="wk">Lecture 2 &#183; 10 slides</span>
+<span class="wk">Lecture 2 &#183; 13 slides</span>
 <h3>Evidence-Based HR and Metrics</h3>
-<p>What analytics delivers when it works, the traps that stop it, and the difference between a metric, a KPI and a vanity number.</p>
+<p>Data and capability traps; metric, KPI, vanity number; LAMP, evidence-based management, logic models.</p>
 <div class="btns">
 <a class="btn primary" href="/materials/dseh001/DSEH001_W07_L2_Evidence-Based_HR_and_Metrics.pdf" target="_blank" rel="noopener">View PDF</a>
 <a class="btn" href="/materials/dseh001/DSEH001_W07_L2_Evidence-Based_HR_and_Metrics.pdf" download="DSEH001_W07_L2_Evidence-Based_HR_and_Metrics.pdf">Download PDF</a>
 </div>
 </article>
 <article class="card">
-<span class="wk">Lecture 3 &#183; 10 slides</span>
-<h3>Round 4: The Audit</h3>
-<p>Standing up analytics and auditing a hiring algorithm for bias, transparency and compliance.</p>
+<span class="wk">Lecture 3 &#183; 12 slides</span>
+<h3>Auditing Algorithms in HR</h3>
+<p>The four fifths test, NIST AI RMF, SMACTR, model cards and datasheets.</p>
 <div class="btns">
-<a class="btn primary" href="/materials/dseh001/DSEH001_W07_L3_Round4_The_Audit.pdf" target="_blank" rel="noopener">View PDF</a>
-<a class="btn" href="/materials/dseh001/DSEH001_W07_L3_Round4_The_Audit.pdf" download="DSEH001_W07_L3_Round4_The_Audit.pdf">Download PDF</a>
+<a class="btn primary" href="/materials/dseh001/DSEH001_W07_L3_Auditing_Algorithms.pdf" target="_blank" rel="noopener">View PDF</a>
+<a class="btn" href="/materials/dseh001/DSEH001_W07_L3_Auditing_Algorithms.pdf" download="DSEH001_W07_L3_Auditing_Algorithms.pdf">Download PDF</a>
 </div>
 </article>
 </div>
@@ -327,27 +311,27 @@ footer{margin-top:44px;color:var(--muted);font-size:.92rem;border-top:1px solid 
 <p class="rlink">&#128214; Readings for Week 8 are explained in the <a href="/materials/dseh001/DSEH001_Unit3_Reader_Analytics_Algorithms_and_Accountability.pdf" target="_blank" rel="noopener">Unit 3 Reader</a>.</p>
 <div class="grid">
 <article class="card">
-<span class="wk">Lecture 1 &#183; 10 slides</span>
+<span class="wk">Lecture 1 &#183; 14 slides</span>
 <h3>Dashboard Design</h3>
-<p>What an executive should see in ten seconds, and what to leave out.</p>
+<p>The ten-second test, counter-metrics; Few, Tufte, Cleveland and McGill, working memory.</p>
 <div class="btns">
 <a class="btn primary" href="/materials/dseh001/DSEH001_W08_L1_Dashboard_Design.pdf" target="_blank" rel="noopener">View PDF</a>
 <a class="btn" href="/materials/dseh001/DSEH001_W08_L1_Dashboard_Design.pdf" download="DSEH001_W08_L1_Dashboard_Design.pdf">Download PDF</a>
 </div>
 </article>
 <article class="card">
-<span class="wk">Lecture 2 &#183; 10 slides</span>
+<span class="wk">Lecture 2 &#183; 14 slides</span>
 <h3>Storytelling with Data and the Ethics of Framing</h3>
-<p>From chart to decision, and how a true chart can still mislead.</p>
+<p>What, so what, now what; framing effects; Knaflic, Heath and Heath, Huff.</p>
 <div class="btns">
 <a class="btn primary" href="/materials/dseh001/DSEH001_W08_L2_Storytelling_and_Ethics_of_Framing.pdf" target="_blank" rel="noopener">View PDF</a>
 <a class="btn" href="/materials/dseh001/DSEH001_W08_L2_Storytelling_and_Ethics_of_Framing.pdf" download="DSEH001_W08_L2_Storytelling_and_Ethics_of_Framing.pdf">Download PDF</a>
 </div>
 </article>
 <article class="card">
-<span class="wk">Lecture 3 &#183; 10 slides</span>
+<span class="wk">Lecture 3 &#183; 13 slides</span>
 <h3>KPI Frameworks and Data Culture</h3>
-<p>Cascading KPIs, building data literacy in HR, and comparing fairness-audit findings across pods.</p>
+<p>Cascading KPIs; strategy maps, Schein, Ajzen, Davenport and Harris.</p>
 <div class="btns">
 <a class="btn primary" href="/materials/dseh001/DSEH001_W08_L3_KPI_Frameworks_and_Data_Culture.pdf" target="_blank" rel="noopener">View PDF</a>
 <a class="btn" href="/materials/dseh001/DSEH001_W08_L3_KPI_Frameworks_and_Data_Culture.pdf" download="DSEH001_W08_L3_KPI_Frameworks_and_Data_Culture.pdf">Download PDF</a>
@@ -358,30 +342,30 @@ footer{margin-top:44px;color:var(--muted);font-size:.92rem;border-top:1px solid 
 <p class="rlink">&#128214; Readings for Week 9 are explained in the <a href="/materials/dseh001/DSEH001_Unit3_Reader_Analytics_Algorithms_and_Accountability.pdf" target="_blank" rel="noopener">Unit 3 Reader</a>.</p>
 <div class="grid">
 <article class="card">
-<span class="wk">Lecture 1 &#183; 10 slides</span>
-<h3>Algorithmic Decision- Making in HR</h3>
-<p>Where algorithms now make or shape HR decisions, and what the Amazon case teaches.</p>
+<span class="wk">Lecture 1 &#183; 13 slides</span>
+<h3>Algorithmic Decision-Making in HR</h3>
+<p>Where algorithms act; the Amazon case; the six Rs; algorithm aversion and appreciation.</p>
 <div class="btns">
 <a class="btn primary" href="/materials/dseh001/DSEH001_W09_L1_Algorithmic_Decision-Making_in_HR.pdf" target="_blank" rel="noopener">View PDF</a>
 <a class="btn" href="/materials/dseh001/DSEH001_W09_L1_Algorithmic_Decision-Making_in_HR.pdf" download="DSEH001_W09_L1_Algorithmic_Decision-Making_in_HR.pdf">Download PDF</a>
 </div>
 </article>
 <article class="card">
-<span class="wk">Lecture 2 &#183; 10 slides</span>
+<span class="wk">Lecture 2 &#183; 13 slides</span>
 <h3>Fairness, Transparency and Bias</h3>
-<p>How bias enters models, why fairness definitions conflict, and what the DPDP Act does and does not do.</p>
+<p>Routes of bias, competing fairness definitions, Gender Shades, Rudin, the DPDP Act.</p>
 <div class="btns">
 <a class="btn primary" href="/materials/dseh001/DSEH001_W09_L2_Fairness_Transparency_and_Bias.pdf" target="_blank" rel="noopener">View PDF</a>
 <a class="btn" href="/materials/dseh001/DSEH001_W09_L2_Fairness_Transparency_and_Bias.pdf" download="DSEH001_W09_L2_Fairness_Transparency_and_Bias.pdf">Download PDF</a>
 </div>
 </article>
 <article class="card">
-<span class="wk">Lecture 3 &#183; 10 slides</span>
-<h3>Accountability and Round 5: The Story</h3>
-<p>Algorithmic management, human review and redress, and GL-1002 under an algorithm.</p>
+<span class="wk">Lecture 3 &#183; 12 slides</span>
+<h3>Accountability and Algorithmic Management</h3>
+<p>Human review, procedural justice, information asymmetry, exit and voice, precaution.</p>
 <div class="btns">
-<a class="btn primary" href="/materials/dseh001/DSEH001_W09_L3_Accountability_and_Round5_Briefing.pdf" target="_blank" rel="noopener">View PDF</a>
-<a class="btn" href="/materials/dseh001/DSEH001_W09_L3_Accountability_and_Round5_Briefing.pdf" download="DSEH001_W09_L3_Accountability_and_Round5_Briefing.pdf">Download PDF</a>
+<a class="btn primary" href="/materials/dseh001/DSEH001_W09_L3_Accountability_and_Algorithmic_Management.pdf" target="_blank" rel="noopener">View PDF</a>
+<a class="btn" href="/materials/dseh001/DSEH001_W09_L3_Accountability_and_Algorithmic_Management.pdf" download="DSEH001_W09_L3_Accountability_and_Algorithmic_Management.pdf">Download PDF</a>
 </div>
 </article>
 </div>
@@ -389,96 +373,72 @@ footer{margin-top:44px;color:var(--muted);font-size:.92rem;border-top:1px solid 
 <p class="rlink">&#128214; Readings for Week 10 are explained in the <a href="/materials/dseh001/DSEH001_Unit4_Reader_Future_of_Work_and_HR_Strategy.pdf" target="_blank" rel="noopener">Unit 4 Reader</a>.</p>
 <div class="grid">
 <article class="card">
-<span class="wk">Lecture 1 &#183; 10 slides</span>
+<span class="wk">Lecture 1 &#183; 12 slides</span>
 <h3>The Gig and Platform Economy</h3>
-<p>How platform work works, who it serves, and India's emerging legal frame.</p>
+<p>India&#x27;s gig economy and law; Coase, Atkinson, Kalleberg; NITI Aayog&#x27;s RAISE approach.</p>
 <div class="btns">
 <a class="btn primary" href="/materials/dseh001/DSEH001_W10_L1_The_Gig_and_Platform_Economy.pdf" target="_blank" rel="noopener">View PDF</a>
 <a class="btn" href="/materials/dseh001/DSEH001_W10_L1_The_Gig_and_Platform_Economy.pdf" download="DSEH001_W10_L1_The_Gig_and_Platform_Economy.pdf">Download PDF</a>
 </div>
 </article>
 <article class="card">
-<span class="wk">Lecture 2 &#183; 10 slides</span>
+<span class="wk">Lecture 2 &#183; 13 slides</span>
 <h3>Hybrid and Flexible Work</h3>
-<p>What the evidence supports, the equity trap of two-tier hybrid, and designing for GreenLeaf.</p>
+<p>Gratton&#x27;s design lenses, the equity trap, Bloom&#x27;s experiments, justice, Susskind.</p>
 <div class="btns">
 <a class="btn primary" href="/materials/dseh001/DSEH001_W10_L2_Hybrid_and_Flexible_Work.pdf" target="_blank" rel="noopener">View PDF</a>
 <a class="btn" href="/materials/dseh001/DSEH001_W10_L2_Hybrid_and_Flexible_Work.pdf" download="DSEH001_W10_L2_Hybrid_and_Flexible_Work.pdf">Download PDF</a>
 </div>
 </article>
 <article class="card">
-<span class="wk">Lecture 3 &#183; 11 slides</span>
-<h3>Round 6: Future-of-Work Strategy</h3>
-<p>What a future-of-work HR strategy must cover, the 6B framework, and the Board Memo brief.</p>
+<span class="wk">Lecture 3 &#183; 14 slides</span>
+<h3>Future-of-Work Strategy</h3>
+<p>Automation risk debates, displacement and reinstatement, Lepak and Snell, the 6B framework.</p>
 <div class="btns">
-<a class="btn primary" href="/materials/dseh001/DSEH001_W10_L3_Round6_Future-of-Work_Strategy.pdf" target="_blank" rel="noopener">View PDF</a>
-<a class="btn" href="/materials/dseh001/DSEH001_W10_L3_Round6_Future-of-Work_Strategy.pdf" download="DSEH001_W10_L3_Round6_Future-of-Work_Strategy.pdf">Download PDF</a>
+<a class="btn primary" href="/materials/dseh001/DSEH001_W10_L3_Future-of-Work_Strategy.pdf" target="_blank" rel="noopener">View PDF</a>
+<a class="btn" href="/materials/dseh001/DSEH001_W10_L3_Future-of-Work_Strategy.pdf" download="DSEH001_W10_L3_Future-of-Work_Strategy.pdf">Download PDF</a>
 </div>
 </article>
 </div>
-<h3 class="weekhead">Week 11 &#183; Digital HR Strategy, Change Agency and the Board Memo</h3>
+<h3 class="weekhead">Week 11 &#183; Digital HR Strategy and Change Agency</h3>
 <p class="rlink">&#128214; Readings for Week 11 are explained in the <a href="/materials/dseh001/DSEH001_Unit4_Reader_Future_of_Work_and_HR_Strategy.pdf" target="_blank" rel="noopener">Unit 4 Reader</a>.</p>
 <div class="grid">
 <article class="card">
-<span class="wk">Lecture 1 &#183; 9 slides</span>
+<span class="wk">Lecture 1 &#183; 12 slides</span>
 <h3>Strategy for Resilience and Agility</h3>
-<p>From tools to an operating model, and how to build an HR function that can change itself.</p>
+<p>Operating models; dynamic capabilities, exploration and exploitation, emergent strategy, lean startup.</p>
 <div class="btns">
 <a class="btn primary" href="/materials/dseh001/DSEH001_W11_L1_Strategy_for_Resilience_and_Agility.pdf" target="_blank" rel="noopener">View PDF</a>
 <a class="btn" href="/materials/dseh001/DSEH001_W11_L1_Strategy_for_Resilience_and_Agility.pdf" download="DSEH001_W11_L1_Strategy_for_Resilience_and_Agility.pdf">Download PDF</a>
 </div>
 </article>
 <article class="card">
-<span class="wk">Lecture 2 &#183; 10 slides</span>
+<span class="wk">Lecture 2 &#183; 13 slides</span>
 <h3>HR as Digital Change Agent</h3>
-<p>Capability, mandate and credibility, the politics of transformation, and GL-1003 as the test.</p>
+<p>Capability, mandate, credibility; stakeholder salience, force field, Kotter&#x27;s errors, Pfeffer.</p>
 <div class="btns">
 <a class="btn primary" href="/materials/dseh001/DSEH001_W11_L2_HR_as_Digital_Change_Agent.pdf" target="_blank" rel="noopener">View PDF</a>
 <a class="btn" href="/materials/dseh001/DSEH001_W11_L2_HR_as_Digital_Change_Agent.pdf" download="DSEH001_W11_L2_HR_as_Digital_Change_Agent.pdf">Download PDF</a>
 </div>
 </article>
-<article class="card">
-<span class="wk">Lecture 3 &#183; 10 slides</span>
-<h3>Writing the Board Memo</h3>
-<p>Structure, tone, evidence and asks: the genre of CHRO communication, and the final presentation format.</p>
-<div class="btns">
-<a class="btn primary" href="/materials/dseh001/DSEH001_W11_L3_Writing_the_Board_Memo.pdf" target="_blank" rel="noopener">View PDF</a>
-<a class="btn" href="/materials/dseh001/DSEH001_W11_L3_Writing_the_Board_Memo.pdf" download="DSEH001_W11_L3_Writing_the_Board_Memo.pdf">Download PDF</a>
 </div>
-</article>
-</div>
-<h3 class="weekhead">Week 12 &#183; Final Presentations, Synthesis and End-Term Preparation</h3>
+<h3 class="weekhead">Week 12 &#183; Synthesis and End-Term Preparation</h3>
 <p class="rlink">&#128214; Readings for Week 12 are explained in the <a href="/materials/dseh001/DSEH001_Unit4_Reader_Future_of_Work_and_HR_Strategy.pdf" target="_blank" rel="noopener">Unit 4 Reader</a>.</p>
 <div class="grid">
 <article class="card">
-<span class="wk">Lecture 1 &#183; 9 slides</span>
-<h3>Final Pod Presentations Part 1</h3>
-<p>Defending an integrated transformation case under questioning.</p>
-<div class="btns">
-<a class="btn primary" href="/materials/dseh001/DSEH001_W12_L1_Final_Presentations_Part1.pdf" target="_blank" rel="noopener">View PDF</a>
-<a class="btn" href="/materials/dseh001/DSEH001_W12_L1_Final_Presentations_Part1.pdf" download="DSEH001_W12_L1_Final_Presentations_Part1.pdf">Download PDF</a>
-</div>
-</article>
-<article class="card">
-<span class="wk">Lecture 2 &#183; 9 slides</span>
-<h3>Final Pod Presentations Part 2</h3>
-<p>The remaining pods present; peer voting on coherence and feasibility; the strongest themes.</p>
-<div class="btns">
-<a class="btn primary" href="/materials/dseh001/DSEH001_W12_L2_Final_Presentations_Part2.pdf" target="_blank" rel="noopener">View PDF</a>
-<a class="btn" href="/materials/dseh001/DSEH001_W12_L2_Final_Presentations_Part2.pdf" download="DSEH001_W12_L2_Final_Presentations_Part2.pdf">Download PDF</a>
-</div>
-</article>
-<article class="card">
-<span class="wk">Lecture 3 &#183; 10 slides</span>
+<span class="wk">Lecture 3 &#183; 13 slides</span>
 <h3>Synthesis and End-Term Preparation</h3>
-<p>Units I to IV as one practitioner model, the comparisons the end term favors, and how to answer.</p>
+<p>The course in one map, core comparisons, paper structure, and how to revise.</p>
 <div class="btns">
 <a class="btn primary" href="/materials/dseh001/DSEH001_W12_L3_Synthesis_and_End-Term_Preparation.pdf" target="_blank" rel="noopener">View PDF</a>
 <a class="btn" href="/materials/dseh001/DSEH001_W12_L3_Synthesis_and_End-Term_Preparation.pdf" download="DSEH001_W12_L3_Synthesis_and_End-Term_Preparation.pdf">Download PDF</a>
 </div>
 </article>
 </div>
-
+<p class="totop"><a href="#choose">&#8593; Back to course list</a></p>
+</section>
+<section class="course-box c4" id="dseh004">
+<p class="cb-eyebrow">Course 2</p>
 <h2>DSEH004 &#183; Performance Management</h2>
 <p class="course-sub">M.Com., University of Delhi &#183; Project Pratibha</p>
 <h3 class="weekhead">Week 1 &#183; Course Foundations and the Pratibha Launch</h3>
@@ -842,6 +802,8 @@ footer{margin-top:44px;color:var(--muted);font-size:.92rem;border-top:1px solid 
 </article>
 </div>
 
+<p class="totop"><a href="#choose">&#8593; Back to course list</a></p>
+</section>
 <div class="help">
 <h3>How to save the slides</h3>
 <p>Every lecture is a PDF. Click <b>View PDF</b> to read it in your browser, or <b>Download PDF</b> to keep a copy.</p>
