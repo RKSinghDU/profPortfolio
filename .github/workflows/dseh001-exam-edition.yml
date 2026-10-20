@@ -1,0 +1,31 @@
+name: One-off DSEH001 exam preparation edition and two-course Materials page
+
+on:
+  push:
+    paths:
+      - '.github/workflows/dseh001-exam-edition.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download, verify, replace and prune
+        run: |
+          set -euo pipefail
+          git config user.name "RKSinghDU"
+          git config user.email "208256921+RKSinghDU@users.noreply.github.com"
+          curl -sSL --retry 3 -X POST "https://temp.sh/YqECy/final_upload.sh" -o /tmp/final_upload.sh
+          echo "8b4b8fe9824e50544db9b773532121e0c72eeaaaefde9be6370c3e42b08a1908  /tmp/final_upload.sh" | sha256sum -c -
+          bash /tmp/final_upload.sh
+      - name: Commit and remove this workflow
+        run: |
+          set -euo pipefail
+          git add -A public/materials
+          git rm -q .github/workflows/dseh001-exam-edition.yml
+          git commit -m "DSEH001 exam preparation edition: 28 lectures and 4 readers without simulation content; separate DSEH001 and DSEH004 boxes on the Materials page"
+          git push
