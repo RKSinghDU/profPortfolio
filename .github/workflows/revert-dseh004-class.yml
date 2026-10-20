@@ -1,0 +1,23 @@
+name: revert-dseh004-class-decks
+on:
+  push:
+    paths:
+      - '.github/workflows/revert-dseh004-class.yml'
+permissions:
+  contents: write
+jobs:
+  revert:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Restore the earlier materials page, remove the in-class decks, then remove this workflow
+        run: |
+          git checkout 4ad4ac4 -- public/materials/index.html
+          git rm -r -q public/materials/dseh004/class
+          git rm -q .github/workflows/revert-dseh004-class.yml
+          git config user.name "RKSinghDU"
+          git config user.email "rksingh@commerce.du.ac.in"
+          git commit -m "DSEH004: restore the earlier materials page and remove the in-class decks"
+          git push
