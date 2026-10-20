@@ -69,6 +69,15 @@ h2{font-family:"Source Serif 4",Georgia,serif;font-size:1.6rem;margin:36px 0 6px
 .totop{margin-top:22px;text-align:right;font-weight:600}
 .totop a{color:var(--teal);text-decoration:none}
 @media (max-width:600px){.course-box{padding:6px 14px 18px}}
+.course-box{display:none}
+.course-box:target{display:block;animation:fadein .25s ease}
+@keyframes fadein{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.pick-hint{margin:8px 0 30px;padding:18px 22px;border:2px dashed var(--line);border-radius:14px;color:var(--muted);text-align:center;font-size:1.02rem}
+.course-box:target ~ .pick-hint{display:none}
+.ch.active{box-shadow:0 0 0 3px var(--teal) inset}
+.ch.c4.active{box-shadow:0 0 0 3px var(--accent) inset}
+.switch{display:inline-block;margin-top:4px;font-weight:600;color:var(--muted);text-decoration:none;font-size:.95rem}
+.switch:hover{color:var(--accent)}
 footer{margin-top:44px;color:var(--muted);font-size:.92rem;border-top:1px solid var(--line);padding-top:18px}
 </style></head><body>
 <div class="wrap">
@@ -83,12 +92,12 @@ footer{margin-top:44px;color:var(--muted);font-size:.92rem;border-top:1px solid 
 <section class="chooser" id="choose">
 <p class="ch-lead">Choose your course</p>
 <div class="ch-grid">
-<a class="ch c1" href="#dseh001"><span class="ch-code">DSEH001</span><span class="ch-title">Digital Transformation in HR Systems</span><span class="ch-meta">28 lectures &#183; 4 Unit Readers &#183; exam preparation edition</span><span class="ch-go">Open &#8594;</span></a>
-<a class="ch c4" href="#dseh004"><span class="ch-code">DSEH004</span><span class="ch-title">Performance Management</span><span class="ch-meta">Weekly lecture slides</span><span class="ch-go">Open &#8594;</span></a>
+<a class="ch c1" href="#dseh001"><span class="ch-code">DSEH001</span><span class="ch-title">Digital Transformation in HR Systems</span><span class="ch-meta">28 lectures &#183; 4 Unit Readers &#183; exam preparation edition</span><span class="ch-go">Show DSEH001 materials &#8594;</span></a>
+<a class="ch c4" href="#dseh004"><span class="ch-code">DSEH004</span><span class="ch-title">Performance Management</span><span class="ch-meta">Weekly lecture slides</span><span class="ch-go">Show DSEH004 materials &#8594;</span></a>
 </div>
 </section>
 <section class="course-box c1" id="dseh001">
-<p class="cb-eyebrow">Course 1</p>
+<p class="cb-eyebrow">Course 1 &#183; <a class="switch" href="#dseh004">Switch to DSEH004 &#8594;</a></p>
 <h2>DSEH001 &#183; Digital Transformation in HR Systems</h2>
 <p class="course-sub">M.Com., University of Delhi &#183; Exam preparation edition</p>
 <p class="cb-note">These slides prepare you for the end-term examination. They teach the theories, frameworks and evidence of each lecture, with practice questions. Simulation briefings and submission sessions are not included, so some lecture numbers are skipped; the numbers follow the Lesson Plan.</p>
@@ -435,10 +444,10 @@ footer{margin-top:44px;color:var(--muted);font-size:.92rem;border-top:1px solid 
 </div>
 </article>
 </div>
-<p class="totop"><a href="#choose">&#8593; Back to course list</a></p>
+<p class="totop"><a href="#choose">&#8593; Choose a different course</a></p>
 </section>
 <section class="course-box c4" id="dseh004">
-<p class="cb-eyebrow">Course 2</p>
+<p class="cb-eyebrow">Course 2 &#183; <a class="switch" href="#dseh001">Switch to DSEH001 &#8594;</a></p>
 <h2>DSEH004 &#183; Performance Management</h2>
 <p class="course-sub">M.Com., University of Delhi &#183; Project Pratibha</p>
 <h3 class="weekhead">Week 1 &#183; Course Foundations and the Pratibha Launch</h3>
@@ -802,12 +811,17 @@ footer{margin-top:44px;color:var(--muted);font-size:.92rem;border-top:1px solid 
 </article>
 </div>
 
-<p class="totop"><a href="#choose">&#8593; Back to course list</a></p>
+<p class="totop"><a href="#choose">&#8593; Choose a different course</a></p>
 </section>
+<p class="pick-hint">&#128070; Select your course above to see its lecture slides and readers.</p>
 <div class="help">
 <h3>How to save the slides</h3>
 <p>Every lecture is a PDF. Click <b>View PDF</b> to read it in your browser, or <b>Download PDF</b> to keep a copy.</p>
 </div>
 <footer>R K Singh &#183; Senior Professor, Department of Commerce, Delhi School of Economics, University of Delhi</footer>
 </div>
+<script>
+(function(){function mark(){var h=location.hash;document.querySelectorAll('.ch').forEach(function(a){a.classList.toggle('active',a.getAttribute('href')===h);});}
+window.addEventListener('hashchange',mark);mark();})();
+</script>
 </body></html>
