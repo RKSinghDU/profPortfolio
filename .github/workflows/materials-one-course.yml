@@ -1,0 +1,28 @@
+name: One-off Materials page, one course at a time
+
+on:
+  push:
+    paths:
+      - '.github/workflows/materials-one-course.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download, verify, commit and remove this workflow
+        run: |
+          set -euo pipefail
+          F=public/materials/index.html
+          curl -sSL --retry 3 -X POST "https://temp.sh/ytQwu/idx_tabs.html" -o "$F"
+          echo "f1d16fc7259e8cb43a6a6aba6378ca9e0dc81b91d91c84421e6f526047e330f0  $F" | sha256sum -c -
+          git config user.name "RKSinghDU"
+          git config user.email "208256921+RKSinghDU@users.noreply.github.com"
+          git add "$F"
+          git rm -q .github/workflows/materials-one-course.yml
+          git commit -m "Materials page: show only the chosen course (DSEH001 or DSEH004)"
+          git push
