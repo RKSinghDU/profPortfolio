@@ -1,0 +1,47 @@
+name: One-off DSEH001 deck upload
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/dseh001-deck-upload.yml']
+permissions:
+  contents: write
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download and verify the 16 decks
+        run: |
+          set -euo pipefail
+          fetch() {
+            curl -sS -f -X POST "$1" -o "$2"
+            echo "$3  $2" | sha256sum -c -
+          }
+          fetch "https://temp.sh/tLQTb/DSEH001_W02_L2_Maturity_Models_and_Alignment.pdf" "public/materials/dseh001/DSEH001_W02_L2_Maturity_Models_and_Alignment.pdf" "863d08b019ec6684fcbdd4e4a730de4dc753c361459827df6584f788574cc652"
+          fetch "https://temp.sh/gwHeD/DSEH001_W03_L1_Data_Literacy.pdf" "public/materials/dseh001/DSEH001_W03_L1_Data_Literacy.pdf" "fc763a6e061cdbc5147a1bc621799d9d117fda6eef4bcf25d31ceca7582ec018"
+          fetch "https://temp.sh/ogsah/DSEH001_W03_L2_BI_Fundamentals.pdf" "public/materials/dseh001/DSEH001_W03_L2_BI_Fundamentals.pdf" "f6f767c3419ee9cef4b66fb9ed52791ec45cbfaf72ba57d16764198c97344737"
+          fetch "https://temp.sh/aJUXl/DSEH001_W04_L1_HRIS_System_of_Record.pdf" "public/materials/dseh001/DSEH001_W04_L1_HRIS_System_of_Record.pdf" "3ad8db0afad5a2c2701560086181baa4c4cee442ed25e02d2a12a445962f31b7"
+          fetch "https://temp.sh/fpRdd/DSEH001_W04_L2_E-Recruitment_and_ATS.pdf" "public/materials/dseh001/DSEH001_W04_L2_E-Recruitment_and_ATS.pdf" "379a4ac4656e08f17f97e37c65cbf9b99471a99dfbca31d81a9a6134e8fa3ef3"
+          fetch "https://temp.sh/qouit/DSEH001_W04_L3_Designing_the_HR_Technology_Stack.pdf" "public/materials/dseh001/DSEH001_W04_L3_Designing_the_HR_Technology_Stack.pdf" "b1dec2ae55e0cf9893f72cc227512cf270145fbd5fea4beebd03e3b0933eaa00"
+          fetch "https://temp.sh/MkgRx/DSEH001_W05_L2_Learning_Management_Systems.pdf" "public/materials/dseh001/DSEH001_W05_L2_Learning_Management_Systems.pdf" "f91912b95602129933408c80b40fab195915dc304926e14048dab86f64797eea"
+          fetch "https://temp.sh/vYbGU/DSEH001_W06_L1_Engagement_Apps_Chatbots_Mobile_HR.pdf" "public/materials/dseh001/DSEH001_W06_L1_Engagement_Apps_Chatbots_Mobile_HR.pdf" "914d6218129b4925e52d295eeddf9011a9dcd445022de3649544fcce6c675e7a"
+          fetch "https://temp.sh/vmbxq/DSEH001_W06_L3_Course_Correction.pdf" "public/materials/dseh001/DSEH001_W06_L3_Course_Correction.pdf" "2827f37a6dec38573710d35da30584aa93cab16e0a19457096d4da7e4c793b38"
+          fetch "https://temp.sh/BYdgU/DSEH001_W07_L1_The_Analytics_Ladder.pdf" "public/materials/dseh001/DSEH001_W07_L1_The_Analytics_Ladder.pdf" "fd59ff86b1b6f48053145b478f5699c654d7cf4887f88539ff50ec90e9a2c871"
+          fetch "https://temp.sh/LsJTc/DSEH001_W07_L2_Evidence-Based_HR_and_Metrics.pdf" "public/materials/dseh001/DSEH001_W07_L2_Evidence-Based_HR_and_Metrics.pdf" "0ac65896e44f7113c459ad41c2a2c450ab9f47d1bdc28beb5ae55ffd21197e0f"
+          fetch "https://temp.sh/OwZpN/DSEH001_W07_L3_Auditing_Algorithms.pdf" "public/materials/dseh001/DSEH001_W07_L3_Auditing_Algorithms.pdf" "be2b01463ca8a39df7798af81e6121115a04a6e179524dbadee17e926a358dbf"
+          fetch "https://temp.sh/BhyiL/DSEH001_W08_L1_Dashboard_Design.pdf" "public/materials/dseh001/DSEH001_W08_L1_Dashboard_Design.pdf" "39a4386fe0c62dd50d42768d5a5af324a9cafaae4f3ef8aa13746438d672ef13"
+          fetch "https://temp.sh/KOuns/DSEH001_W08_L2_Storytelling_and_Ethics_of_Framing.pdf" "public/materials/dseh001/DSEH001_W08_L2_Storytelling_and_Ethics_of_Framing.pdf" "34daf7a1e408f6fc31c8f90021ce978ad8c9af935de915d3228503ce6e84094f"
+          fetch "https://temp.sh/ZBbkk/DSEH001_W08_L3_KPI_Frameworks_and_Data_Culture.pdf" "public/materials/dseh001/DSEH001_W08_L3_KPI_Frameworks_and_Data_Culture.pdf" "c6f52f28533e4c12a54812b5bc919098716507ea6f0a23f6d82838cd7f4f470f"
+          fetch "https://temp.sh/cKhle/DSEH001_W11_L1_Strategy_for_Resilience_and_Agility.pdf" "public/materials/dseh001/DSEH001_W11_L1_Strategy_for_Resilience_and_Agility.pdf" "d90cffabea9f22ee299de4d28252e423e5598aee45aff0e009c94964e628fb13"
+      - name: Commit the decks
+        run: |
+          git config user.name "RKSinghDU"
+          git config user.email "208256921+RKSinghDU@users.noreply.github.com"
+          git add public/materials/dseh001/*.pdf
+          git commit -m "DSEH001 decks: recent sources, Lewin correction, 6th edition readings (16 PDFs, checksums verified)"
+          git push
+      - name: Remove this one-off workflow
+        run: |
+          git rm .github/workflows/dseh001-deck-upload.yml
+          git commit -m "Remove one-off deck upload workflow"
+          git push || echo "Could not remove the workflow automatically"
