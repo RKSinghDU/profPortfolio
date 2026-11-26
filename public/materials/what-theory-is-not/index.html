@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What Theory Is Not: A Student Guide | R K Singh</title>
+<meta name="description" content="A plain language student guide to Sutton and Staw (1995): five things that are not theory, and how to write the because that theory needs. By R K Singh, Delhi School of Economics.">
+<style>
+:root{
+  --ink:#14213d; --paper:#f3f5fa; --card:#ffffff; --muted:#4a5672; --line:#d5dbea;
+  --accent:#b45309; --accent-soft:#fdecd0;
+  --no:#b42318; --no-soft:#fde4e1;
+  --yes:#0b6b50; --yes-soft:#d8f2e9;
+  --font:'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --ink:#e8ecf8; --paper:#0f1626; --card:#18223a; --muted:#aab5d0; --line:#2c3857;
+    --accent:#f59e0b; --accent-soft:#3a2a0c;
+    --no:#ff8a7d; --no-soft:#3b1a1a;
+    --yes:#4fd1a5; --yes-soft:#0f3a2e;
+    color-scheme:dark;
+  }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font);font-size:20px;line-height:1.55}
+h1,h2,h3{line-height:1.15;margin:0;text-wrap:balance}
+h1{font-size:clamp(40px,7vw,72px);font-weight:800;letter-spacing:-.02em}
+h2{font-size:clamp(32px,4.6vw,44px);font-weight:800;letter-spacing:-.01em}
+h3{font-size:22px;font-weight:700;margin-bottom:8px}
+p{margin:0 0 14px}
+.wrap{max-width:1000px;margin:0 auto;padding:0 22px}
+section{padding:64px 0;border-top:1px solid var(--line)}
+section:first-of-type{border-top:0}
+.eyebrow{font-size:16px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.lead{font-size:24px;color:var(--muted);max-width:44ch;margin-top:14px}
+.small{font-size:16px;color:var(--muted)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px 22px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:26px}
+.skip{position:absolute;left:-999px;top:0;background:var(--card);padding:10px 14px;z-index:30}
+.skip:focus{left:10px;top:10px}
+.progress{position:fixed;left:0;top:0;height:5px;width:0;background:var(--accent);z-index:20}
+a{color:var(--accent)}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+
+/* hero */
+.hero{padding:88px 0 72px}
+.hero .lead{max-width:36ch}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.chip{background:var(--accent-soft);color:var(--ink);border:1px solid var(--accent);border-radius:999px;padding:6px 16px;font-weight:700;font-size:18px}
+.by{margin-top:30px;font-size:17px;color:var(--muted)}
+.by b{color:var(--ink)}
+
+/* why demo */
+.flow{display:grid;gap:14px;margin-top:28px;max-width:720px}
+.flow div{border-radius:14px;padding:16px 20px}
+.obs{background:var(--card);border:1px solid var(--line)}
+.why{background:var(--accent);color:#fff;font-weight:800;font-size:28px;text-align:center;max-width:200px;justify-self:center}
+.bec{background:var(--yes-soft);border:2px solid var(--yes)}
+.js .flow .st{opacity:0;transform:translateY(14px)}
+.js .flow.play .st{animation:rise .6s ease forwards;animation-delay:calc(var(--i) * .9s)}
+@keyframes rise{to{opacity:1;transform:none}}
+.btn{font:inherit;font-size:17px;font-weight:700;background:var(--card);color:var(--ink);border:2px solid var(--line);border-radius:10px;padding:8px 16px;cursor:pointer}
+.btn:hover{border-color:var(--accent)}
+.btn.right{background:var(--yes-soft);border-color:var(--yes)}
+.btn.wrong{background:var(--no-soft);border-color:var(--no)}
+
+/* five things */
+.five{display:grid;gap:26px;margin-top:30px}
+.item{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px}
+.item .num{display:inline-block;background:var(--accent);color:#fff;font-weight:800;border-radius:999px;padding:2px 14px;font-size:17px;margin-bottom:10px}
+.item h3{font-size:28px;margin-bottom:12px}
+.rows{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin:14px 0}
+.rows div{background:var(--paper);border-radius:12px;padding:12px 16px}
+.rows b{display:block;font-size:16px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-bottom:4px}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:10px}
+@media (max-width:760px){.pair{grid-template-columns:1fr}}
+.not,.yes{border-radius:14px;padding:14px 18px;border-left:8px solid}
+.not{background:var(--no-soft);border-color:var(--no)}
+.yes{background:var(--yes-soft);border-color:var(--yes)}
+.tag{display:block;font-weight:800;font-size:16px;text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+.not .tag{color:var(--no)}
+.yes .tag{color:var(--yes)}
+.pair p{margin:0}
+
+/* steps */
+.steps{list-style:none;counter-reset:s;padding:0;margin:26px 0 0;display:grid;gap:14px}
+.steps li{counter-increment:s;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 20px 16px 74px;position:relative}
+.steps li::before{content:counter(s);position:absolute;left:18px;top:14px;width:42px;height:42px;border-radius:50%;background:var(--accent);color:#fff;font-weight:800;font-size:22px;display:grid;place-items:center}
+.steps b{display:block;font-size:22px}
+.steps span{color:var(--muted)}
+.js .steps li{opacity:0;transform:translateX(-16px)}
+.js .steps.play li{animation:slide .55s ease forwards;animation-delay:calc(var(--i) * .5s)}
+@keyframes slide{to{opacity:1;transform:none}}
+
+ul.tick{list-style:none;padding:0;margin:0}
+ul.tick li{padding-left:34px;position:relative;margin-bottom:10px}
+ul.tick li::before{content:"\2713";position:absolute;left:0;color:var(--yes);font-weight:800}
+
+/* practice */
+details{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 20px;margin-top:14px}
+summary{cursor:pointer;font-weight:700;font-size:21px}
+details .yes{margin-top:12px}
+
+/* quiz */
+.qitem{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 20px;margin-top:14px}
+.qtext{font-size:21px;margin-bottom:10px}
+.qbtns{display:flex;flex-wrap:wrap;gap:8px}
+.qfb{margin:12px 0 0;font-size:18px}
+.qfb.good{color:var(--yes)}
+.qfb.bad{color:var(--no)}
+.score{display:flex;gap:16px;align-items:center;margin-top:20px;font-weight:700;font-size:22px}
+
+/* audit */
+.audit{list-style:none;padding:0;margin:24px 0 0;display:grid;gap:10px}
+.audit label{display:flex;gap:14px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 18px;cursor:pointer}
+.audit input{width:24px;height:24px;margin-top:3px;flex:none;accent-color:var(--yes)}
+
+/* scroll reveal */
+.js .rv{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
+.js .rv.in{opacity:1;transform:none}
+
+footer{padding:48px 0 70px;border-top:1px solid var(--line);color:var(--muted);font-size:17px}
+footer b{color:var(--ink)}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .js .rv,.js .flow .st,.js .steps li{opacity:1!important;transform:none!important;animation:none!important;transition:none!important}
+}
+@media print{
+  .progress,.skip,.btn,.score{display:none}
+  body{background:#fff;color:#000;font-size:14pt}
+  section{padding:18pt 0;break-inside:avoid-page}
+  .js .rv,.js .flow .st,.js .steps li{opacity:1!important;transform:none!important}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to the guide</a>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<main id="main">
+
+<section class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Student guide</p>
+    <h1>What Theory Is Not</h1>
+    <p class="lead">A paper can have many references, strong data and a neat diagram, and still have no theory. Here is how to tell, and how to fix it.</p>
+    <div class="chips">
+      <span class="chip">References</span>
+      <span class="chip">Data</span>
+      <span class="chip">Lists of variables</span>
+      <span class="chip">Diagrams</span>
+      <span class="chip">Hypotheses</span>
+    </div>
+    <p class="by">Based on Sutton, R. I., and Staw, B. M. (1995). What theory is not. <em>Administrative Science Quarterly</em>, 40(3), 371 to 384.<br>
+    Explained for students by <b>R K Singh</b>, Senior Professor, Department of Commerce, Delhi School of Economics, University of Delhi.</p>
+  </div>
+</section>
+
+<section id="idea">
+  <div class="wrap">
+    <p class="eyebrow">The big idea</p>
+    <h2>Theory is the answer to why</h2>
+    <p class="lead">What you saw is one thing. Why it happens is another. Theory is the second.</p>
+
+    <div class="flow" id="flow">
+      <div class="obs st" style="--i:0"><b>What we observe:</b> exits are higher among night shift agents at a call center in Gurugram.</div>
+      <div class="why st" style="--i:1">Why?</div>
+      <div class="bec st" style="--i:2"><b>Because</b> night shifts cut agents off from friends, family and teammates, little ties them to the job, <b>so</b> a better offer meets almost no resistance.</div>
+    </div>
+    <p style="margin-top:14px"><button class="btn" id="replayflow" type="button">Play again</button></p>
+
+    <div class="cards">
+      <div class="card rv"><h3>What you saw is not theory</h3><p>"Younger agents quit more" is something you observed. Theory explains why it happens.</p></div>
+      <div class="card rv"><h3>A name is not an explanation</h3><p>Writing "equity theory" is not enough. Say what the idea claims, in your own words, and how it applies to your case.</p></div>
+      <div class="card rv"><h3>Because is the test</h3><p>If your paragraph has no <b>because</b> and no <b>so</b>, it probably has no theory yet.</p></div>
+    </div>
+    <p class="small" style="margin-top:16px">The call center example is the teacher's own, made up to show the difference. It is not from the article.</p>
+  </div>
+</section>
+
+<section id="five">
+  <div class="wrap">
+    <p class="eyebrow">The five things</p>
+    <h2>Five things that are not theory</h2>
+    <p class="lead">Sutton and Staw say reviewers keep meeting these five in place of theory. Each one is useful. None of them is the why.</p>
+
+    <div class="five">
+
+      <article class="item rv">
+        <span class="num">1 of 5</span>
+        <h3>References are not theory</h3>
+        <p><b>In the article:</b> naming theories and listing citations is not the same as laying out the logic inside them. Adding more citations to answer "more theory, please" does not help.</p>
+        <div class="rows">
+          <div><b>Why it falls short</b>It names ideas and sources but does not say how they lead to the result.</div>
+          <div><b>What to add</b>The borrowed logic in your own sentences, so a reader can follow without reading the source.</div>
+        </div>
+        <div class="pair">
+          <div class="not"><span class="tag">Not theory</span><p>"As equity theory and social exchange theory suggest, pay shapes attrition at Indian IT services firms."</p></div>
+          <div class="yes"><span class="tag">Theory</span><p>"Because an engineer in Pune compares her pay with batchmates who joined elsewhere, a visible gap feels unfair, and leaving becomes a way to restore the balance."</p></div>
+        </div>
+      </article>
+
+      <article class="item rv">
+        <span class="num">2 of 5</span>
+        <h3>Data are not theory</h3>
+        <p><b>In the article:</b> data show which patterns were seen. Theory explains why they occurred or why you expect them. A quote from an interview can inspire an idea, but the quote is not the theory.</p>
+        <div class="rows">
+          <div><b>Why it falls short</b>It tells what happened, not why.</div>
+          <div><b>What to add</b>The reasons the pattern appeared, and the reasons you expect your own.</div>
+        </div>
+        <div class="pair">
+          <div class="not"><span class="tag">Not theory</span><p>"Younger employees at our Hyderabad unit left more often."</p></div>
+          <div class="yes"><span class="tag">Theory</span><p>"Because younger employees carry fewer family obligations in the city, moving for a better offer costs them less, so exits rise as age falls."</p></div>
+        </div>
+      </article>
+
+      <article class="item rv">
+        <span class="num">3 of 5</span>
+        <h3>Lists of variables are not theory</h3>
+        <p><b>In the article:</b> a list of variables, or a sorting of causes into groups, does not explain an outcome. A theory must say why variables matter and how they connect.</p>
+        <div class="rows">
+          <div><b>Why it falls short</b>It lists what to measure, not how each item connects to the outcome.</div>
+          <div><b>What to add</b>For every variable, a reason it should matter, and how it relates to the others.</div>
+        </div>
+        <div class="pair">
+          <div class="not"><span class="tag">Not theory</span><p>"We include age, gender, tenure, pay, supervisor quality, commute time and city as determinants of retention."</p></div>
+          <div class="yes"><span class="tag">Theory</span><p>"Because a supervisor controls the assignments that build an employee's reputation, supervisor quality matters more for retention than commute time, which only changes daily comfort."</p></div>
+        </div>
+      </article>
+
+      <article class="item rv">
+        <span class="num">4 of 5</span>
+        <h3>Diagrams are not theory</h3>
+        <p><b>In the article:</b> boxes and arrows add order, but they rarely explain why the links will appear. Words are almost always needed. Good theory can be drawn, but it is rich enough to need sentences too.</p>
+        <div class="rows">
+          <div><b>Why it falls short</b>The arrows show an order, not the reasons.</div>
+          <div><b>What to add</b>One or more sentences of reasoning behind every arrow.</div>
+        </div>
+        <div class="pair">
+          <div class="not"><span class="tag">Not theory</span><p>Figure 1: Shift timing leads to Stress, which leads to Quitting.</p></div>
+          <div class="yes"><span class="tag">Theory</span><p>"Because night shifts cut agents off from the people who give support, stress builds with nobody to share it, and leaving becomes the way out."</p></div>
+        </div>
+        <p class="small" style="margin-top:12px">The theory sentence in this box is the teacher's own.</p>
+      </article>
+
+      <article class="item rv">
+        <span class="num">5 of 5</span>
+        <h3>Hypotheses are not theory</h3>
+        <p><b>In the article:</b> a hypothesis says what you expect, not why. It is a bridge between theory and data. Too many hypotheses, each with a thin reason, is a warning sign. Strong papers grow from one idea or a small set of ideas.</p>
+        <div class="rows">
+          <div><b>Why it falls short</b>It states an expectation without a reason.</div>
+          <div><b>What to add</b>A short paragraph of reasoning before each prediction.</div>
+        </div>
+        <div class="pair">
+          <div class="not"><span class="tag">Not theory</span><p>"H3: Founder involvement is negatively related to cross team cooperation in family firms."</p></div>
+          <div class="yes"><span class="tag">Theory</span><p>"Because a founder personally decides pay, managers compete for the founder's attention instead of building ties with each other, so cooperation weakens as founder involvement grows."</p></div>
+        </div>
+      </article>
+
+    </div>
+    <p class="small" style="margin-top:18px">Every Not theory and Theory sentence on this page is the teacher's own, written for practice. None is quoted from the article.</p>
+  </div>
+</section>
+
+<section id="steps">
+  <div class="wrap">
+    <p class="eyebrow">How to do it</p>
+    <h2>Four steps to write the because</h2>
+    <p class="small">The authors say they offer no recipe for building theory. This routine is the teacher's own practical way to apply their advice. It is a help, not a rule from the article.</p>
+    <ol class="steps" id="stepslist">
+      <li style="--i:0"><b>Write what you expect, in one line.</b><span>Night shift agents will quit more.</span></li>
+      <li style="--i:1"><b>Ask why, three times.</b><span>Why? They feel cut off from people. Why does that matter? Fewer people would miss them or ask them to stay. Why does that matter? A better offer meets little resistance.</span></li>
+      <li style="--i:2"><b>Join the answers with because and so.</b><span>Because night shifts cut agents off from the people around them, little ties them to the job, so a better offer meets almost no resistance.</span></li>
+      <li style="--i:3"><b>Say when it should hold more and when less.</b><span>It should be weaker where a whole night batch are close friends.</span></li>
+    </ol>
+    <p style="margin-top:14px"><button class="btn" id="replaysteps" type="button">Play again</button></p>
+  </div>
+</section>
+
+<section id="rigor">
+  <div class="wrap">
+    <p class="eyebrow">What good work looks like</p>
+    <h2>What rigorous work looks like</h2>
+    <div class="cards">
+      <div class="card rv">
+        <ul class="tick">
+          <li>Every hypothesis has a short paragraph of reasons before it.</li>
+          <li>Each citation is explained in your own words: what it found, and why it matters for your argument.</li>
+          <li>Every arrow in a diagram has a sentence behind it.</li>
+        </ul>
+      </div>
+      <div class="card rv">
+        <ul class="tick">
+          <li>You keep to one or two core ideas, not a long list of separate predictions.</li>
+          <li>You say when your idea should hold more and when less.</li>
+          <li>Your own new idea is called a proposal, not a finding, and you never claim something about earlier studies that you have not checked.</li>
+        </ul>
+      </div>
+    </div>
+    <p class="small" style="margin-top:14px">The first five points follow the article. The last point is the teacher's addition.</p>
+  </div>
+</section>
+
+<section id="practice">
+  <div class="wrap">
+    <p class="eyebrow">Practice</p>
+    <h2>Write the because</h2>
+    <p class="lead">Write your own reason on paper first. Then open the possible answer to compare. Your answer need not match. It needs a because and a so.</p>
+
+    <details>
+      <summary>1. "Students who study in groups score higher."</summary>
+      <div class="yes"><span class="tag">One possible answer</span><p>Because explaining a topic to others shows what you have not understood, group study exposes gaps early, so students fix them before the exam.</p></div>
+    </details>
+    <details>
+      <summary>2. "H2: Kirana stores that give credit to regular customers keep more of them."</summary>
+      <div class="yes"><span class="tag">One possible answer</span><p>Because credit builds a habit of buying at one store and a duty to come back, customers with credit avoid switching, so retention rises.</p></div>
+    </details>
+    <details>
+      <summary>3. "Interns who get a mentor receive more job offers."</summary>
+      <div class="yes"><span class="tag">One possible answer</span><p>Because a mentor shows the intern what the employer values and speaks for the intern, the intern performs better on what counts, so offers rise.</p></div>
+    </details>
+    <p class="small" style="margin-top:14px">All three statements and answers are the teacher's own, made up for practice.</p>
+  </div>
+</section>
+
+<section id="quiz">
+  <div class="wrap">
+    <p class="eyebrow">Test your eye</p>
+    <h2>What is this sentence?</h2>
+    <p class="lead">Read each sentence as a reviewer would. Pick the one label that fits. Two of the seven contain theory.</p>
+    <div id="qlist"></div>
+    <div class="score"><span id="score" aria-live="polite">Score: 0 of 0</span><button class="btn" id="qreset" type="button">Start again</button></div>
+    <p class="small" style="margin-top:14px">All seven sentences are invented for practice. The sources and numbers in them are not real.</p>
+  </div>
+</section>
+
+<section id="audit">
+  <div class="wrap">
+    <p class="eyebrow">Use it on your own work</p>
+    <h2>Audit your own draft</h2>
+    <ul class="audit">
+      <li><label><input type="checkbox"><span>For every citation in my introduction, have I stated the logic I take from it?</span></label></li>
+      <li><label><input type="checkbox"><span>Does each past finding I cite come with a reason it occurred?</span></label></li>
+      <li><label><input type="checkbox"><span>Does each variable come with a reason it matters and a link to the others?</span></label></li>
+      <li><label><input type="checkbox"><span>Could a reader rebuild my argument from the text alone, without the figure?</span></label></li>
+      <li><label><input type="checkbox"><span>Is there a paragraph of reasoning before every hypothesis, and can I say when it holds most and least?</span></label></li>
+      <li><label><input type="checkbox"><span>Is my paper built from one or two simple ideas rather than a spread of predictions?</span></label></li>
+    </ul>
+    <h3 style="margin-top:34px">Try this on a paper you are reading</h3>
+    <p>Find the sentence where the author first says <em>why</em>. How far into the paper does it come? Which of the five things came before it?</p>
+  </div>
+</section>
+
+<section id="strong">
+  <div class="wrap">
+    <p class="eyebrow">Where to aim</p>
+    <h2>What strong theory looks like</h2>
+    <div class="cards">
+      <div class="card rv">
+        <ul class="tick">
+          <li>It answers why, with the order and timing of causes.</li>
+          <li>It looks down into small processes, sideways to neighboring ideas, and up to larger social patterns.</li>
+          <li>It is built from a simple core, and its arguments link together.</li>
+        </ul>
+      </div>
+      <div class="card rv">
+        <ul class="tick">
+          <li>It says where the main idea holds most and where it holds least.</li>
+          <li>It can show consequences we would not see unaided.</li>
+          <li>The authors, borrowing a phrase from Weick, say good theory explains, predicts and delights.</li>
+        </ul>
+      </div>
+    </div>
+    <p class="small" style="margin-top:14px">The authors admit this reads like a wish list. That is why their article describes what theory is not.</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><b>Read the original.</b> Sutton, R. I., and Staw, B. M. (1995). What theory is not. <em>Administrative Science Quarterly</em>, 40(3), 371 to 384. This guide explains it in simple words and does not replace reading it.</p>
+    <p>Best wishes,<br><b>R K Singh</b><br>Senior Professor, Department of Commerce, Delhi School of Economics, University of Delhi</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  document.documentElement.classList.add('js');
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* progress bar */
+  var bar=document.getElementById('progress');
+  function prog(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?Math.min(100,window.scrollY/h*100):0)+'%';
+  }
+  window.addEventListener('scroll',prog,{passive:true});prog();
+
+  /* reveal on scroll, with a safe fallback */
+  var rv=document.querySelectorAll('.rv');
+  if('IntersectionObserver' in window&&!reduce){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+    },{threshold:.12});
+    rv.forEach(function(el){io.observe(el);});
+  }else{
+    rv.forEach(function(el){el.classList.add('in');});
+  }
+
+  /* replayable animations */
+  function player(id,btnId){
+    var el=document.getElementById(id),btn=document.getElementById(btnId);
+    if(!el){return;}
+    function run(){
+      el.classList.remove('play');
+      void el.offsetWidth;
+      el.classList.add('play');
+    }
+    if('IntersectionObserver' in window&&!reduce){
+      var o=new IntersectionObserver(function(es){
+        es.forEach(function(e){if(e.isIntersecting){run();o.disconnect();}});
+      },{threshold:.35});
+      o.observe(el);
+    }else{
+      el.classList.add('play');
+    }
+    if(btn){btn.addEventListener('click',run);}
+  }
+  player('flow','replayflow');
+  player('stepslist','replaysteps');
+
+  /* quiz */
+  var cats=[['refs','References'],['data','Data'],['vars','List of variables'],['dgm','Diagram'],['hyp','Hypothesis'],['theory','Contains theory']];
+  var label={};cats.forEach(function(c){label[c[0]]=c[1];});
+  var items=[
+    {t:'This is consistent with earlier work showing that employee voice raises engagement (Author A, 2012; Author B, 2016).',k:'refs',e:'It names sources and a finding but gives no logic for why voice raises engagement.'},
+    {t:'In our sample of bank employees in Mumbai, tenure was positively related to commitment in the regression results.',k:'data',e:'It reports a pattern from a sample. It does not say why tenure and commitment move together.'},
+    {t:'We include age, gender, tenure, pay, supervisor quality, commute time and city as determinants of retention.',k:'vars',e:'It lists predictors. It does not say why any of them matters or how they connect.'},
+    {t:'Figure 1 shows that leadership leads to trust, which leads to performance.',k:'dgm',e:'The arrows give an order. Nothing says why each link holds.'},
+    {t:'H3: Founder involvement is negatively related to cross team cooperation in family firms.',k:'hyp',e:'It states what is expected, not why it is expected.'},
+    {t:'Because the branch manager decides promotions, clerks hold back criticism, so upward feedback falls as the manager’s control over promotions grows.',k:'theory',e:'It gives the reason, the direction and the condition under which the effect grows.'},
+    {t:'Because a founder personally decides pay, managers compete for the founder’s attention instead of building ties with each other, so cooperation weakens as founder involvement grows.',k:'theory',e:'This is the same idea as H3, now with the reason attached.'}
+  ];
+  var list=document.getElementById('qlist'),scoreEl=document.getElementById('score');
+  var done=0,right=0;
+  function render(){
+    list.innerHTML='';done=0;right=0;scoreEl.textContent='Score: 0 of 0';
+    items.forEach(function(it,i){
+      var box=document.createElement('div');box.className='qitem';
+      var p=document.createElement('p');p.className='qtext';p.textContent=(i+1)+'. '+it.t;
+      var bw=document.createElement('div');bw.className='qbtns';
+      var fb=document.createElement('p');fb.className='qfb';fb.setAttribute('aria-live','polite');
+      var answered=false;
+      cats.forEach(function(c){
+        var b=document.createElement('button');b.type='button';b.className='btn';b.textContent=c[1];
+        b.addEventListener('click',function(){
+          if(answered){return;}
+          answered=true;done++;
+          if(c[0]===it.k){right++;b.className='btn right';fb.className='qfb good';fb.textContent='Correct. '+it.e;}
+          else{b.className='btn wrong';fb.className='qfb bad';fb.textContent='Not quite. This is: '+label[it.k]+'. '+it.e;}
+          scoreEl.textContent='Score: '+right+' of '+done;
+        });
+        bw.appendChild(b);
+      });
+      box.appendChild(p);box.appendChild(bw);box.appendChild(fb);list.appendChild(box);
+    });
+  }
+  render();
+  document.getElementById('qreset').addEventListener('click',render);
+})();
+</script>
+</body>
+</html>
